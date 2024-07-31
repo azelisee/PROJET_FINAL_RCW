@@ -16,6 +16,7 @@ const availabilitySchema = new mongoose.Schema({
 
 const doctorSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    title: { type: String, required: true},
     email: { type: String, required: true },
     gender: { type: String, enum: ['Male', 'Female', 'Other'] },
     phone: { type: String, required: true },

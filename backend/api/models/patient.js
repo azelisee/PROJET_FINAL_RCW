@@ -3,21 +3,21 @@ const bcrypt = require('bcrypt');
 
 const SALT_WORK_FACTOR = 10;
 
+const documentSchema = new mongoose.Schema({
+    type: { type: String, required: true },
+    url: { type: String, required: true },
+    dateAdded: { type: Date, default: Date.now }
+});
+
 const medicalFolderSchema = new mongoose.Schema({
-    folderName: String,
-    documents: [
-        {
-            type: String,
-            url: String,
-            dateAdded: { type: Date, default: Date.now }
-        }
-    ]
+    folderName: { type: String, required: true },
+    documents: [documentSchema]
 });
 
 const consultationSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
-    doctorName: String,
+    doctorName: { type: String, required: true },
     notes: String,
     diagnosis: String,
     prescriptions: [
@@ -32,7 +32,7 @@ const consultationSchema = new mongoose.Schema({
 });
 
 const treatmentSchema = new mongoose.Schema({
-    treatmentName: String,
+    treatmentName: { type: String, required: true },
     startDate: { type: Date, default: Date.now },
     endDate: Date,
     description: String,
@@ -56,12 +56,13 @@ const patientSchema = new mongoose.Schema({
     currentRoom: { type: mongoose.Schema.Types.ObjectId, ref: 'Room' }
 });
 
-
 patientSchema.pre('save', async function(next) {
     const patient = this;
+
     if (!patient.isModified('medicalFolders') && !patient.isModified('consultationHistory') && !patient.isModified('treatments')) {
         return next();
     }
+
     try {
         const hashMedicalFolders = await bcrypt.hash(JSON.stringify(patient.medicalFolders), SALT_WORK_FACTOR);
         patient.medicalFolders = hashMedicalFolders;
@@ -77,7 +78,6 @@ patientSchema.pre('save', async function(next) {
         next(err);
     }
 });
-
 
 patientSchema.methods.compareMedicalFolders = async function(candidateMedicalFolders) {
     return bcrypt.compare(JSON.stringify(candidateMedicalFolders), this.medicalFolders);
