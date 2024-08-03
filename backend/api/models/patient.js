@@ -91,6 +91,7 @@ patientSchema.methods.compareTreatments = async function(candidateTreatments) {
     return bcrypt.compare(JSON.stringify(candidateTreatments), this.treatments);
 };
 
-const Patient = mongoose.model('Patient', patientSchema);
+// Function to create models for both databases
+const createPatientModel = (conn) => conn.model('Patient', patientSchema);
 
-module.exports = Patient;
+module.exports = createPatientModel;

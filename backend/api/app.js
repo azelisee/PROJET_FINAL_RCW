@@ -1,19 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const app = express();
 const dotenv = require('dotenv');
+
+const app = express();
+
 const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const nurseRoutes = require('./routes/nurseRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
 const roomRoutes = require('./routes/roomRoutes');
 
-dotenv.config();
-
-mongoose.connect(process.env.DATABASE_URI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Failed to connect to MongoDB', err));
+dotenv.config({path: '../api/config/.env'});
 
 app.use(bodyParser.json());
 

@@ -19,6 +19,7 @@ const nurseSchema = new mongoose.Schema({
     seniority: { type: Number, required: true },
 });
 
-const Nurse = mongoose.model('Nurse', nurseSchema);
+// Function to create models for both databases
+const createNurseModel = (conn) => conn.model('Nurse', nurseSchema);
 
-module.exports = Nurse;
+module.exports = createNurseModel;

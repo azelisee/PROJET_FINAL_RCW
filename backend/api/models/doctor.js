@@ -28,6 +28,7 @@ const doctorSchema = new mongoose.Schema({
     availability: [availabilitySchema]
 });
 
-const Doctor = mongoose.model('Doctor', doctorSchema);
+// Function to create models for both databases
+const createDoctorModel = (conn) => conn.model('Patient', doctorSchema);
 
-module.exports = Doctor;
+module.exports = createDoctorModel;

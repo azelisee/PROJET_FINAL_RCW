@@ -8,6 +8,7 @@ const departmentSchema = new mongoose.Schema({
     nurses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Nurse' }]
 });
 
-const Department = mongoose.model('Department', departmentSchema);
+// Function to create models for both databases
+const createDepartmentModel = (conn) => conn.model('Department', departmentSchema);
 
-module.exports = Department;
+module.exports = createDepartmentModel;

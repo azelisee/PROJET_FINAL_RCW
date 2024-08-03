@@ -6,6 +6,7 @@ const roomSchema = new mongoose.Schema({
     department: { type: mongoose.Schema.Types.ObjectId, ref: 'Department', required: true }
 });
 
-const Room = mongoose.model('Room', roomSchema);
+// Function to create models for both databases
+const createRoomModel = (conn) => conn.model('Room ', roomSchema);
 
-module.exports = Room;
+module.exports = createRoomModel;
