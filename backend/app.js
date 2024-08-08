@@ -2,15 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
+dotenv.config({path: './config/.env'});
+
 const app = express();
+
+const { connectToDatabase1, connectToDatabase2 } = require('./config/databases');
 
 const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const nurseRoutes = require('./routes/nurseRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
 const roomRoutes = require('./routes/roomRoutes');
-
-dotenv.config({path: '../api/config/.env'});
 
 app.use(bodyParser.json());
 
@@ -23,4 +25,6 @@ app.use('/rooms', roomRoutes);
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(connectToDatabase1);
+    console.log(connectToDatabase2);
 });
