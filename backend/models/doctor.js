@@ -23,12 +23,12 @@ const doctorSchema = new mongoose.Schema({
     specialty: { type: String, required: true },
     seniority: { type: Number, required: true },
     department: { type: mongoose.Schema.Types.ObjectId, ref: 'Department' },
+    hospital: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital' },
     schedule: [availabilitySchema],
     appointments: [appointmentSchema],
     availability: [availabilitySchema]
 });
 
-// Function to create models for both databases
-const initDoctorModel = (conn) => conn.model('Patient', doctorSchema);
+const initDoctorModel = (conn) => conn.model('Doctor', doctorSchema);
 
 module.exports = initDoctorModel;
