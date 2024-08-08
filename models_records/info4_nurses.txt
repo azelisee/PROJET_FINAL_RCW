@@ -1,0 +1,320 @@
+{
+    "name": "Hillary Mayer",
+    "title": "Nurse",
+    "email": "hm@gmail.com",
+    "gender": "Female",
+    "phone": "0987654321",
+    "department": "60d21b4667d0d8992e610c86", 
+    "dateOfBirth": "1985-06-15",
+    "qualifications": ["BSc Nursing", "Certified Pediatric Nurse"],
+    "schedule": [
+        {
+            "day": "Monday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ],
+    "seniority": 5
+}
+
+
+
+ {
+        "name": "Tom Sawyer",
+        "title": "Nurse",
+        "email": "ts@gmail.com",
+        "gender": "Female",
+        "phone": "0987654322",
+        "department": "60d21b4667d0d8992e610c88",
+        "dateOfBirth": "1990-04-22",
+        "qualifications": ["BSc Nursing", "Certified Emergency Nurse"],
+        "schedule": [
+            {
+                "day": "Tuesday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            }
+        ],
+        "seniority": 3
+    }
+
+
+
+
+
+
+
+
+{
+        "name": "Francesco Dobbins",
+        "title": "Nurse",
+        "email": "frans@gmail.com",
+        "gender": "Male",
+        "phone": "0987654323",
+        "department": "60d21b4667d0d8992e610c8a",
+        "dateOfBirth": "1987-02-10",
+        "qualifications": ["BSc Nursing", "Certified Cardiac Nurse"],
+        "schedule": [
+            {
+                "day": "Wednesday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            },
+            {
+                "day": "Friday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            }
+        ],
+        "seniority": 7
+    }
+
+
+
+
+
+
+
+
+{
+        "name": "Emily Johnson",
+        "title": "Nurse",
+        "email": "emily.johnson@gmail.com",
+        "gender": "Female",
+        "phone": "0987654324",
+        "department": "60d21b4667d0d8992e610c8c",
+        "dateOfBirth": "1992-11-30",
+        "qualifications": ["BSc Nursing", "Certified Surgical Nurse"],
+        "schedule": [
+            {
+                "day": "Monday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            }
+        ],
+        "seniority": 4
+    }
+
+
+
+
+
+
+
+
+{
+        "name": "Michael Brown",
+        "title": "Nurse",
+        "email": "michael.brown@gmail.com",
+        "gender": "Male",
+        "phone": "0987654325",
+        "department": "60d21b4667d0d8992e610c8e",
+        "dateOfBirth": "1983-09-15",
+        "qualifications": ["BSc Nursing", "Certified Oncology Nurse"],
+        "schedule": [
+            {
+                "day": "Tuesday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            },
+            {
+                "day": "Friday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            }
+        ],
+        "seniority": 10
+    }
+
+
+
+
+
+
+
+{
+        "name": "Luc Laroux",
+        "title": "Nurse",
+        "email": "luclaroux@gmail.com",
+        "gender": "Female",
+        "phone": "0987654326",
+        "department": "60d21b4667d0d8992e610c90",
+        "dateOfBirth": "1995-07-20",
+        "qualifications": ["BSc Nursing", "Certified Pediatric Nurse"],
+        "schedule": [
+            {
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            }
+        ],
+        "seniority": 2
+    }
+
+
+
+
+
+{
+        "name": "Daniela Bismark",
+        "title": "Nurse",
+        "email": "danibi@gmail.com",
+        "gender": "Male",
+        "phone": "0987654327",
+        "department": "60d21b4667d0d8992e610c92",
+        "dateOfBirth": "1988-05-25",
+        "qualifications": ["BSc Nursing", "Certified Orthopedic Nurse"],
+        "schedule": [
+            {
+                "day": "Wednesday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            },
+            {
+                "day": "Friday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            }
+        ],
+        "seniority": 6
+    }
+
+
+
+
+
+
+{
+        "name": "Olivia Pope",
+        "title": "Nurse",
+        "email": "olipop@gmail.com",
+        "gender": "Female",
+        "phone": "0987654328",
+        "department": "60d21b4667d0d8992e610c94",
+        "dateOfBirth": "1991-12-01",
+        "qualifications": ["BSc Nursing", "Certified Gastroenterology Nurse"],
+        "schedule": [
+            {
+                "day": "Tuesday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            }
+        ],
+        "seniority": 5
+    }
+
+
+
+
+
+
+
+
+{
+        "name": "James Martinez",
+        "title": "Nurse",
+        "email": "james.martinez@gmail.com",
+        "gender": "Male",
+        "phone": "0987654329",
+        "department": "60d21b4667d0d8992e610c96",
+        "dateOfBirth": "1989-08-13",
+        "qualifications": ["BSc Nursing", "Certified Nephrology Nurse"],
+        "schedule": [
+            {
+                "day": "Monday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            }
+        ],
+        "seniority": 8
+    }
+
+
+
+
+
+
+
+{
+        "name": "Laura Rodriguez",
+        "title": "Nurse",
+        "email": "laura.rodriguez@gmail.com",
+        "gender": "Female",
+        "phone": "0987654330",
+        "department": "60d21b4667d0d8992e610c98",
+        "dateOfBirth": "1984-11-07",
+        "qualifications": ["BSc Nursing", "Certified Ophthalmic Nurse"],
+        "schedule": [
+            {
+                "day": "Wednesday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            },
+            {
+                "day": "Friday",
+                "startTime": "07:00",
+                "endTime": "15:00"
+            }
+        ],
+        "seniority": 9
+    }
+
+
+
+
+
+
+
+{
+        "name": "Samuel Wilson",
+        "title": "Nurse",
+        "email": "samuel.wilson@gmail.com",
+        "gender": "Male",
+        "phone": "0987654331",
+        "department": "60d21b4667d0d8992e610c9a",
+        "dateOfBirth": "1993-03-15",
+        "qualifications": ["BSc Nursing", "Certified Psychiatric Nurse"],
+        "schedule": [
+            {
+                "day": "Tuesday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "17:00"
+            }
+        ],
+        "seniority": 4
+    }

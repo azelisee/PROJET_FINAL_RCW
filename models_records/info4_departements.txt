@@ -1,0 +1,120 @@
+{
+    "depNumber": 1,
+    "name": "Cardiology",
+    "description": "Cardiology department specializing in heart diseases",
+    "doctors": ["60d21b4667d0d8992e610c85"], 
+    "nurses": ["60d21b4667d0d8992e610c86"] 
+}
+
+
+
+    {
+        "depNumber": 2,
+        "name": "Neurology",
+        "description": "Neurology department specializing in brain and nervous system disorders",
+        "doctors": ["60d21b4667d0d8992e610c87"],
+        "nurses": ["60d21b4667d0d8992e610c88"]
+    },
+
+
+
+
+
+    {
+        "depNumber": 3,
+        "name": "Orthopedics",
+        "description": "Orthopedics department specializing in bone and joint disorders",
+        "doctors": ["60d21b4667d0d8992e610c89"],
+        "nurses": ["60d21b4667d0d8992e610c8a"]
+    },
+
+
+
+
+
+    {
+        "depNumber": 4,
+        "name": "Gastroenterology",
+        "description": "Gastroenterology department specializing in digestive system disorders",
+        "doctors": ["60d21b4667d0d8992e610c8b"],
+        "nurses": ["60d21b4667d0d8992e610c8c"]
+    },
+
+
+
+
+
+    {
+        "depNumber": 5,
+        "name": "Endocrinology",
+        "description": "Endocrinology department specializing in hormone and metabolic disorders",
+        "doctors": ["60d21b4667d0d8992e610c8d"],
+        "nurses": ["60d21b4667d0d8992e610c8e"]
+    },
+
+
+
+
+    {
+        "depNumber": 6,
+        "name": "Dermatology",
+        "description": "Dermatology department specializing in skin disorders",
+        "doctors": ["60d21b4667d0d8992e610c8f"],
+        "nurses": ["60d21b4667d0d8992e610c90"]
+    },
+
+
+
+
+
+    {
+        "depNumber": 7,
+        "name": "Ophthalmology",
+        "description": "Ophthalmology department specializing in eye disorders",
+        "doctors": ["60d21b4667d0d8992e610c91"],
+        "nurses": ["60d21b4667d0d8992e610c92"]
+    },
+
+
+
+
+    {
+        "depNumber": 8,
+        "name": "Pediatrics",
+        "description": "Pediatrics department specializing in children's health",
+        "doctors": ["60d21b4667d0d8992e610c93"],
+        "nurses": ["60d21b4667d0d8992e610c94"]
+    },
+
+
+
+
+    {
+        "depNumber": 9,
+        "name": "Oncology",
+        "description": "Oncology department specializing in cancer treatment",
+        "doctors": ["60d21b4667d0d8992e610c95"],
+        "nurses": ["60d21b4667d0d8992e610c96"]
+    },
+
+
+
+    {
+        "depNumber": 10,
+        "name": "Psychiatry",
+        "description": "Psychiatry department specializing in mental health disorders",
+        "doctors": ["60d21b4667d0d8992e610c97"],
+        "nurses": ["60d21b4667d0d8992e610c98"]
+    },
+
+
+
+
+    {
+        "depNumber": 11,
+        "name": "Pulmonology",
+        "description": "Pulmonology department specializing in lung disorders",
+        "doctors": ["60d21b4667d0d8992e610c99"],
+        "nurses": ["60d21b4667d0d8992e610c9a"]
+    }
+

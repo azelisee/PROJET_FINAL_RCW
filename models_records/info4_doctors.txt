@@ -1,0 +1,464 @@
+{
+    "name": "David Park",
+    "title":"Doctor",
+    "email": "dp@gmail.com",
+    "gender": "Male",
+    "phone": "(514)-458-7899",
+    "specialty": "Cardiology",
+    "seniority": 10,
+    "department": "60d21b4667d0d8992e610c86", 
+    "schedule": [
+        {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+{
+    "name": "Sarah Lee",
+    "title": "Doctor",
+    "email": "sarah.lee@gmail.com",
+    "gender": "Female",
+    "phone": "(514)-458-1234",
+    "specialty": "Neurology",
+    "seniority": 8,
+    "department": "60d21b4667d0d8992e610c87",
+    "schedule": [
+        {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+{
+    "name": "James Smith",
+    "title": "Doctor",
+    "email": "james.smith@gmail.com",
+    "gender": "Male",
+    "phone": "(514)-458-5678",
+    "specialty": "Pediatrics",
+    "seniority": 12,
+    "department": "60d21b4667d0d8992e610c88",
+    "schedule": [
+        {
+            "day": "Monday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Monday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ]
+}
+
+
+
+
+
+{
+    "name": "Emma Davis",
+    "title": "Doctor",
+    "email": "emma.davis@gmail.com",
+    "gender": "Female",
+    "phone": "(514)-458-7890",
+    "specialty": "Dermatology",
+    "seniority": 7,
+    "department": "60d21b4667d0d8992e610c89",
+    "schedule": [
+        {
+            "day": "Tuesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Tuesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ]
+}
+
+
+
+
+
+{
+    "name": "Michael Brown",
+    "title": "Doctor",
+    "email": "michael.brown@gmail.com",
+    "gender": "Male",
+    "phone": "(514)-458-6789",
+    "specialty": "Orthopedics",
+    "seniority": 15,
+    "department": "60d21b4667d0d8992e610c90",
+    "schedule": [
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Friday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Friday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+{
+    "name": "Olivia Wilson",
+    "title": "Doctor",
+    "email": "olivia.wilson@gmail.com",
+    "gender": "Female",
+    "phone": "(514)-458-3456",
+    "specialty": "Oncology",
+    "seniority": 10,
+    "department": "60d21b4667d0d8992e610c91",
+    "schedule": [
+        {
+            "day": "Monday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Monday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+{
+    "name": "Liam Johnson",
+    "title": "Doctor",
+    "email": "liam.johnson@gmail.com",
+    "gender": "Male",
+    "phone": "(514)-458-2345",
+    "specialty": "Gastroenterology",
+    "seniority": 9,
+    "department": "60d21b4667d0d8992e610c92",
+    "schedule": [
+        {
+            "day": "Tuesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Tuesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Thursday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+{
+    "name": "Sophia Martinez",
+    "title": "Doctor",
+    "email": "sophia.martinez@gmail.com",
+    "gender": "Female",
+    "phone": "(514)-458-5678",
+    "specialty": "Endocrinology",
+    "seniority": 6,
+    "department": "60d21b4667d0d8992e610c93",
+    "schedule": [
+        {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Friday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        },
+        {
+            "day": "Friday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+{
+    "name": "William Garcia",
+    "title": "Doctor",
+    "email": "william.garcia@gmail.com",
+    "gender": "Male",
+    "phone": "(514)-458-3456",
+    "specialty": "Nephrology",
+    "seniority": 11,
+    "department": "60d21b4667d0d8992e610c94",
+    "schedule": [
+        {
+            "day": "Monday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ],
+    "appointments": [],
+    "availability": [
+        {
+            "day": "Monday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        },
+        {
+            "day": "Wednesday",
+            "startTime": "08:00",
+            "endTime": "16:00"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+  {
+        "name": "Sarah Lee",
+        "title": "Doctor",
+        "email": "sarah.lee@gmail.com",
+        "gender": "Female",
+        "phone": "(514)-458-7898",
+        "specialty": "Neurology",
+        "seniority": 8,
+        "department": "60d21b4667d0d8992e610c88",
+        "schedule": [
+            {
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            }
+        ],
+        "appointments": [],
+        "availability": [
+            {
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            },
+            {
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "18:00"
+            }
+        ]
+    }
+
+
+
+
+
+
+
+
+{
+        "name": "John Doe",
+        "title": "Doctor",
+        "email": "john.doe@gmail.com",
+        "gender": "Male",
+        "phone": "(514)-458-7897",
+        "specialty": "Orthopedics",
+        "seniority": 12,
+        "department": "60d21b4667d0d8992e610c8a",
+        "schedule": [
+            {
+                "day": "Monday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            },
+            {
+                "day": "Wednesday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            }
+        ],
+        "appointments": [],
+        "availability": [
+            {
+                "day": "Monday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            },
+            {
+                "day": "Wednesday",
+                "startTime": "08:00",
+                "endTime": "16:00"
+            }
+        ]
+    }
+

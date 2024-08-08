@@ -1,0 +1,56 @@
+{
+    "roomNumber": 101,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+{
+    "roomNumber": 245,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+{
+    "roomNumber": 415,
+    "bedNumber": 4,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+{
+    "roomNumber": 7,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+{
+    "roomNumber": 700,
+    "bedNumber": 4,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+
+{
+    "roomNumber": 703,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+
+{
+    "roomNumber": 74,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" 
+}
+
+
+{
+    "roomNumber": 254,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" 
+}

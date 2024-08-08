@@ -69,10 +69,17 @@ exports.getRoomById = async (req, res) => {
 exports.updateRoom = async (req, res) => {
     try {
         const roomData = req.body;
-        const roomId = req.params.id;
+        const ids = req.params.id.split(',');
+        console.log('Extracted IDs:', ids);
+        if (ids.length !== 2) {
+            console.log('\nHELP : Make space and coma before the first id in params');
+            throw new Error('Exactly two IDs must be provided');
+        }
+        const atlasId = ids[0];
+        const compassId = ids[1];
 
-        await RoomModel1.findByIdAndUpdate(roomId, roomData);
-        await RoomModel2.findByIdAndUpdate(roomId, roomData);
+        await RoomModel1.findByIdAndUpdate(atlasId, roomData);
+        await RoomModel2.findByIdAndUpdate(compassId, roomData);
 
         res.status(200).send({ message: 'Room updated in both databases' });
     } catch (error) {
@@ -81,10 +88,17 @@ exports.updateRoom = async (req, res) => {
 };
 exports.deleteRoom = async (req, res) => {
     try {
-        const roomId = req.params.id;
+        const ids = req.params.id.split(',');
+        console.log('Extracted IDs:', ids);
+        if (ids.length !== 2) {
+            console.log('\nHELP : Make space and coma before the first id in params');
+            throw new Error('Exactly two IDs must be provided');
+        }
+        const atlasId = ids[0];
+        const compassId = ids[1];
 
-        await RoomModel1.findByIdAndDelete(roomId);
-        await RoomModel2.findByIdAndDelete(roomId);
+        await RoomModel1.findByIdAndDelete(atlasId);
+        await RoomModel2.findByIdAndDelete(compassId);
 
         res.status(200).send({ message: 'Room deleted from both databases' });
     } catch (error) {
