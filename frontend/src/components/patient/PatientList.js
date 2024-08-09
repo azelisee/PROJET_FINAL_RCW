@@ -32,27 +32,27 @@ const PatientList = () => {
     return (
         <center>
             <div className="patient-list-container">
-                <h2>Display all our Patients</h2>
-                <center>
-                    <button type="button">
-                        <Link to="/patients/new">Add Patient</Link>
-                    </button>
-                </center>
-                {patients.length > 0 ? (
-                    <ul>
-                        {patients.map((patient) => (
-                            <li key={patient._id}>
-                                <Link to={`/patients/${patient._id}`}>{patient.name}</Link>
-                                <button onClick={() => handleDelete(patient._id, patient._id)} type="button">
-                                    Delete
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No patients found</p>
-                )}
-            </div>
+            <h2>Display all our Patients</h2>
+            <center>
+                <button type="button">
+                    <Link to="/patients/new">Add Patient</Link>
+                </button>
+            </center>
+            {patients.length > 0 ? (
+                <ul>
+                    {patients.map((patient) => (
+                        <li key={patient.id1}>
+                            <Link to={`/patients/${patient.id1}`}>{patient.name}</Link>
+                            <button onClick={() => handleDelete(patient.id1, patient.id2)} type="button">
+                                Delete
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No patients found</p>
+            )}
+        </div>
         </center>
     );
 };

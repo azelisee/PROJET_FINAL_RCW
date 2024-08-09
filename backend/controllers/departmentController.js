@@ -14,6 +14,14 @@ initDatabases();
 exports.createDepartment = async (req, res) => {
     try {
         const departmentData = req.body;
+        const depNumber = departmentData.depNumber;
+
+        const existingDepartmentAtlas = await DepartmentModel1.findOne({ depNumber });
+        const existingDepartmentCompass = await DepartmentModel2.findOne({ depNumber });
+
+        if (existingDepartmentAtlas || existingDepartmentCompass) {
+            return res.status(400).send({ message: 'Error: A department with this number already exists in one or both databases.' });
+        }
         const department1 = new DepartmentModel1(departmentData);
         const department2 = new DepartmentModel2(departmentData);
 
@@ -28,24 +36,27 @@ exports.createDepartment = async (req, res) => {
         console.log(error);
     }
 };
+
 exports.getDepartments = async (req, res) => {
     try {
-        const departments1 = await DepartmentModel1.find();
-        //const departments2 = await DepartmentModel2.find();
+        const departmentsAtlas = await DepartmentModel1.find();
+        const departmentsCompass = await DepartmentModel2.find();
 
-        if (departments1.length > 0) {
-            res.status(200).json({departments1 : departments1});
-            console.log(`Records from MongoDB Atlas : ${departments1}`);
-            //console.log(`Records from MongoDB Compass : ${departments2}`);
-        } else {
-            res.status(404).json({ error: 'Departments not found' });
-            console.log('Departments not found');
-        }
+        const departments = departmentsAtlas.map(atlasDepartment => {
+            const compassDepartment = departmentsCompass.find(compass => compass.depNumber === atlasDepartment.depNumber);
+            return {
+                id1: atlasDepartment._id,
+                id2: compassDepartment ? compassDepartment._id : null,
+                name: atlasDepartment.name,
+                depNumber: atlasDepartment.depNumber,
+            };
+        });
+        res.status(200).send({ departments });
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
+
 exports.getDepartmentById = async (req, res) => {
     try {
         const department1 = await DepartmentModel1.findById(req.params.id);
@@ -64,48 +75,51 @@ exports.getDepartmentById = async (req, res) => {
         console.log(error);
     }
 };
+
 exports.updateDepartment = async (req, res) => {
     try {
-        const departmentData = req.body;
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for updating.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        const department1 = await DepartmentModel1.findByIdAndUpdate(atlasId, departmentData);
-        const department2 = await DepartmentModel2.findByIdAndUpdate(compassId, departmentData);
+        const departmentData = req.body;
 
+        const department1 = await DepartmentModel1.findByIdAndUpdate(atlasId, departmentData, { new: true });
+        const department2 = await DepartmentModel2.findByIdAndUpdate(compassId, departmentData, { new: true });
+        if (!department1 || !department2) {
+            return res.status(404).send({ message: 'Department not found in one or both databases.' });
+        }
         res.status(200).send({ message: 'Department updated in both databases' });
-        console.log('Recorded in MongoDB Atlas : ', department1);
-        console.log('\nRecorded in MongoDB Compass : ', department2);
+        console.log('Updated in MongoDB Atlas:', department1);
+        console.log('Updated in MongoDB Compass:', department2);
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
+
 exports.deleteDepartment = async (req, res) => {
     try {
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for deletion.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        await DepartmentModel1.findByIdAndDelete(atlasId);
-        await DepartmentModel2.findByIdAndDelete(compassId);
-
+        const atlasResult = await DepartmentModel1.findByIdAndDelete(atlasId);
+        const compassResult = await DepartmentModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Department not found in one or both databases.' });
+        }
         res.status(200).send({ message: 'Department deleted from both databases' });
-        console.log('Recorded in MongoDB Atlas : ', atlasId);
-        console.log('\nRecorded in MongoDB Compass : ', compassId);
+        console.log('Deleted from MongoDB Atlas:', atlasId);
+        console.log('Deleted from MongoDB Compass:', compassId);
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };

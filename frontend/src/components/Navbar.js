@@ -50,6 +50,11 @@ const Navbar = () => {
                             </button>
                         </th>
                         </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
                     </tr>
                 </table>
             </nav>

@@ -8,8 +8,8 @@ router.get('/', hospitalController.getHospitals);
 
 router.get('/:id', hospitalController.getHospitalById);
 
-router.put('/:id,:id', hospitalController.updateHospital);
+router.put('/:id1,:id2', hospitalController.updateHospital);
 
-router.delete('/:id,:id', hospitalController.deleteHospital);
+router.delete('/:id1,:id2', hospitalController.deleteHospital);
 
 module.exports = router;

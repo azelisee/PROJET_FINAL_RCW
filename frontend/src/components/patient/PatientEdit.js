@@ -4,7 +4,7 @@ import { getPatientById, updatePatient } from '../../services/api';
 import '../css/PatientForm.css';
 
 const PatientEdit = () => {
-    const { id } = useParams();
+    const { id1, id2 } = useParams();
     const navigate = useNavigate();
     const [patient, setPatient] = useState({
         name: '',
@@ -21,18 +21,28 @@ const PatientEdit = () => {
         currentRoom: ''
     });
 
+    const [error, setError] = useState('');
     useEffect(() => {
-        getPatientById(id).then((response) => {
-            console.log(response.data);
-            if (response.data && response.data.patient) {
-                setPatient(response.data.patient);
-            } else {
-                console.error('Invalid response data:', response.data);
-            }
-        }).catch(error => {
-            console.error('There was an error fetching the patient details!', error);
-        });
-    }, [id]);
+        console.log("id1:", id1, "id2:", id2);
+        if (id1 && id2) {
+            getPatientById(id1).then((response) => {
+                if (response.data && response.data.patient) {
+                    setPatient(response.data.patient);
+                } else {
+                    setError('Invalid response data');
+                    console.error('Invalid response data:', response.data);
+                }
+            }).catch(error => {
+                setError('There was an error fetching the patient details!');
+                console.error('There was an error fetching the patient details!', error);
+            });
+        } else {
+            setError('Patient ID is missing!');
+            console.error('Patient ID is missing!');
+        }
+    }, [id1, id2]);
+
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,15 +52,20 @@ const PatientEdit = () => {
     const handleNestedChange = (e, index, field, subfield = null) => {
         const { name, value } = e.target;
         const updatedField = [...patient[field]];
-
         if (subfield) {
-            updatedField[index][subfield][name] = value;
+            updatedField[index][subfield] = {
+                ...updatedField[index][subfield],
+                [name]: value
+            };
         } else {
-            updatedField[index][name] = value;
+            updatedField[index] = {
+                ...updatedField[index],
+                [name]: value
+            };
         }
-
         setPatient({ ...patient, [field]: updatedField });
     };
+
 
     const addNestedField = (field) => {
         let newField = {};
@@ -66,15 +81,32 @@ const PatientEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updatePatient(id, patient).then(() => {
-            navigate(`/patients/${id}`);
+
+        if (patient.medicalFolders.some(folder => !folder.folderName)) {
+            setError('All medical folders must have a name');
+            return;
+        }
+        if (patient.consultationHistory.some(consultation => !consultation.date || !consultation.doctorId)) {
+            setError('All consultations must have a date and doctor ID');
+            return;
+        }
+        if (patient.treatments.some(treatment => !treatment.treatmentName || !treatment.description)) {
+            setError('All treatments must have a name and description)');
+            return;
+        }
+
+        updatePatient(id1, id2, patient).then(() => {
+            navigate(`/patients/${id1},${id2}`);
         }).catch(error => {
+            setError('There was an error updating the patient!');
             console.error('There was an error updating the patient!', error);
         });
     };
 
+
     return (
         <form onSubmit={handleSubmit} className="form-container">
+            {error && <div className="error-message">{error}</div>}
             <h2>Edit Patient</h2>
             <div className="form-group">
                 <input type="text" name="name" value={patient.name} onChange={handleChange} placeholder="Name" required />

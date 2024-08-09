@@ -14,58 +14,69 @@ initDatabases();
 exports.createPatient = async (req, res) => {
     try {
         const patientData = req.body;
+        const email = patientData.email;
+
+        const existingPatientAtlas = await PatientModel1.findOne({ email });
+        const existingPatientCompass = await PatientModel2.findOne({ email });
+
+        if (existingPatientAtlas || existingPatientCompass) {
+            return res.status(400).send({ message: 'Error: A patient with this email already exists in one or both databases.' });
+        }
         const patient1 = new PatientModel1(patientData);
         const patient2 = new PatientModel2(patientData);
 
         await patient1.save();
         await patient2.save();
-
-        res.status(201).send({ message: 'Success : A new Patient has been admitted !!!'});
+        res.status(201).send({ message: 'Success : A new Patient has been admitted !!!' });
         console.log('Recorded in MongoDB Atlas : ', patient1);
         console.log('\nRecorded in MongoDB Compass : ', patient2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
+
 exports.updatePatient = async (req, res) => {
     try {
-        const patientData = req.body;
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for updating.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        const patient1 = await PatientModel1.findByIdAndUpdate(atlasId, patientData);
-        const patient2 = await PatientModel2.findByIdAndUpdate(compassId, patientData);
+        const patientData = req.body;
 
-        res.status(200).send({ message: 'Update successful : Everything is alright !!!'});
-        console.log('Recorded in MongoDB Atlas : ', patient1);
-        console.log('\nRecorded in MongoDB Compass : ', patient2);
+        const patient1 = await PatientModel1.findByIdAndUpdate(atlasId, patientData, { new: true });
+        const patient2 = await PatientModel2.findByIdAndUpdate(compassId, patientData, { new: true });
+        if (!patient1 || !patient2) {
+            return res.status(404).send({ message: 'Patient not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Update successful: Patient data updated in both databases.' });
+        console.log('Updated in MongoDB Atlas:', patient1);
+        console.log('Updated in MongoDB Compass:', patient2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
-
 exports.getPatients = async (req, res) => {
     try {
-        const patients1 = await PatientModel1.find();
-        //const patients2 = await PatientModel2.find();
+        const patientsAtlas = await PatientModel1.find({});
+        const patientsCompass = await PatientModel2.find({});
 
-        if (patients1.length > 0) {
-            res.status(200).json({ patients: patients1 });
-            console.log(`Records from MongoDB Atlas:`, patients1);
-            //console.log(`Records from MongoDB Compass : ${patients2}`);
-        } else {
-            res.status(404).json({ error: 'No patients found' });
-            console.log('No patients found');
-        }
+        // Associez chaque patient d'Atlas à un patient de Compass par un champ commun
+        const patients = patientsAtlas.map(atlasPatient => {
+            const compassPatient = patientsCompass.find(compass => compass.email === atlasPatient.email);
+            return {
+                id1: atlasPatient._id,
+                id2: compassPatient ? compassPatient._id : null,
+                name: atlasPatient.name,
+                email: atlasPatient.email,
+            };
+        });
+        res.status(200).send({ patients });
     } catch (error) {
-        res.status(500).json({error: error.message});
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
 exports.getPatientById = async (req, res) => {
@@ -86,7 +97,6 @@ exports.getPatientById = async (req, res) => {
         console.log(error);
     }
 };
-
 exports.deletePatient = async (req, res) => {
     try {
         const ids = req.params.id1 + ',' + req.params.id2;
@@ -110,23 +120,4 @@ exports.deletePatient = async (req, res) => {
     }
 };
 
-/*exports.deletePatient = async (req, res) => {
-    try {
-        const atlasId = req.params.id1.trim();
-        const compassId = req.params.id2.trim();
-        if (!atlasId || !compassId) {
-            throw new Error('Les deux IDs doivent être fournis pour la suppression.');
-        }
-        const atlasResult = await PatientModel1.findByIdAndDelete(atlasId);
-        const compassResult = await PatientModel2.findByIdAndDelete(compassId);
-        if (!atlasResult || !compassResult) {
-            return res.status(404).send({ message: 'Patient non trouvé dans l\'une ou les deux bases de données.' });
-        }
-        res.status(200).send({ message: 'Patient supprimé avec succès des deux bases de données.' });
-        console.log('Supprimé de MongoDB Atlas:', atlasId);
-        console.log('Supprimé de MongoDB Compass:', compassId);
-    } catch (error) {
-        res.status(500).send({ message: error.message });
-    }
-};*/
 

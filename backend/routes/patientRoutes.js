@@ -8,7 +8,7 @@ router.get('/', patientController.getPatients);
 
 router.get('/:id', patientController.getPatientById);
 
-router.put('/:id,:id', patientController.updatePatient);
+router.put('/:id1,:id2', patientController.updatePatient);
 
 router.delete('/:id1,:id2', patientController.deletePatient);
 

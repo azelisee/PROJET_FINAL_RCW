@@ -30,22 +30,27 @@ exports.createTransfer = async (req, res) => {
 };
 exports.getTransfers = async (req, res) => {
     try {
-        const transfers1 = await TransferModel1.find();
-        //const transfers2 = await TransferModel2.find();
+        const transfersAtlas = await TransferModel1.find();
+        const transfersCompass = await TransferModel2.find();
 
-        if (transfers1.length > 0) {
-            res.status(200).json({transfers1 : transfers1});
-            console.log(`Records from MongoDB Atlas : ${transfers1}`);
-            //console.log(`Records from MongoDB Compass : ${transfers2}`);
-        } else {
-            res.status(404).json({ error: 'Transfer not found' });
-            console.log('Transfer not found');
-        }
+        const transfers = transfersAtlas.map(atlasTransfer => {
+            const compassTransfer = transfersCompass.find(compass => compass.transferDate === atlasTransfer.transferDate && compass.patient.equals(atlasTransfer.patient));
+            return {
+                id1: atlasTransfer._id,
+                id2: compassTransfer ? compassTransfer._id : null,
+                patient: atlasTransfer.patient,
+                fromHospital: atlasTransfer.fromHospital,
+                toHospital: atlasTransfer.toHospital,
+                transferDate: atlasTransfer.transferDate,
+            };
+        });
+
+        res.status(200).send({ transfers });
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
+
 exports.getTransferById = async (req, res) => {
     try {
         const transfer1 = await TransferModel1.findById(req.params.id);
@@ -66,42 +71,47 @@ exports.getTransferById = async (req, res) => {
 };
 exports.updateTransfer = async (req, res) => {
     try {
-        const transferData = req.body;
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for updating.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        const transfer1 = await TransferModel1.findByIdAndUpdate(atlasId, transferData);
-        const transfer2 = await TransferModel2.findByIdAndUpdate(compassId, transferData);
+        const transferData = req.body;
 
-        res.status(200).send({ message: 'Success : transfer data well updated !!!' });
-        console.log('Recorded in MongoDB Atlas : ',transfer1);
-        console.log('\nRecorded in MongoDB Compass : ',transfer2);
+        const transfer1 = await TransferModel1.findByIdAndUpdate(atlasId, transferData, { new: true });
+        const transfer2 = await TransferModel2.findByIdAndUpdate(compassId, transferData, { new: true });
+        if (!transfer1 || !transfer2) {
+            return res.status(404).send({ message: 'Transfer not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Transfer data updated in both databases' });
+        console.log('Updated in MongoDB Atlas:', transfer1);
+        console.log('Updated in MongoDB Compass:', transfer2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
+
 exports.deleteTransfer = async (req, res) => {
     try {
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for deletion.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
-        await TransferModel1.findByIdAndDelete(atlasId);
-        await TransferModel2.findByIdAndDelete(compassId);
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        res.status(200).send({ message: 'Success : the transfer has been cancelled !!!' });
-        console.log('Recorded in MongoDB Atlas : ', atlasId);
-        console.log('\nRecorded in MongoDB Compass : ', compassId);
+        const atlasResult = await TransferModel1.findByIdAndDelete(atlasId);
+        const compassResult = await TransferModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Transfer not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Transfer deleted from both databases' });
+        console.log('Deleted from MongoDB Atlas:', atlasId);
+        console.log('Deleted from MongoDB Compass:', compassId);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

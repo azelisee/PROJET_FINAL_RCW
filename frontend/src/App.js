@@ -54,37 +54,38 @@ const App = () => {
                     <Route path="/patients" element={<PatientList />} />
                     <Route path="/patients/new" element={<PatientForm />} />
                     <Route path="/patients/:id" element={<PatientDetail />} />
-                    <Route path="/patients/edit/:id" element={<PatientEdit />} />
+                    <Route path="/patients/:id1,:id2/edit" element={<PatientEdit />} />
+
 
                     <Route path="/doctors" element={<DoctorList />} />
                     <Route path="/doctors/new" element={<DoctorForm />} />
                     <Route path="/doctors/:id" element={<DoctorDetail />} />
-                    <Route path="/doctors/edit/:id" element={<DoctorEdit />} />
+                    <Route path="/doctors/:id1,:id2/edit" element={<DoctorEdit />} />
 
                     <Route path="/nurses" element={<NurseList />} />
                     <Route path="/nurses/new" element={<NurseForm />} />
                     <Route path="/nurses/:id" element={<NurseDetail />} />
-                    <Route path="/nurses/edit/:id" element={<NurseEdit />} />
+                    <Route path="/nurses/:id1,:id2/edit" element={<NurseEdit />} />
 
                     <Route path="/rooms" element={<RoomList />} />
                     <Route path="/rooms/new" element={<RoomForm />} />
                     <Route path="/rooms/:id" element={<RoomDetail />} />
-                    <Route path="/rooms/edit/:id" element={<RoomEdit />} />
+                    <Route path="/rooms/:id1,:id2/edit" element={<RoomEdit />} />
 
                     <Route path="/departments" element={<DepartmentList />} />
                     <Route path="/departments/new" element={<DepartmentForm />} />
                     <Route path="/departments/:id" element={<DepartmentDetail />} />
-                    <Route path="/departments/edit/:id" element={<DepartmentEdit />} />
+                    <Route path="/departments/:id1,:id2/edit" element={<DepartmentEdit />} />
 
                     <Route path="/hospitals" element={<HospitalList />} />
                     <Route path="/hospitals/new" element={<HospitalForm />} />
                     <Route path="/hospitals/:id" element={<HospitalDetail />} />
-                    <Route path="/hospitals/edit/:id" element={<HospitalEdit />} />
+                    <Route path="/hospitals/:id1,:id2/edit" element={<HospitalEdit />} />
 
                     <Route path="/transfers" element={<TransferList />} />
                     <Route path="/transfers/new" element={<TransferForm />} />
                     <Route path="/transfers/:id" element={<TransferDetail />} />
-                    <Route path="/transfers/edit/:id" element={<TransferEdit />} />
+                    <Route path="/transfers/:id1,:id2/edit" element={<TransferEdit />} />
 
                     <Route path="*" element={<NotFound />} />
                 </Routes>

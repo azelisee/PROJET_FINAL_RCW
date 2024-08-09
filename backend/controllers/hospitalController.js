@@ -14,13 +14,20 @@ initDatabases();
 exports.createHospital = async (req, res) => {
     try {
         const hospitalData = req.body;
+        const { address, phone } = hospitalData;
+
+        const existingHospitalAtlas = await HospitalModel1.findOne({ address, phone });
+        const existingHospitalCompass = await HospitalModel2.findOne({ address, phone });
+        if (existingHospitalAtlas || existingHospitalCompass) {
+            return res.status(400).send({ message: 'Error: A hospital with this address and phone number already exists in one of the databases.' });
+        }
         const hospital1 = new HospitalModel1(hospitalData);
         const hospital2 = new HospitalModel2(hospitalData);
 
         await hospital1.save();
         await hospital2.save();
 
-        res.status(201).send({ message: 'Hospital inserted in both databases : congratulations !!!' });
+        res.status(201).send({ message: 'Hospital inserted in both databases: congratulations !!!' });
         console.log('Recorded in MongoDB Atlas : ', hospital1);
         console.log('\nRecorded in MongoDB Compass : ', hospital2);
     } catch (error) {
@@ -28,29 +35,32 @@ exports.createHospital = async (req, res) => {
         console.log(error);
     }
 };
+
 exports.getHospitals = async (req, res) => {
     try {
-        const hospitals1 = await HospitalModel1.find();
-        //const hospitals2 = await HospitalModel2.find();
+        const hospitalsAtlas = await HospitalModel1.find();
+        const hospitalsCompass = await HospitalModel2.find();
 
-        if (hospitals1.length > 0) {
-            res.status(200).json({hospitals1 : hospitals1});
-            console.log(`Records from MongoDB Atlas : ${hospitals1}`);
-            //console.log(`Records from MongoDB Compass : ${hospitals2}`);
-        } else {
-            res.status(404).json({ error: 'Hospitals not found' });
-            console.log('Hospitals not found');
-        }
+        const hospitals = hospitalsAtlas.map(atlasHospital => {
+            const compassHospital = hospitalsCompass.find(compass => compass.address === atlasHospital.address && compass.phone === atlasHospital.phone);
+            return {
+                id1: atlasHospital._id,
+                id2: compassHospital ? compassHospital._id : null,
+                name: atlasHospital.name,
+                address: atlasHospital.address,
+                phone: atlasHospital.phone,
+            };
+        });
+        res.status(200).send({ hospitals });
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
+
 exports.getHospitalById = async (req, res) => {
     try {
         const hospital1 = await HospitalModel1.findById(req.params.id);
         //const hospital2 = await HospitalModel2.findById(req.params.id);
-
         if (hospital1) {
             res.status(200).json({hospital1 : hospital1});
             console.log(`Data from MongoDB Atlas : ${hospital1}`);
@@ -66,43 +76,47 @@ exports.getHospitalById = async (req, res) => {
 };
 exports.updateHospital = async (req, res) => {
     try {
-        const hospitalData = req.body;
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for updating.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        const hospital1 = await HospitalModel1.findByIdAndUpdate(atlasId, hospitalData);
-        const hospital2 = await HospitalModel2.findByIdAndUpdate(compassId, hospitalData);
+        const hospitalData = req.body;
 
-        res.status(200).send({ message: 'Hospital data put to date in both databases' });
-        console.log('Recorded in MongoDB Atlas : ', hospital1);
-        console.log('\nRecorded in MongoDB Compass : ', hospital2);
+        const hospital1 = await HospitalModel1.findByIdAndUpdate(atlasId, hospitalData, { new: true });
+        const hospital2 = await HospitalModel2.findByIdAndUpdate(compassId, hospitalData, { new: true });
+        if (!hospital1 || !hospital2) {
+            return res.status(404).send({ message: 'Hospital not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Hospital data updated in both databases' });
+        console.log('Updated in MongoDB Atlas:', hospital1);
+        console.log('Updated in MongoDB Compass:', hospital2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
+
 exports.deleteHospital = async (req, res) => {
     try {
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for deletion.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        await HospitalModel1.findByIdAndDelete(atlasId);
-        await HospitalModel2.findByIdAndDelete(compassId);
-
-        res.status(200).send({ message: 'Hospital cleared from both databases' });
-        console.log('Recorded in MongoDB Atlas : ', atlasId);
-        console.log('\nRecorded in MongoDB Compass : ', compassId);
+        const atlasResult = await HospitalModel1.findByIdAndDelete(atlasId);
+        const compassResult = await HospitalModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Hospital not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Hospital deleted from both databases' });
+        console.log('Deleted from MongoDB Atlas:', atlasId);
+        console.log('Deleted from MongoDB Compass:', compassId);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

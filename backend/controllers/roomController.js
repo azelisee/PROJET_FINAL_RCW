@@ -14,6 +14,13 @@ initDatabases();
 exports.createRoom = async (req, res) => {
     try {
         const roomData = req.body;
+        const roomNumber = roomData.roomNumber;
+
+        const existingRoomAtlas = await RoomModel1.findOne({ roomNumber });
+        const existingRoomCompass = await RoomModel2.findOne({ roomNumber });
+        if (existingRoomAtlas || existingRoomCompass) {
+            return res.status(400).send({ message: 'Error: A room with this number already exists in one of the databases.' });
+        }
         const room1 = new RoomModel1(roomData);
         const room2 = new RoomModel2(roomData);
 
@@ -28,24 +35,27 @@ exports.createRoom = async (req, res) => {
         console.log(error);
     }
 };
+
 exports.getRooms = async (req, res) => {
     try {
-        const rooms1 = await RoomModel1.find();
-        //const rooms2 = await RoomModel2.find();
+        const roomsAtlas = await RoomModel1.find();
+        const roomsCompass = await RoomModel2.find();
 
-        if (rooms1.length > 0) {
-            res.status(200).json({rooms1 : rooms1});
-            console.log(`Records from MongoDB Atlas : ${rooms1}`);
-           // console.log(`Records from MongoDB Compass : ${rooms2}`);
-        } else {
-            res.status(404).json({ error: 'Rooms not found' });
-            console.log('Rooms not found');
-        }
+        const rooms = roomsAtlas.map(atlasRoom => {
+            const compassRoom = roomsCompass.find(compass => compass.roomNumber === atlasRoom.roomNumber);
+            return {
+                id1: atlasRoom._id,
+                id2: compassRoom ? compassRoom._id : null,
+                roomNumber: atlasRoom.roomNumber,
+                bedNumber: atlasRoom.bedNumber,
+            };
+        });
+        res.status(200).send({ rooms });
     } catch (error) {
-        res.status(400).json({ error: error.message });
-        console.log(error);
+        res.status(500).send({ message: error.message });
     }
 };
+
 exports.getRoomById = async (req, res) => {
     try {
         const room1 = await RoomModel1.findById(req.params.id);
@@ -66,43 +76,47 @@ exports.getRoomById = async (req, res) => {
 };
 exports.updateRoom = async (req, res) => {
     try {
-        const roomData = req.body;
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for updating.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        const room1 = await RoomModel1.findByIdAndUpdate(atlasId, roomData);
-        const room2 = await RoomModel2.findByIdAndUpdate(compassId, roomData);
+        const roomData = req.body;
 
-        res.status(200).send({ message: 'Congratulations, the room has been updated \\(^_-)// !!!' });
-        console.log('Recorded in MongoDB Atlas : ',room1);
-        console.log('\nRecorded in MongoDB Compass : ',room2);
+        const room1 = await RoomModel1.findByIdAndUpdate(atlasId, roomData, { new: true });
+        const room2 = await RoomModel2.findByIdAndUpdate(compassId, roomData, { new: true });
+        if (!room1 || !room2) {
+            return res.status(404).send({ message: 'Room not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Room updated in both databases' });
+        console.log('Updated in MongoDB Atlas:', room1);
+        console.log('Updated in MongoDB Compass:', room2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
+
 exports.deleteRoom = async (req, res) => {
     try {
-        const ids = req.params.id.split(',');
+        const ids = req.params.id1 + ',' + req.params.id2;
         console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for deletion.');
         }
-        const atlasId = ids[0];
-        const compassId = ids[1];
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
 
-        await RoomModel1.findByIdAndDelete(atlasId);
-        await RoomModel2.findByIdAndDelete(compassId);
-
-        res.status(200).send({ message: 'Room Removed from databases' });
-        console.log('Recorded in MongoDB Atlas : ', atlasId);
-        console.log('\nRecorded in MongoDB Compass : ', compassId);
+        const atlasResult = await RoomModel1.findByIdAndDelete(atlasId);
+        const compassResult = await RoomModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Room not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Room deleted from both databases' });
+        console.log('Deleted from MongoDB Atlas:', atlasId);
+        console.log('Deleted from MongoDB Compass:', compassId);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

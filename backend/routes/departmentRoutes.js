@@ -8,8 +8,8 @@ router.get('/', departmentController.getDepartments);
 
 router.get('/:id', departmentController.getDepartmentById);
 
-router.put('/:id,:id', departmentController.updateDepartment);
+router.put('/:id1,:id2', departmentController.updateDepartment);
 
-router.delete('/:id,:id', departmentController.deleteDepartment);
+router.delete('/:id1,:id2', departmentController.deleteDepartment);
 
 module.exports = router;
