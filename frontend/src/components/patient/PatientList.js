@@ -6,7 +6,6 @@ import '../css/PatientList.css';
 
 const PatientList = () => {
     const [patients, setPatients] = useState([]);
-
     useEffect(() => {
         getPatients().then((response) => {
             if (response.data.patients) {
@@ -19,39 +18,41 @@ const PatientList = () => {
         });
     }, []);
 
-
-    const handleDelete = (id) => {
-        deletePatient(id).then(() => {
-            setPatients(patients.filter(patient => patient._id !== id));
-        }).catch(error => {
-            console.error('There was an error deleting the patient!', error);
-        });
-    };
+    const handleDelete = (id1, id2) => {
+        console.log('IDs to delete:', id1, id2);
+        if (id1 && id2) {
+            deletePatient(id1, id2)
+                .then(response => console.log('Deleted successfully'))
+                .catch(error => console.error('Error deleting:', error));
+        } else {
+            console.error('One or both IDs are undefined');
+        }
+    }
 
     return (
         <center>
             <div className="patient-list-container">
-            <h2>Display all our Patients</h2>
-            <center>
-                <button type="button">
-                    <Link to="/patients/new">Add Patient</Link>
-                </button>
-            </center>
-            {patients.length > 0 ? (
-                <ul>
-                    {patients.map((patient) => (
-                        <li key={patient._id}>
-                            <Link to={`/patients/${patient._id}`}>{patient.name}</Link>
-                            <button onClick={() => handleDelete(patient._id)} type="button">
-                                Delete
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No patients found</p>
-            )}
-        </div>
+                <h2>Display all our Patients</h2>
+                <center>
+                    <button type="button">
+                        <Link to="/patients/new">Add Patient</Link>
+                    </button>
+                </center>
+                {patients.length > 0 ? (
+                    <ul>
+                        {patients.map((patient) => (
+                            <li key={patient._id}>
+                                <Link to={`/patients/${patient._id}`}>{patient.name}</Link>
+                                <button onClick={() => handleDelete(patient._id, patient._id)} type="button">
+                                    Delete
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No patients found</p>
+                )}
+            </div>
         </center>
     );
 };

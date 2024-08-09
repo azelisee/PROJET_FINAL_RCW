@@ -31,17 +31,15 @@ exports.createHospital = async (req, res) => {
 exports.getHospitals = async (req, res) => {
     try {
         const hospitals1 = await HospitalModel1.find();
-        const hospitals2 = await HospitalModel2.find();
+        //const hospitals2 = await HospitalModel2.find();
 
-        if (hospitals1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${hospitals1}`);
+        if (hospitals1.length > 0) {
+            res.status(200).json({hospitals1 : hospitals1});
             console.log(`Records from MongoDB Atlas : ${hospitals1}`);
-        } else if (hospitals2) {
-            res.status(200).json(`Records from MongoDB Compass : ${hospitals2}`);
-            console.log(`Records from MongoDB Compass : ${hospitals2}`);
+            //console.log(`Records from MongoDB Compass : ${hospitals2}`);
         } else {
-            res.status(404).json({ error: 'Hospital not found' });
-            console.log('Hospital not found');
+            res.status(404).json({ error: 'Hospitals not found' });
+            console.log('Hospitals not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -51,14 +49,12 @@ exports.getHospitals = async (req, res) => {
 exports.getHospitalById = async (req, res) => {
     try {
         const hospital1 = await HospitalModel1.findById(req.params.id);
-        const hospital2 = await HospitalModel2.findById(req.params.id);
+        //const hospital2 = await HospitalModel2.findById(req.params.id);
 
         if (hospital1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${hospital1}`);
+            res.status(200).json({hospital1 : hospital1});
             console.log(`Data from MongoDB Atlas : ${hospital1}`);
-        } else if (hospital2) {
-            res.status(200).json(`Data from MongoDB Compass : ${hospital2}`);
-            console.log(`Data from MongoDB Compass : ${hospital2}`);
+            //console.log(`Data from MongoDB Compass : ${hospital2}`);
         } else {
             res.status(404).json({ error: 'Hospital not found' });
             console.log('Hospital not found');

@@ -10,6 +10,6 @@ router.get('/:id', patientController.getPatientById);
 
 router.put('/:id,:id', patientController.updatePatient);
 
-router.delete('/:id,:id', patientController.deletePatient);
+router.delete('/:id1,:id2', patientController.deletePatient);
 
 module.exports = router;

@@ -31,19 +31,16 @@ exports.createDoctor = async (req, res) => {
 exports.getDoctors = async (req, res) => {
     try {
         const doctors1 = await DoctorModel1.find();
-        const doctors2 = await DoctorModel2.find();
+        //const doctors2 = await DoctorModel2.find();
 
-        if (doctors1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${doctors1}`);
+        if (doctors1.length > 0) {
+            res.status(200).json({doctors1 : doctors1});
             console.log(`Records from MongoDB Atlas : ${doctors1}`);
-        } else if (doctors2) {
-            res.status(200).json(`Records from MongoDB Compass : ${doctors2}`);
-            console.log(`Records from MongoDB Compass : ${doctors2}`);
+            //console.log(`Records from MongoDB Compass : ${doctors2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'Doctors not found' });
+            console.log('Doctors not found');
         }
-
     } catch (error) {
         res.status(400).json({ error: error.message });
         console.log(error);
@@ -52,17 +49,15 @@ exports.getDoctors = async (req, res) => {
 exports.getDoctorById = async (req, res) => {
     try {
         const doctor1 = await DoctorModel1.findById(req.params.id);
-        const doctor2 = await DoctorModel2.findById(req.params.id);
+        //const doctor2 = await DoctorModel2.findById(req.params.id);
 
         if (doctor1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${doctor1}`);
+            res.status(200).json({doctor1 : doctor1});
             console.log(`Data from MongoDB Atlas : ${doctor1}`);
-        } else if (doctor2) {
-            res.status(200).json(`Data from MongoDB Compass : ${doctor2}`);
-            console.log(`Data from MongoDB Compass : ${doctor2}`);
+            //console.log(`Data from MongoDB Compass : ${doctor2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'Doctor not found' });
+            console.log('Doctor not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

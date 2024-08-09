@@ -31,17 +31,15 @@ exports.createNurse = async (req, res) => {
 exports.getNurses = async (req, res) => {
     try {
         const nurses1 = await NurseModel1.find();
-        const nurses2 = await NurseModel2.find();
+        //const nurses2 = await NurseModel2.find();
 
-        if (nurses1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${nurses1}`);
+        if (nurses1.length > 0) {
+            res.status(200).json({nurses1 : nurses1});
             console.log(`Records from MongoDB Atlas : ${nurses1}`);
-        } else if (nurses2) {
-            res.status(200).json(`Records from MongoDB Compass : ${nurses2}`);
-            console.log(`Records from MongoDB Compass : ${nurses2}`);
+            //console.log(`Records from MongoDB Compass : ${nurses2}`);
         } else {
-            res.status(404).json({ error: 'Nurse not found' });
-            console.log('Nurse not found');
+            res.status(404).json({ error: 'Nurses not found' });
+            console.log('Nurses not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -51,17 +49,15 @@ exports.getNurses = async (req, res) => {
 exports.getNurseById = async (req, res) => {
     try {
         const nurse1 = await NurseModel1.findById(req.params.id);
-        const nurse2 = await NurseModel2.findById(req.params.id);
+        //const nurse2 = await NurseModel2.findById(req.params.id);
 
         if (nurse1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${nurse1}`);
+            res.status(200).json({nurse1 : nurse1});
             console.log(`Data from MongoDB Atlas : ${nurse1}`);
-        } else if (patient2) {
-            res.status(200).json(`Data from MongoDB Compass : ${nurse2}`);
-            console.log(`Data from MongoDB Compass : ${nurse2}`);
+            //console.log(`Data from MongoDB Compass : ${nurse2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'Nurse not found' });
+            console.log('Nurse not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

@@ -7,7 +7,7 @@ export const getPatients = () => axios.get(`${API_URL}/patients`);
 export const getPatientById = (id) => axios.get(`${API_URL}/patients/${id}`);
 export const createPatient = (patient) => axios.post(`${API_URL}/patients`, patient);
 export const updatePatient = (id, patient) => axios.put(`${API_URL}/patients/${id}`, patient);
-export const deletePatient = (id) => axios.delete(`${API_URL}/patients/${id}`);
+export const deletePatient = (id1, id2) => axios.delete(`${API_URL}/patients/${id1},${id2}`);
 
 // Doctors
 export const getDoctors = () => axios.get(`${API_URL}/doctors`);

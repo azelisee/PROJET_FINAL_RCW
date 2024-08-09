@@ -31,14 +31,12 @@ exports.createTransfer = async (req, res) => {
 exports.getTransfers = async (req, res) => {
     try {
         const transfers1 = await TransferModel1.find();
-        const transfers2 = await TransferModel2.find();
+        //const transfers2 = await TransferModel2.find();
 
-        if (transfers1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${transfers1}`);
+        if (transfers1.length > 0) {
+            res.status(200).json({transfers1 : transfers1});
             console.log(`Records from MongoDB Atlas : ${transfers1}`);
-        } else if (transfers2) {
-            res.status(200).json(`Records from MongoDB Compass : ${transfers2}`);
-            console.log(`Records from MongoDB Compass : ${transfers2}`);
+            //console.log(`Records from MongoDB Compass : ${transfers2}`);
         } else {
             res.status(404).json({ error: 'Transfer not found' });
             console.log('Transfer not found');
@@ -51,17 +49,15 @@ exports.getTransfers = async (req, res) => {
 exports.getTransferById = async (req, res) => {
     try {
         const transfer1 = await TransferModel1.findById(req.params.id);
-        const transfer2 = await TransferModel2.findById(req.params.id);
+        //const transfer2 = await TransferModel2.findById(req.params.id);
 
         if (transfer1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${transfer1}`);
-            console.log(`Data from MongoDB Atlas : ${transfer1}`);
-        } else if (transfer2) {
-            res.status(200).json(`Data from MongoDB Compass : ${transfer2}`);
-            console.log(`Data from MongoDB Compass : ${transfer2}`);
+            res.status(200).json({ transfer1 : transfer1 });
+            console.log(`Record from MongoDB Atlas:`, transfer1);
+            //console.log(`Record from MongoDB Compass : ${transfer2}`);
         } else {
-            res.status(404).json({ error: 'Transfer not found' });
-            console.log('Transfer not found');
+            res.status(404).json({ error: 'No transfer found' });
+            console.log('No transfer found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

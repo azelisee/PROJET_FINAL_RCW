@@ -31,17 +31,15 @@ exports.createDepartment = async (req, res) => {
 exports.getDepartments = async (req, res) => {
     try {
         const departments1 = await DepartmentModel1.find();
-        const departments2 = await DepartmentModel2.find();
+        //const departments2 = await DepartmentModel2.find();
 
-        if (departments1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${departments1}`);
+        if (departments1.length > 0) {
+            res.status(200).json({departments1 : departments1});
             console.log(`Records from MongoDB Atlas : ${departments1}`);
-        } else if (departments2) {
-            res.status(200).json(`Records from MongoDB Compass : ${departments2}`);
-            console.log(`Records from MongoDB Compass : ${departments2}`);
+            //console.log(`Records from MongoDB Compass : ${departments2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'Departments not found' });
+            console.log('Departments not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -51,14 +49,12 @@ exports.getDepartments = async (req, res) => {
 exports.getDepartmentById = async (req, res) => {
     try {
         const department1 = await DepartmentModel1.findById(req.params.id);
-        const department2 = await DepartmentModel2.findById(req.params.id);
+        //const department2 = await DepartmentModel2.findById(req.params.id);
 
         if (department1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${department1}`);
+            res.status(200).json({department1 : department1});
             console.log(`Data from MongoDB Atlas : ${department1}`);
-        } else if (department2) {
-            res.status(200).json(`Data from MongoDB Compass : ${department2}`);
-            console.log(`Data from MongoDB Compass : ${department2}`);
+            //console.log(`Data from MongoDB Compass : ${department2}`);
         } else {
             res.status(404).json({ error: 'Department not found' });
             console.log('Department not found');

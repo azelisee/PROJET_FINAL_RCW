@@ -152,7 +152,7 @@ const PatientEdit = () => {
                 </div>
             ))}
             <button type="button" onClick={() => addNestedField('treatments')}  style={{width:'175px'}}>Add Treatment</button>
-             <br/>
+            <br/>
             <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" style={{width:'185px'}}  required />
 
             <center><button type="submit"  style={{width:'175px'}}>Submit</button></center>

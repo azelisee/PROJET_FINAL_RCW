@@ -49,27 +49,7 @@ exports.updatePatient = async (req, res) => {
         res.status(500).send({ message: error.message });
     }
 };
-exports.deletePatient = async (req, res) => {
-    try {
-        const ids = req.params.id.split(',');
-        console.log('\nExtracted IDs:', ids);
-        if (ids.length !== 2) {
-            console.log('HELP : Make space and coma before the first id in params');
-            throw new Error('Exactly two IDs must be provided');
-        }
-        const atlasId = ids[0];
-        const compassId = ids[1];
 
-        await PatientModel1.findByIdAndDelete(atlasId);
-        await PatientModel2.findByIdAndDelete(compassId);
-
-        res.status(200).send({ message: 'Success : Patient cleared from databases' });
-        console.log('Recorded in MongoDB Atlas : ', atlasId);
-        console.log('\nRecorded in MongoDB Compass : ', compassId);
-    } catch (error) {
-        res.status(500).send({ message: error.message });
-    }
-};
 exports.getPatients = async (req, res) => {
     try {
         const patients1 = await PatientModel1.find();
@@ -83,7 +63,6 @@ exports.getPatients = async (req, res) => {
             res.status(404).json({ error: 'No patients found' });
             console.log('No patients found');
         }
-
     } catch (error) {
         res.status(500).json({error: error.message});
         console.log(error);
@@ -99,12 +78,55 @@ exports.getPatientById = async (req, res) => {
             console.log(`Record from MongoDB Atlas:`, patient1);
             //console.log(`Record from MongoDB Compass : ${patient2}`);
         } else {
-            res.status(404).json({ error: 'No patients found' });
-            console.log('No patients found');
+            res.status(404).json({ error: 'No patient found' });
+            console.log('No patient found');
         }
     } catch (error) {
         res.status(500).json({error: error.message});
         console.log(error);
     }
 };
+
+exports.deletePatient = async (req, res) => {
+    try {
+        const ids = req.params.id1 + ',' + req.params.id2;
+        console.log('\nExtracted IDs:', ids);
+        if (!req.params.id1 || !req.params.id2) {
+            throw new Error('Two IDs must be provided for deletion.');
+        }
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
+
+        const atlasResult = await PatientModel1.findByIdAndDelete(atlasId);
+        const compassResult = await PatientModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Patient not found in one or both databases.' });
+        }
+        res.status(200).send({ message: 'Patient successfully deleted from both databases.' });
+        console.log('Deleted from MongoDB Atlas:', atlasId);
+        console.log('Deleted from MongoDB Compass:', compassId);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+};
+
+/*exports.deletePatient = async (req, res) => {
+    try {
+        const atlasId = req.params.id1.trim();
+        const compassId = req.params.id2.trim();
+        if (!atlasId || !compassId) {
+            throw new Error('Les deux IDs doivent être fournis pour la suppression.');
+        }
+        const atlasResult = await PatientModel1.findByIdAndDelete(atlasId);
+        const compassResult = await PatientModel2.findByIdAndDelete(compassId);
+        if (!atlasResult || !compassResult) {
+            return res.status(404).send({ message: 'Patient non trouvé dans l\'une ou les deux bases de données.' });
+        }
+        res.status(200).send({ message: 'Patient supprimé avec succès des deux bases de données.' });
+        console.log('Supprimé de MongoDB Atlas:', atlasId);
+        console.log('Supprimé de MongoDB Compass:', compassId);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+};*/
 
