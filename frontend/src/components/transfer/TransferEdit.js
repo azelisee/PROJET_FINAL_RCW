@@ -30,9 +30,9 @@ const TransferEdit = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h2>Edit transfer</h2>
-            <input type="number" name="roomNumber" value={room.roomNumber} onChange={handleChange} placeholder="Room Number" required />
-            <input type="number" name="bedNumber" value={room.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
-            <input type="text" name="department" value={room.department} onChange={handleChange} placeholder="Department ID" required />
+            <input type="number" name="roomNumber" value={transfer.roomNumber} onChange={handleChange} placeholder="Room Number" required />
+            <input type="number" name="bedNumber" value={transfer.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
+            <input type="text" name="department" value={transfer.department} onChange={handleChange} placeholder="Department ID" required />
             <button type="submit">Submit</button>
         </form>
     );

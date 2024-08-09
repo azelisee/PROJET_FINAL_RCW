@@ -1,20 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
     return (
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/patients">Patients</Link></li>
-                <li><Link to="/doctors">Doctors</Link></li>
-                <li><Link to="/nurses">Nurses</Link></li>
-                <li><Link to="/rooms">Rooms</Link></li>
-                <li><Link to="/departments">Departments</Link></li>
-                <li><Link to="/hospitals">Hospitals</Link></li>
-                <li><Link to="/transfers">Transfers</Link></li>
-            </ul>
-        </nav>
+        <center>
+            <nav>
+                <table>
+                    <tr>
+                        <thead>
+                        <th>
+                            <button>
+                                <Link to="/">Home</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/patients">Patients</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/doctors">Doctors</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/nurses">Nurses</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/rooms">Rooms</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/departments">Departments</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/hospitals">Hospitals</Link>
+                            </button>
+                        </th>
+                        <th>
+                            <button>
+                                <Link to="/transfers">Transfers</Link>
+                            </button>
+                        </th>
+                        </thead>
+                    </tr>
+                </table>
+            </nav>
+        </center>
     );
 };
 

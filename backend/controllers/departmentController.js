@@ -1,4 +1,4 @@
-const initDepartmentModel = require('../models/department');
+const initDepartmentModel = require('../models/departmentModel');
 const { connectToDatabase1, connectToDatabase2 } = require('../config/databases');
 
 let db1, db2, DepartmentModel1, DepartmentModel2;
@@ -20,7 +20,9 @@ exports.createDepartment = async (req, res) => {
         await department1.save();
         await department2.save();
 
-        res.status(201).send({ message: 'Department created in both databases' });
+        res.status(201).send({ message: 'New Department registered in both databases' });
+        console.log('Recorded in MongoDB Atlas : ', department1);
+        console.log('\nRecorded in MongoDB Compass : ', department2);
     } catch (error) {
         res.status(400).json({ error: error.message });
         console.log(error);
@@ -70,18 +72,20 @@ exports.updateDepartment = async (req, res) => {
     try {
         const departmentData = req.body;
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
         const compassId = ids[1];
 
-        await DepartmentModel1.findByIdAndUpdate(atlasId, departmentData);
-        await DepartmentModel2.findByIdAndUpdate(compassId, departmentData);
+        const department1 = await DepartmentModel1.findByIdAndUpdate(atlasId, departmentData);
+        const department2 = await DepartmentModel2.findByIdAndUpdate(compassId, departmentData);
 
         res.status(200).send({ message: 'Department updated in both databases' });
+        console.log('Recorded in MongoDB Atlas : ', department1);
+        console.log('\nRecorded in MongoDB Compass : ', department2);
     } catch (error) {
         res.status(400).json({ error: error.message });
         console.log(error);
@@ -90,9 +94,9 @@ exports.updateDepartment = async (req, res) => {
 exports.deleteDepartment = async (req, res) => {
     try {
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
@@ -102,6 +106,8 @@ exports.deleteDepartment = async (req, res) => {
         await DepartmentModel2.findByIdAndDelete(compassId);
 
         res.status(200).send({ message: 'Department deleted from both databases' });
+        console.log('Recorded in MongoDB Atlas : ', atlasId);
+        console.log('\nRecorded in MongoDB Compass : ', compassId);
     } catch (error) {
         res.status(400).json({ error: error.message });
         console.log(error);

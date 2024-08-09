@@ -1,4 +1,4 @@
-const initTransferModel = require('../models/transfer');
+const initTransferModel = require('../models/transferModel');
 const { connectToDatabase1, connectToDatabase2 } = require('../config/databases');
 
 let db1, db2, TransferModel1, TransferModel2;
@@ -20,7 +20,9 @@ exports.createTransfer = async (req, res) => {
         await transfer1.save();
         await transfer2.save();
 
-        res.status(201).send({ message: 'Transfer created in both databases' });
+        res.status(201).send({ message: 'Success : transfer made !!!' });
+        console.log('Recorded in MongoDB Atlas : ',transfer1);
+        console.log('\nRecorded in MongoDB Compass : ',transfer2);
     } catch (error) {
         res.status(400).json({ error: error.message });
         console.log(error);
@@ -70,18 +72,20 @@ exports.updateTransfer = async (req, res) => {
     try {
         const transferData = req.body;
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
         const compassId = ids[1];
 
-        await TransferModel1.findByIdAndUpdate(atlasId, transferData);
-        await TransferModel2.findByIdAndUpdate(compassId, transferData);
+        const transfer1 = await TransferModel1.findByIdAndUpdate(atlasId, transferData);
+        const transfer2 = await TransferModel2.findByIdAndUpdate(compassId, transferData);
 
-        res.status(200).send({ message: 'Transfer updated in both databases' });
+        res.status(200).send({ message: 'Success : transfer data well updated !!!' });
+        console.log('Recorded in MongoDB Atlas : ',transfer1);
+        console.log('\nRecorded in MongoDB Compass : ',transfer2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -89,9 +93,9 @@ exports.updateTransfer = async (req, res) => {
 exports.deleteTransfer = async (req, res) => {
     try {
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
@@ -99,7 +103,9 @@ exports.deleteTransfer = async (req, res) => {
         await TransferModel1.findByIdAndDelete(atlasId);
         await TransferModel2.findByIdAndDelete(compassId);
 
-        res.status(200).send({ message: 'Transfer removed from both databases' });
+        res.status(200).send({ message: 'Success : the transfer has been cancelled !!!' });
+        console.log('Recorded in MongoDB Atlas : ', atlasId);
+        console.log('\nRecorded in MongoDB Compass : ', compassId);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

@@ -1,4 +1,4 @@
-const initPatientModel = require('../models/patient');
+const initPatientModel = require('../models/patientModel');
 const { connectToDatabase1, connectToDatabase2 } = require('../config/databases');
 
 let db1, db2, PatientModel1, PatientModel2;
@@ -20,7 +20,9 @@ exports.createPatient = async (req, res) => {
         await patient1.save();
         await patient2.save();
 
-        res.status(201).send({ message: 'Patient created in both databases' });
+        res.status(201).send({ message: 'Success : A new Patient has been admitted !!!'});
+        console.log('Recorded in MongoDB Atlas : ', patient1);
+        console.log('\nRecorded in MongoDB Compass : ', patient2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -29,18 +31,20 @@ exports.updatePatient = async (req, res) => {
     try {
         const patientData = req.body;
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
         const compassId = ids[1];
 
-        await PatientModel1.findByIdAndUpdate(atlasId, patientData);
-        await PatientModel2.findByIdAndUpdate(compassId, patientData);
+        const patient1 = await PatientModel1.findByIdAndUpdate(atlasId, patientData);
+        const patient2 = await PatientModel2.findByIdAndUpdate(compassId, patientData);
 
-        res.status(200).send({ message: 'Patient updated in both databases' });
+        res.status(200).send({ message: 'Update successful : Everything is alright !!!'});
+        console.log('Recorded in MongoDB Atlas : ', patient1);
+        console.log('\nRecorded in MongoDB Compass : ', patient2);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -48,9 +52,9 @@ exports.updatePatient = async (req, res) => {
 exports.deletePatient = async (req, res) => {
     try {
         const ids = req.params.id.split(',');
-        console.log('Extracted IDs:', ids);
+        console.log('\nExtracted IDs:', ids);
         if (ids.length !== 2) {
-            console.log('\nHELP : Make space and coma before the first id in params');
+            console.log('HELP : Make space and coma before the first id in params');
             throw new Error('Exactly two IDs must be provided');
         }
         const atlasId = ids[0];
@@ -59,7 +63,9 @@ exports.deletePatient = async (req, res) => {
         await PatientModel1.findByIdAndDelete(atlasId);
         await PatientModel2.findByIdAndDelete(compassId);
 
-        res.status(200).send({ message: 'Patient deleted from both databases' });
+        res.status(200).send({ message: 'Success : Patient cleared from databases' });
+        console.log('Recorded in MongoDB Atlas : ', atlasId);
+        console.log('\nRecorded in MongoDB Compass : ', compassId);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -67,17 +73,15 @@ exports.deletePatient = async (req, res) => {
 exports.getPatients = async (req, res) => {
     try {
         const patients1 = await PatientModel1.find();
-        const patients2 = await PatientModel2.find();
+        //const patients2 = await PatientModel2.find();
 
-        if (patients1) {
-            res.status(200).json(`Records from MongoDB Atlas : ${patients1}`);
-            console.log(`Records from MongoDB Atlas : ${patients1}`);
-        } else if (patients2) {
-            res.status(200).json(`Records from MongoDB Compass : ${patients2}`);
-            console.log(`Records from MongoDB Compass : ${patients2}`);
+        if (patients1.length > 0) {
+            res.status(200).json({ patients: patients1 });
+            console.log(`Records from MongoDB Atlas:`, patients1);
+            //console.log(`Records from MongoDB Compass : ${patients2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'No patients found' });
+            console.log('No patients found');
         }
 
     } catch (error) {
@@ -88,17 +92,15 @@ exports.getPatients = async (req, res) => {
 exports.getPatientById = async (req, res) => {
     try {
         const patient1 = await PatientModel1.findById(req.params.id);
-        const patient2 = await PatientModel2.findById(req.params.id);
+        //const patient2 = await PatientModel2.findById(req.params.id);
 
         if (patient1) {
-            res.status(200).json(`Data from MongoDB Atlas : ${patient1}`);
-            console.log(`Data from MongoDB Atlas : ${patient1}`);
-        } else if (patient2) {
-            res.status(200).json(`Data from MongoDB Compass : ${patient2}`);
-            console.log(`Data from MongoDB Compass : ${patient2}`);
+            res.status(200).json({ patient: patient1 });
+            console.log(`Record from MongoDB Atlas:`, patient1);
+            //console.log(`Record from MongoDB Compass : ${patient2}`);
         } else {
-            res.status(404).json({ error: 'Patient not found' });
-            console.log('Patient not found');
+            res.status(404).json({ error: 'No patients found' });
+            console.log('No patients found');
         }
     } catch (error) {
         res.status(500).json({error: error.message});

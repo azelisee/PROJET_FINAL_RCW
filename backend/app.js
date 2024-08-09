@@ -1,10 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 dotenv.config({path: './config/.env'});
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+}));
 
 const { connectToDatabase1, connectToDatabase2 } = require('./config/databases');
 

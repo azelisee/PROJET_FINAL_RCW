@@ -1,0 +1,92 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+/* Container */
+.patient-detail-container {
+    max-width: 800px;
+    margin: 100px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.patient-detail-container h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Labels */
+.patient-detail-container p strong {
+    color: black;
+}
+
+/* Section Headings */
+.patient-detail-container h3 {
+    color: black;
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+/* Lists */
+.patient-detail-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.patient-detail-container ul li {
+    margin-bottom: 10px;
+}
+
+.patient-detail-container ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.patient-detail-container ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.patient-detail-container .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.patient-detail-container .btn:hover {
+    background-color: blue;
+}
+
+/* Flex Layout for Fields */
+.patient-detail-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.patient-detail-field p {
+    margin: 0;
+    padding-right: 10px;
+    color: black;
+}
+
+.patient-detail-field strong {
+    color: black;
+}
+

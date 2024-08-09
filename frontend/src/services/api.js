@@ -46,7 +46,7 @@ export const deleteHospital = (id) => axios.delete(`${API_URL}/hospitals/${id}`)
 
 // Transfers
 export const getTransfers = () => axios.get(`${API_URL}/transfers`);
-export const getTransfersById = (id) => axios.get(`${API_URL}/transfers/${id}`);
+export const getTransferById = (id) => axios.get(`${API_URL}/transfers/${id}`);
 export const createTransfer = (transfer) => axios.post(`${API_URL}/transfers`, transfer);
 export const updateTransfer = (id, transfer) => axios.put(`${API_URL}/transfers/${id}`, transfer);
 export const deleteTransfer = (id) => axios.delete(`${API_URL}/transfers/${id}`);
