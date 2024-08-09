@@ -5,7 +5,8 @@ const departmentSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: String,
     doctors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' }],
-    nurses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Nurse' }]
+    nurses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Nurse' }],
+    hospital: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital', required: true }
 });
 
 // Function to create models for both databases

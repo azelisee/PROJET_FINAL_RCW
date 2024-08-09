@@ -3,7 +3,8 @@
     "name": "Cardiology",
     "description": "Cardiology department specializing in heart diseases",
     "doctors": ["60d21b4667d0d8992e610c85"], 
-    "nurses": ["60d21b4667d0d8992e610c86"] 
+    "nurses": ["60d21b4667d0d8992e610c86"] ,
+    "hospital": "60d21b4667d0d8992e610c86", 
 }
 
 
@@ -13,7 +14,9 @@
         "name": "Neurology",
         "description": "Neurology department specializing in brain and nervous system disorders",
         "doctors": ["60d21b4667d0d8992e610c87"],
-        "nurses": ["60d21b4667d0d8992e610c88"]
+        "nurses": ["60d21b4667d0d8992e610c88"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -25,8 +28,10 @@
         "name": "Orthopedics",
         "description": "Orthopedics department specializing in bone and joint disorders",
         "doctors": ["60d21b4667d0d8992e610c89"],
-        "nurses": ["60d21b4667d0d8992e610c8a"]
-    },
+        "nurses": ["60d21b4667d0d8992e610c8a"],
+ "hospital": "60d21b4667d0d8992e610c86",
+
+    }
 
 
 
@@ -37,7 +42,9 @@
         "name": "Gastroenterology",
         "description": "Gastroenterology department specializing in digestive system disorders",
         "doctors": ["60d21b4667d0d8992e610c8b"],
-        "nurses": ["60d21b4667d0d8992e610c8c"]
+        "nurses": ["60d21b4667d0d8992e610c8c"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -49,7 +56,9 @@
         "name": "Endocrinology",
         "description": "Endocrinology department specializing in hormone and metabolic disorders",
         "doctors": ["60d21b4667d0d8992e610c8d"],
-        "nurses": ["60d21b4667d0d8992e610c8e"]
+        "nurses": ["60d21b4667d0d8992e610c8e"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -60,7 +69,9 @@
         "name": "Dermatology",
         "description": "Dermatology department specializing in skin disorders",
         "doctors": ["60d21b4667d0d8992e610c8f"],
-        "nurses": ["60d21b4667d0d8992e610c90"]
+        "nurses": ["60d21b4667d0d8992e610c90"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -72,7 +83,9 @@
         "name": "Ophthalmology",
         "description": "Ophthalmology department specializing in eye disorders",
         "doctors": ["60d21b4667d0d8992e610c91"],
-        "nurses": ["60d21b4667d0d8992e610c92"]
+        "nurses": ["60d21b4667d0d8992e610c92"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -83,7 +96,9 @@
         "name": "Pediatrics",
         "description": "Pediatrics department specializing in children's health",
         "doctors": ["60d21b4667d0d8992e610c93"],
-        "nurses": ["60d21b4667d0d8992e610c94"]
+        "nurses": ["60d21b4667d0d8992e610c94"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -94,7 +109,9 @@
         "name": "Oncology",
         "description": "Oncology department specializing in cancer treatment",
         "doctors": ["60d21b4667d0d8992e610c95"],
-        "nurses": ["60d21b4667d0d8992e610c96"]
+        "nurses": ["60d21b4667d0d8992e610c96"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -104,7 +121,9 @@
         "name": "Psychiatry",
         "description": "Psychiatry department specializing in mental health disorders",
         "doctors": ["60d21b4667d0d8992e610c97"],
-        "nurses": ["60d21b4667d0d8992e610c98"]
+        "nurses": ["60d21b4667d0d8992e610c98"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     },
 
 
@@ -115,6 +134,8 @@
         "name": "Pulmonology",
         "description": "Pulmonology department specializing in lung disorders",
         "doctors": ["60d21b4667d0d8992e610c99"],
-        "nurses": ["60d21b4667d0d8992e610c9a"]
+        "nurses": ["60d21b4667d0d8992e610c9a"],
+ "hospital": "60d21b4667d0d8992e610c86", 
+
     }
 

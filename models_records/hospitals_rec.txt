@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Saint Mary's Hospital",
+    "address": "123 Main Street, Springfield",
+    "website": "https://stmarys.com",
+    "email": "contact@stmarys.com",
+    "phone": "(123) 456-7890",
+    "departments": ["60d21b4667d0d8992e610c88", "60d21b4667d0d8992e610c89"]
+  },
+
+
+
+
+  {
+    "name": "City General Hospital",
+    "address": "456 Elm Street, River City",
+    "website": "https://citygeneral.com",
+    "email": "info@citygeneral.com",
+    "phone": "(234) 567-8901",
+    "departments": ["60d21b4667d0d8992e610c8a", "60d21b4667d0d8992e610c8b"]
+  },
+
+
+
+
+  {
+    "name": "Eastside Medical Center",
+    "address": "789 Maple Avenue, Lakeside",
+    "website": "https://eastside-med.com",
+    "email": "support@eastside-med.com",
+    "phone": "(345) 678-9012",
+    "departments": ["60d21b4667d0d8992e610c8c", "60d21b4667d0d8992e610c8d"]
+  },
+
+
+
+
+
+  {
+    "name": "North Valley Hospital",
+    "address": "101 Pine Street, North Valley",
+    "website": "https://northvalley.com",
+    "email": "contact@northvalley.com",
+    "phone": "(456) 789-0123",
+    "departments": ["60d21b4667d0d8992e610c8e", "60d21b4667d0d8992e610c8f"]
+  },
+
+
+
+
+
+  {
+    "name": "Westside Health Center",
+    "address": "202 Oak Lane, Westside",
+    "website": "https://westsidehealth.com",
+    "email": "info@westsidehealth.com",
+    "phone": "(567) 890-1234",
+    "departments": ["60d21b4667d0d8992e610c90", "60d21b4667d0d8992e610c91"]
+  },
+
+
+
+
+
+  {
+    "name": "Central Hospital",
+    "address": "303 Cedar Boulevard, Central City",
+    "website": "https://centralhospital.com",
+    "email": "contact@centralhospital.com",
+    "phone": "(678) 901-2345",
+    "departments": ["60d21b4667d0d8992e610c92", "60d21b4667d0d8992e610c93"]
+  },
+
+
+
+
+
+  {
+    "name": "Greenwood Medical Center",
+    "address": "404 Birch Road, Greenwood",
+    "website": "https://greenwood-med.com",
+    "email": "support@greenwood-med.com",
+    "phone": "(789) 012-3456",
+    "departments": ["60d21b4667d0d8992e610c94", "60d21b4667d0d8992e610c95"]
+  },
+
+
+
+
+
+
+  {
+    "name": "Sunrise Hospital",
+    "address": "505 Palm Drive, Sunrise",
+    "website": "https://sunrisehospital.com",
+    "email": "contact@sunrisehospital.com",
+    "phone": "(890) 123-4567",
+    "departments": ["60d21b4667d0d8992e610c96", "60d21b4667d0d8992e610c97"]
+  },
+
+
+
+
+
+  {
+    "name": "Riverside Medical Center",
+    "address": "606 River Road, Riverside",
+    "website": "https://riversidemedical.com",
+    "email": "info@riversidemedical.com",
+    "phone": "(901) 234-5678",
+    "departments": ["60d21b4667d0d8992e610c98", "60d21b4667d0d8992e610c99"]
+  },
+
+
+
+
+
+  {
+    "name": "Lakeside Health Institute",
+    "address": "707 Lakeview Street, Lakeside",
+    "website": "https://lakesidehealth.com",
+    "email": "support@lakesidehealth.com",
+    "phone": "(012) 345-6789",
+    "departments": ["60d21b4667d0d8992e610c9a", "60d21b4667d0d8992e610c9b"]
+  }
+]

@@ -7,6 +7,7 @@
     "specialty": "Cardiology",
     "seniority": 10,
     "department": "60d21b4667d0d8992e610c86", 
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Monday",
@@ -52,6 +53,7 @@
     "specialty": "Neurology",
     "seniority": 8,
     "department": "60d21b4667d0d8992e610c87",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Tuesday",
@@ -97,6 +99,7 @@
     "specialty": "Pediatrics",
     "seniority": 12,
     "department": "60d21b4667d0d8992e610c88",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Monday",
@@ -137,6 +140,7 @@
     "specialty": "Dermatology",
     "seniority": 7,
     "department": "60d21b4667d0d8992e610c89",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Tuesday",
@@ -177,6 +181,7 @@
     "specialty": "Orthopedics",
     "seniority": 15,
     "department": "60d21b4667d0d8992e610c90",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Wednesday",
@@ -219,6 +224,7 @@
     "specialty": "Oncology",
     "seniority": 10,
     "department": "60d21b4667d0d8992e610c91",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Monday",
@@ -262,6 +268,7 @@
     "specialty": "Gastroenterology",
     "seniority": 9,
     "department": "60d21b4667d0d8992e610c92",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Tuesday",
@@ -305,6 +312,7 @@
     "specialty": "Endocrinology",
     "seniority": 6,
     "department": "60d21b4667d0d8992e610c93",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Wednesday",
@@ -349,6 +357,7 @@
     "specialty": "Nephrology",
     "seniority": 11,
     "department": "60d21b4667d0d8992e610c94",
+"hospital": "66af1e6dd409cb0d230704e1",
     "schedule": [
         {
             "day": "Monday",
@@ -392,6 +401,7 @@
         "specialty": "Neurology",
         "seniority": 8,
         "department": "60d21b4667d0d8992e610c88",
+"hospital": "66af1e6dd409cb0d230704e1",
         "schedule": [
             {
                 "day": "Tuesday",
@@ -435,6 +445,7 @@
         "specialty": "Orthopedics",
         "seniority": 12,
         "department": "60d21b4667d0d8992e610c8a",
+"hospital": "66af1e6dd409cb0d230704e1",
         "schedule": [
             {
                 "day": "Monday",

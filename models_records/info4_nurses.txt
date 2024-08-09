@@ -5,6 +5,7 @@
     "gender": "Female",
     "phone": "0987654321",
     "department": "60d21b4667d0d8992e610c86", 
+   "hospital": "60d21b4667d0d8992e610c86", 
     "dateOfBirth": "1985-06-15",
     "qualifications": ["BSc Nursing", "Certified Pediatric Nurse"],
     "schedule": [
@@ -31,6 +32,7 @@
         "gender": "Female",
         "phone": "0987654322",
         "department": "60d21b4667d0d8992e610c88",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1990-04-22",
         "qualifications": ["BSc Nursing", "Certified Emergency Nurse"],
         "schedule": [
@@ -62,6 +64,7 @@
         "gender": "Male",
         "phone": "0987654323",
         "department": "60d21b4667d0d8992e610c8a",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1987-02-10",
         "qualifications": ["BSc Nursing", "Certified Cardiac Nurse"],
         "schedule": [
@@ -93,6 +96,7 @@
         "gender": "Female",
         "phone": "0987654324",
         "department": "60d21b4667d0d8992e610c8c",
+ "hospital": "60d21b4667d0d8992e610c86",
         "dateOfBirth": "1992-11-30",
         "qualifications": ["BSc Nursing", "Certified Surgical Nurse"],
         "schedule": [
@@ -124,6 +128,7 @@
         "gender": "Male",
         "phone": "0987654325",
         "department": "60d21b4667d0d8992e610c8e",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1983-09-15",
         "qualifications": ["BSc Nursing", "Certified Oncology Nurse"],
         "schedule": [
@@ -154,6 +159,7 @@
         "gender": "Female",
         "phone": "0987654326",
         "department": "60d21b4667d0d8992e610c90",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1995-07-20",
         "qualifications": ["BSc Nursing", "Certified Pediatric Nurse"],
         "schedule": [
@@ -182,6 +188,7 @@
         "gender": "Male",
         "phone": "0987654327",
         "department": "60d21b4667d0d8992e610c92",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1988-05-25",
         "qualifications": ["BSc Nursing", "Certified Orthopedic Nurse"],
         "schedule": [
@@ -211,6 +218,7 @@
         "gender": "Female",
         "phone": "0987654328",
         "department": "60d21b4667d0d8992e610c94",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1991-12-01",
         "qualifications": ["BSc Nursing", "Certified Gastroenterology Nurse"],
         "schedule": [
@@ -242,6 +250,7 @@
         "gender": "Male",
         "phone": "0987654329",
         "department": "60d21b4667d0d8992e610c96",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1989-08-13",
         "qualifications": ["BSc Nursing", "Certified Nephrology Nurse"],
         "schedule": [
@@ -272,6 +281,7 @@
         "gender": "Female",
         "phone": "0987654330",
         "department": "60d21b4667d0d8992e610c98",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1984-11-07",
         "qualifications": ["BSc Nursing", "Certified Ophthalmic Nurse"],
         "schedule": [
@@ -302,6 +312,7 @@
         "gender": "Male",
         "phone": "0987654331",
         "department": "60d21b4667d0d8992e610c9a",
+ "hospital": "60d21b4667d0d8992e610c86", 
         "dateOfBirth": "1993-03-15",
         "qualifications": ["BSc Nursing", "Certified Psychiatric Nurse"],
         "schedule": [
