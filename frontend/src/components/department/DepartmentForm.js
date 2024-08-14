@@ -11,6 +11,7 @@ const DepartmentForm = () => {
         hospital: ''
     });
 
+    const [message, setMessage] = useState({ type: '', content: '' });
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -22,48 +23,64 @@ const DepartmentForm = () => {
         e.preventDefault();
         createDepartment(department)
             .then(response => {
-                console.log('Department created:', response.data);
+                setMessage({ type: 'success', content: 'Department created successfully!' });
                 navigate('/departments');
             })
-            .catch(error => console.error('Error creating department:', error));
+            .catch(error => {
+                setMessage({ type: 'error', content: 'Error creating department.' });
+                console.error('Error creating department:', error);
+            });
     };
 
     return (
         <center>
             <div className="form-container">
             <h2>Add Department</h2>
+            {message.content && (
+                <div className={`message ${message.type}`}>
+                    {message.content}
+                </div>
+            )}
             <form onSubmit={handleSubmit}>
+                <div className="form-group">
                 <input
-                    type="number"
-                    name="depNumber"
-                    placeholder="Department Number"
-                    value={department.depNumber}
-                    onChange={handleChange}
-                    required
-                />
+                        type="number"
+                        name="depNumber"
+                        placeholder="Department Number"
+                        value={department.depNumber}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
                 <input
-                    type="text"
-                    name="name"
-                    placeholder="Department Name"
-                    value={department.name}
-                    onChange={handleChange}
-                    required
-                />
-                <textarea
-                    name="description"
-                    placeholder="Description"
-                    value={department.description}
-                    onChange={handleChange}
-                ></textarea>
+                        type="text"
+                        name="name"
+                        placeholder="Department Name"
+                        value={department.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <textarea
+                        name="description"
+                        placeholder="Description"
+                        value={department.description}
+                        onChange={handleChange}
+                    ></textarea>
+                </div>
+                <div className="form-group">
                 <input
-                    type="text"
-                    name="hospital"
-                    placeholder="Hospital ID"
-                    value={department.hospital}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit" style={{width:'175px'}}>Add Department</button>
+                        type="text"
+                        name="hospital"
+                        placeholder="Hospital ID"
+                        value={department.hospital}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <button type="submit" className="btn-green">Add Department</button>
             </form>
         </div>
         </center>

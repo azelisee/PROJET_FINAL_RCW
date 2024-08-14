@@ -5,6 +5,7 @@ import '../../css/PatientForm.css';
 
 const HospitalEdit = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [hospital, setHospital] = useState({
         name: '',
         address: '',
@@ -13,16 +14,13 @@ const HospitalEdit = () => {
         phone: '',
         departments: []
     });
-    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getHospitalById(id).then((response) => {
-            if (response.data.hospital) {
-                setHospital(response.data.hospital);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setHospital(response.data);
         }).catch(error => {
+            setError('There was an error fetching the hospital details!');
             console.error('There was an error fetching the hospital details!', error);
         });
     }, [id]);
@@ -34,62 +32,37 @@ const HospitalEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateHospital(id, hospital)
-            .then(response => {
-                console.log('Hospital updated:', response.data);
-                navigate('/hospitals');
-            })
-            .catch(error => console.error('Error updating hospital:', error));
+        updateHospital(id, hospital).then(() => {
+            navigate(`/hospitals/${id}`);
+        }).catch(error => {
+            setError('There was an error updating the hospital!');
+            console.error('There was an error updating the hospital!', error);
+        });
     };
 
     return (
         <center>
-            <div className="patient-form-container">
-            <h2>Edit Hospital</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={hospital.name}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="address"
-                    placeholder="Address"
-                    value={hospital.address}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="url"
-                    name="website"
-                    placeholder="Website"
-                    value={hospital.website}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={hospital.email}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone"
-                    value={hospital.phone}
-                    onChange={handleChange}
-                    required
-                />
-                <center><button type="submit" style={{width:'175px'}}>Update Hospital</button></center>
+            <form onSubmit={handleSubmit} className="form-container">
+                <h2>Edit Hospital</h2>
+                {error && <p>{error}</p>}
+                <div className="form-group">
+                    <input type="text" name="name" value={hospital.name} onChange={handleChange} placeholder="Name" required />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="address" value={hospital.address} onChange={handleChange} placeholder="Address" required />
+                </div>
+                <div className="form-group">
+                    <input type="url" name="website" value={hospital.website} onChange={handleChange} placeholder="Website" required />
+                </div>
+                <div className="form-group">
+                    <input type="email" name="email" value={hospital.email} onChange={handleChange} placeholder="Email" required />
+                </div>
+                <div className="form-group">
+                    <input type="tel" name="phone" value={hospital.phone} onChange={handleChange} placeholder="Phone" required />
+                </div>
+                <br/>
+                <center><button type="submit" style={{width:'175px'}} className="btn-green">Submit</button></center>
             </form>
-        </div>
         </center>
     );
 };

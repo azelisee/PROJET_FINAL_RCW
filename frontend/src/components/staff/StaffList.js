@@ -1,51 +1,76 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getStaff, deleteStaff } from '../../services/api';
 import '../../css/PatientList.css';
-import'../../css/PatientForm.css';
 
 const StaffList = () => {
-    const [staffs, setStaff] = useState([]);
+    const [staffs, setStaffs] = useState([]);
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchStaff = () => {
         getStaff().then((response) => {
-            if (Array.isArray(response.data)) {
-                setStaff(response.data);
+            if (response.data) {
+                setStaffs(response.data);
             } else {
                 console.error('Expected an array but got:', response.data);
             }
         }).catch(error => {
             console.error('There was an error fetching the staff!', error);
         });
+    };
+
+    useEffect(() => {
+        fetchStaff();
     }, []);
 
     const handleDelete = (id) => {
-        deleteStaff(id)
-            .then(() => {
-                setStaff(staffs.filter(staff => staff._id !== id));
-                console.log('Deleted successfully');
-            })
-            .catch(error => console.error('Error deleting:', error));
+        const confirmDelete = window.confirm("Are you sure you want to delete this staff member?");
+        if (confirmDelete) {
+            if (id) {
+                deleteStaff(id)
+                    .then(response => {
+                        setMessage('Staff member deleted successfully');
+                        setTimeout(() => {
+                            setMessage('');
+                        }, 3000);
+                        fetchStaff();
+                        navigate('/staffs');
+;                    })
+                    .catch(error => {
+                        console.error('Error deleting:', error);
+                        setMessage('Error deleting staff member');
+                    });
+            } else {
+                console.error('ID is undefined');
+            }
+        }
     };
 
     return (
         <center>
             <div className="patient-list-container">
+                <h1>Staff Members</h1>
+                {message && <p className="message">{message}</p>}
                 <center>
-                    <h2>Staff List</h2>
-                    <button type="button">
+                    <button type="button" className="add-patient-button">
                         <Link to="/staff/new">Add Staff</Link>
                     </button>
                 </center>
                 {staffs.length > 0 ? (
-                    <ul>
+                    <div className="patient-cards">
                         {staffs.map((staff) => (
-                            <li key={staff._id}>
-                                <Link to={`/staff/${staff._id}`}>{staff.name}</Link>
-                                <button onClick={() => handleDelete(staff._id)} type="button">Delete</button>
-                            </li>
+                            <div key={staff._id} className="patient-card">
+                                <Link to={`/staff/${staff._id}`}>
+                                    <p>{staff.name}</p>
+                                    <p>Role: {staff.role}</p>
+                                </Link>
+                                <button onClick={() => handleDelete(staff._id)} type="button">
+                                    Delete
+                                </button>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 ) : (
                     <p>No staff members found</p>
                 )}

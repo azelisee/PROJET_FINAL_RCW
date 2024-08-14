@@ -27,7 +27,7 @@ exports.createRoom = async (req, res) => {
 exports.getRooms = async (req, res) => {
     try {
         const rooms = await RoomModel.find();
-        res.status(200).send(rooms);
+        res.status(200).json(rooms);
         console.log('Records from mongoDB Atlas : ',rooms);
     } catch (error) {
         res.status(500).send({ message: error.message });

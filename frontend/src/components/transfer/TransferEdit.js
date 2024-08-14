@@ -5,6 +5,7 @@ import '../../css/PatientForm.css';
 
 const TransferEdit = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [transfer, setTransfer] = useState({
         patient: '',
         fromHospital: '',
@@ -13,16 +14,13 @@ const TransferEdit = () => {
         transferDate: '',
         reason: ''
     });
-    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getTransferById(id).then((response) => {
-            if (response.data.transfer) {
-                setTransfer(response.data.transfer);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setTransfer(response.data);
         }).catch(error => {
+            setError('There was an error fetching the transfer details!');
             console.error('There was an error fetching the transfer details!', error);
         });
     }, [id]);
@@ -34,69 +32,40 @@ const TransferEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateTransfer(id, transfer)
-            .then(response => {
-                console.log('Transfer updated:', response.data);
-                navigate('/transfers');
-            })
-            .catch(error => console.error('Error updating transfer:', error));
+        updateTransfer(id, transfer).then(() => {
+            navigate(`/transfers/${id}`);
+        }).catch(error => {
+            setError('There was an error updating the transfer!');
+            console.error('There was an error updating the transfer!', error);
+        });
     };
 
     return (
         <center>
-            <div className="patient-form-container">
-            <h2>Edit Transfer</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="patient"
-                    placeholder="Patient ID"
-                    value={transfer.patient}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="fromHospital"
-                    placeholder="From Hospital ID"
-                    value={transfer.fromHospital}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="toHospital"
-                    placeholder="To Hospital ID"
-                    value={transfer.toHospital}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="toDepartment"
-                    placeholder="To Department ID"
-                    value={transfer.toDepartment}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="date"
-                    name="transferDate"
-                    placeholder="Transfer Date"
-                    value={transfer.transferDate}
-                    onChange={handleChange}
-                    required
-                />
-                <textarea
-                    name="reason"
-                    placeholder="Reason for Transfer"
-                    value={transfer.reason}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">Update Transfer</button>
+            <form onSubmit={handleSubmit} className="form-container">
+                <h2>Edit Transfer</h2>
+                {error && <p>{error}</p>}
+                <div className="form-group">
+                    <input type="text" name="patient" value={transfer.patient} onChange={handleChange} placeholder="Patient ID" required />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="fromHospital" value={transfer.fromHospital} onChange={handleChange} placeholder="From Hospital ID" required />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="toHospital" value={transfer.toHospital} onChange={handleChange} placeholder="To Hospital ID" required />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="toDepartment" value={transfer.toDepartment} onChange={handleChange} placeholder="To Department ID" required />
+                </div>
+                <div className="form-group">
+                    <input type="date" name="transferDate" value={transfer.transferDate} onChange={handleChange} required />
+                </div>
+                <div className="form-group">
+                    <textarea name="reason" value={transfer.reason} onChange={handleChange} placeholder="Reason for Transfer"></textarea>
+                </div>
+                <br/>
+                <center><button type="submit" style={{width:'175px'}} className="btn-green">Submit</button></center>
             </form>
-        </div>
         </center>
     );
 };

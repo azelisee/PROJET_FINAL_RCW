@@ -2,3 +2,4 @@ venv/
 node_modules/
 __pycache__/
 datasets/
+_IA/medical_diagnosis_model.h5

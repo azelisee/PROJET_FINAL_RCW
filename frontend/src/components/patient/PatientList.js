@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPatients, deletePatient } from '../../services/api';
-import '../../css/PatientForm.css';
 import '../../css/PatientList.css';
 
 const PatientList = () => {
@@ -49,7 +48,7 @@ const PatientList = () => {
     return (
         <center>
             <div className="patient-list-container">
-                <h2>Display all our Patients</h2>
+                <h1>Patients</h1>
                 {message && <p className="message">{message}</p>}
                 <center>
                     <button type="button" className="add-patient-button">
@@ -62,6 +61,8 @@ const PatientList = () => {
                             <div key={patient._id} className="patient-card">
                                 <Link to={`/patients/${patient._id}`}>
                                     <p>{patient.name}</p>
+                                    <p>Age : {patient.age} years old</p>
+                                    <p>Sex : {patient.gender}</p>
                                 </Link>
                                 <button onClick={() => handleDelete(patient._id)} type="button">
                                     Delete

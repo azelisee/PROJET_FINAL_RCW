@@ -5,26 +5,30 @@ import '../../css/PatientForm.css';
 
 const StaffEdit = () => {
     const { id } = useParams();
-    const [staff, setStaff] = useState(null);
     const navigate = useNavigate();
+    const [staff, setStaff] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        role: '',
+        department: '',
+        hospital: '',
+        dateOfBirth: ''
+    });
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getStaffById(id).then((response) => {
-            if (response.data.staff) {
-                setStaff(response.data.staff);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setStaff(response.data);
         }).catch(error => {
+            setError('There was an error fetching the staff details!');
             console.error('There was an error fetching the staff details!', error);
         });
     }, [id]);
 
     const handleChange = (e) => {
-        setStaff({
-            ...staff,
-            [e.target.name]: e.target.value
-        });
+        const { name, value } = e.target;
+        setStaff({ ...staff, [name]: value });
     };
 
     const handleSubmit = (e) => {
@@ -32,33 +36,40 @@ const StaffEdit = () => {
         updateStaff(id, staff).then(() => {
             navigate(`/staff/${id}`);
         }).catch(error => {
-            console.error('There was an error updating the staff member!', error);
+            setError('There was an error updating the staff!');
+            console.error('There was an error updating the staff!', error);
         });
     };
 
-    if (!staff) return <div>Loading...</div>;
-
     return (
         <center>
-            <div className="form-container">
-            <h2>Edit Staff</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="name" value={staff.name} onChange={handleChange} required />
-                <input type="email" name="email" value={staff.email} onChange={handleChange} required />
-                <input type="text" name="phone" value={staff.phone} onChange={handleChange} required />
-                <select name="role" value={staff.role} onChange={handleChange} required>
-                    <option value="Technician">Technician</option>
-                    <option value="Administrator">Administrator</option>
-                    <option value="Caregiver">Caregiver</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" name="department" value={staff.department} onChange={handleChange} required />
-                <input type="text" name="hospital" value={staff.hospital} onChange={handleChange} required />
-                <input type="date" name="dateOfBirth" value={staff.dateOfBirth} onChange={handleChange} required />
-
-                <button type="submit">Update Staff</button>
+            <form onSubmit={handleSubmit} className="form-container">
+                <h2>Edit Staff</h2>
+                {error && <p>{error}</p>}
+                <div className="form-group">
+                    <input type="text" name="name" value={staff.name} onChange={handleChange} placeholder="Name" required />
+                    <input type="email" name="email" value={staff.email} onChange={handleChange} placeholder="Email" required />
+                </div>
+                <div className="form-group">
+                    <input type="tel" name="phone" value={staff.phone} onChange={handleChange} placeholder="Phone" required />
+                    <select name="role" value={staff.role} onChange={handleChange} required>
+                        <option value="">Select Role</option>
+                        <option value="Technician">Technician</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="Caregiver">Caregiver</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <input type="text" name="department" value={staff.department} onChange={handleChange} placeholder="Department ID" required />
+                    <input type="text" name="hospital" value={staff.hospital} onChange={handleChange} placeholder="Hospital ID" required />
+                </div>
+                <div className="form-group">
+                    <input type="date" name="dateOfBirth" value={staff.dateOfBirth} onChange={handleChange} required />
+                </div>
+                <br/>
+                <center><button type="submit" style={{width:'175px'}} className="btn-green">Submit</button></center>
             </form>
-        </div>
         </center>
     );
 };

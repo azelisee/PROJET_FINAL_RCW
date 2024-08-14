@@ -10,18 +10,19 @@ initDatabases();
 
 exports.createPatient = async (req, res) => {
     try {
-        const existingPatient = await PatientModel.findOne(req.body.email);
+        const existingPatient = await PatientModel.findOne({ email: req.body.email });
         if (existingPatient) {
             return res.status(400).send('A patient with this email already exists');
         }
         const patient = new PatientModel(req.body);
         await patient.save();
-        res.status(201).send('Success : A new Patient has been admitted !!!',patient);
-        console.log('Recorded in MongoDB Atlas : ', patient);
+        console.log('Recorded in MongoDB Atlas: ', patient);
+        res.status(201).send({ message: 'Success: A new patient has been admitted!', patient });
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
 };
+
 exports.updatePatient = async (req, res) => {
     try {
         const updatedPatient = await PatientModel.findByIdAndUpdate(req.params.id, req.body, { new: true });

@@ -160,11 +160,14 @@ const PatientEdit = () => {
                     <option value="O-">O-</option>
                 </select>
             </div>
-
+            <br/>
+            <br/>
             <h3>Medical Folders</h3>
             {patient.medicalFolders.map((folder, index) => (
                 <div key={index}>
+                    <div className="form-group">
                     <input type="text" name="folderName" value={folder.folderName} onChange={(e) => handleNestedChange(e, index, 'medicalFolders')} placeholder="Folder Name" required />
+                    </div>
                     <h4>Documents</h4>
                     {folder.documents.map((doc, docIndex) => (
                         <div key={docIndex} className="form-group">
@@ -176,7 +179,8 @@ const PatientEdit = () => {
                 </div>
             ))}
             <button type="button" onClick={() => addNestedField('medicalFolders')} style={{width:'175px'}}>Add Medical Folder</button>
-
+            <br/>
+            <br/>
             <h3>Consultation History</h3>
             {patient.consultationHistory.map((consultation, index) => (
                 <div key={index} className="form-group">
@@ -188,7 +192,8 @@ const PatientEdit = () => {
                 </div>
             ))}
             <button type="button" onClick={() => addNestedField('consultationHistory')} style={{width:'175px'}}>Add Consultation</button>
-
+            <br/>
+            <br/>
             <h3>Treatments</h3>
             {patient.treatments.map((treatment, index) => (
                 <div key={index} className="form-group">
@@ -206,9 +211,13 @@ const PatientEdit = () => {
             ))}
             <button type="button" onClick={() => addNestedField('treatments')} style={{width:'175px'}}>Add Treatment</button>
             <br/>
-            <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" style={{width:'185px'}} required />
+            <br/>
+            <br/>
+            <div className="form-group">
+                <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" required />
+            </div>
 
-            <center><button type="submit" style={{width:'175px'}}>Submit</button></center>
+            <center><button type="submit" style={{width:'175px'}} className="btn-green">Submit</button></center>
         </form>
         </center>
     );

@@ -59,6 +59,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     position: relative;
+    height: auto;
 }
 
 .patient-card button:hover {
@@ -74,6 +75,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 20px;
+    width: 175px;
 }
 
 .add-patient-button:hover {
@@ -94,8 +96,10 @@ body {
     color: green;
     font-weight: bold;
     margin: 20px 0;
+    size: 50px;
 }
 
 .message.error {
     color: red;
+    size: 3px;
 }

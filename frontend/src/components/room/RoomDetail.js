@@ -9,11 +9,7 @@ const RoomDetail = () => {
 
     useEffect(() => {
         getRoomById(id).then((response) => {
-            if (response.data.room) {
-                setRoom(response.data.room);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setRoom(response.data);
         }).catch(error => {
             console.error('There was an error fetching the room details!', error);
         });
@@ -22,14 +18,14 @@ const RoomDetail = () => {
     if (!room) return <div>Loading...</div>;
 
     return (
-        <center>
-            <div className="patient-detail-container">
-            <h2>{`Room ${room.roomNumber} - Bed ${room.bedNumber}`}</h2>
-            <p><strong>Department:</strong> {room.department.name}</p>
-            <p><strong>Hospital:</strong> {room.hospital.name}</p>
-            <Link to={`/rooms/${room._id}/edit`}>Edit Room</Link>
+        <div className="patient-detail-container">
+            <h2>Room Details</h2>
+            <div className="patient-detail-field"><p><strong>Room Number:</strong> {room.roomNumber}</p></div>
+            <div className="patient-detail-field"><p><strong>Bed Number:</strong> {room.bedNumber}</p></div>
+            <div className="patient-detail-field"><p><strong>Department:</strong> {room.department.name}</p></div>
+            <div className="patient-detail-field"><p><strong>Hospital:</strong> {room.hospital.name}</p></div>
+            <center><Link to={`/rooms/${room._id}/edit`} className="btn" style={{ width: '150px' }}>Edit Room</Link></center>
         </div>
-        </center>
     );
 };
 

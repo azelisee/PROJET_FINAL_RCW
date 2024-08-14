@@ -5,22 +5,20 @@ import '../../css/PatientForm.css';
 
 const RoomEdit = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [room, setRoom] = useState({
         roomNumber: '',
         bedNumber: '',
         department: '',
         hospital: ''
     });
-    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getRoomById(id).then((response) => {
-            if (response.data.room) {
-                setRoom(response.data.room);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setRoom(response.data);
         }).catch(error => {
+            setError('There was an error fetching the room details!');
             console.error('There was an error fetching the room details!', error);
         });
     }, [id]);
@@ -32,57 +30,30 @@ const RoomEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateRoom(id, room)
-            .then(response => {
-                console.log('Room updated:', response.data);
-                navigate('/rooms');
-            })
-            .catch(error => console.error('Error updating room:', error));
+        updateRoom(id, room).then(() => {
+            navigate(`/rooms/${id}`);
+        }).catch(error => {
+            setError('There was an error updating the room!');
+            console.error('There was an error updating the room!', error);
+        });
     };
 
     return (
         <center>
-            <div className="form-container">
-            <h2>Edit Room</h2>
-            <form onSubmit={handleSubmit}>
-                <input style={{width:'175px'}}
-                    type="number"
-                    name="roomNumber"
-                    placeholder="Room Number"
-                    value={room.roomNumber}
-                    onChange={handleChange}
-                    required
-                />
+            <form onSubmit={handleSubmit} className="form-container">
+                <h2>Edit Room</h2>
+                {error && <p>{error}</p>}
+                <div className="form-group">
+                    <input type="number" name="roomNumber" value={room.roomNumber} onChange={handleChange} placeholder="Room Number" required />
+                    <input type="number" name="bedNumber" value={room.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
+                </div>
+                <div className="form-group">
+                    <input type="text" name="department" value={room.department} onChange={handleChange} placeholder="Department ID" required />
+                    <input type="text" name="hospital" value={room.hospital} onChange={handleChange} placeholder="Hospital ID" required />
+                </div>
                 <br/>
-                <input style={{width:'175px'}}
-                    type="number"
-                    name="bedNumber"
-                    placeholder="Bed Number"
-                    value={room.bedNumber}
-                    onChange={handleChange}
-                    required
-                />
-                <br/>
-                <input style={{width:'175px'}}
-                    type="text"
-                    name="department"
-                    placeholder="Department ID"
-                    value={room.department}
-                    onChange={handleChange}
-                    required
-                />
-                <br/>
-                <input style={{width:'175px'}}
-                    type="text"
-                    name="hospital"
-                    placeholder="Hospital ID"
-                    value={room.hospital}
-                    onChange={handleChange}
-                    required
-                />
-                <center><button type="submit" style={{width:'175px'}}>Update Room</button></center>
+                <center><button type="submit" style={{width:'175px'}} className="btn-green">Submit</button></center>
             </form>
-        </div>
         </center>
     );
 };

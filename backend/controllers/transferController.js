@@ -22,7 +22,7 @@ exports.createTransfer = async (req, res) => {
 exports.getTransfers = async (req, res) => {
     try {
         const transfers = await TransferModel.find();
-        res.status(200).send(transfers);
+        res.status(200).json(transfers);
         console.log('Records from MongoDB Atlas : ',transfers);
     } catch (error) {
         res.status(500).send({ message: error.message });

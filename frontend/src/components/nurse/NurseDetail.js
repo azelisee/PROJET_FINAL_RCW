@@ -9,7 +9,7 @@ const NurseDetail = () => {
 
     useEffect(() => {
         getNurseById(id).then((response) => {
-            setNurse(response.data.nurse);
+            setNurse(response.data);
         }).catch(error => {
             console.error('Error fetching nurse details:', error);
         });
@@ -18,22 +18,40 @@ const NurseDetail = () => {
     if (!nurse) return <div>Loading...</div>;
 
     return (
-        <center>
-            <div className="patient-detail-container">
+        <div className="patient-detail-container">
             <h2>Nurse Details</h2>
-            <p><strong>Name:</strong> {nurse.name}</p>
-            <p><strong>Title:</strong> {nurse.title}</p>
-            <p><strong>Email:</strong> {nurse.email}</p>
-            <p><strong>Gender:</strong> {nurse.gender}</p>
-            <p><strong>Phone:</strong> {nurse.phone}</p>
-            <p><strong>Department:</strong> {nurse.department}</p>
-            <p><strong>Hospital:</strong> {nurse.hospital}</p>
-            <p><strong>Date of Birth:</strong> {new Date(nurse.dateOfBirth).toLocaleDateString()}</p>
-            <p><strong>Qualifications:</strong> {nurse.qualifications.join(', ')}</p>
-            <p><strong>Seniority:</strong> {nurse.seniority} years</p>
-            <Link to={`/nurses/${nurse._id}/edit`}>Edit Nurse</Link>
+            <div className="patient-detail-field">
+                <p><strong>Name:</strong> {nurse.name}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Title:</strong> {nurse.title}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Email:</strong> {nurse.email}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Gender:</strong> {nurse.gender}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Phone:</strong> {nurse.phone}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Department:</strong> {nurse.department}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Hospital:</strong> {nurse.hospital}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Date of Birth:</strong> {new Date(nurse.dateOfBirth).toLocaleDateString()}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Qualifications:</strong> {nurse.qualifications.join(', ')}</p>
+            </div>
+            <div className="patient-detail-field">
+                <p><strong>Seniority:</strong> {nurse.seniority} years</p>
+            </div>
+            <center><Link to={`/nurses/${nurse._id}/edit`} className="btn" style={{width : '150px'}}>Edit Nurse</Link></center>
         </div>
-        </center>
     );
 };
 

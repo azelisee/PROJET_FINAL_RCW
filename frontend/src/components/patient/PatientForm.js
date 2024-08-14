@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createPatient } from '../../services/api';
 import '../../css/PatientForm.css';
 
@@ -18,6 +19,10 @@ const PatientForm = () => {
         currentRoom: ''
     });
 
+    const [message, setMessage] = useState({ type: '', content: '' });
+
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPatient({ ...patient, [name]: value });
@@ -25,9 +30,16 @@ const PatientForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createPatient(patient).then(response => {
-            console.log('Patient created', response.data);
-        });
+        createPatient(patient)
+            .then(response => {
+                setMessage({ type: 'success', content: 'Patient created successfully!' });
+                console.log('Patient created', response.data);
+                navigate('/patients');
+            })
+            .catch(error => {
+                setMessage({ type: 'error', content: 'Failed to create patient.' });
+                console.error('There was an error creating the patient!', error);
+            });
     };
 
     return (
@@ -35,6 +47,11 @@ const PatientForm = () => {
         <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <h2>Add New Patient</h2>
+                {message.content && (
+                    <div className={`message ${message.type}`}>
+                        {message.content}
+                    </div>
+                )}
                 <div className="form-group">
                     <input type="text" name="name" value={patient.name} onChange={handleChange} placeholder="Name" required />
                     <input type="number" name="age" value={patient.age} onChange={handleChange} placeholder="Age" required />
@@ -64,12 +81,12 @@ const PatientForm = () => {
                 <h3>Medical Folders</h3>
                 <div className="form-group">
                     <div>
-                        <input type="text" name="folderName" placeholder="Folder Name"/>
+                        <input type="text" name="folderName" placeholder="Folder Name" />
                         <input type="text" name="documentType" placeholder="Document Type" />
                         <input type="url" name="documentUrl" placeholder="Document URL" />
                         <input type="date" name="documentDate" />
-                        <br/>
-                        <button type="button">Add Medical Folder</button>
+                        <br />
+                        <button type="button" className="btn-blue">Add Medical Folder</button>
                     </div>
                 </div>
 
@@ -81,7 +98,7 @@ const PatientForm = () => {
                     <input type="text" name="notes" placeholder="Notes" />
                     <input type="text" name="diagnosis" placeholder="Diagnosis" />
                 </div>
-                <button type="button" style={{width:'175px'}}>Add Consultation</button>
+                <button type="button" className="btn-blue">Add Consultation</button>
 
                 <h3>Treatments</h3>
                 <div className="form-group">
@@ -95,14 +112,14 @@ const PatientForm = () => {
                         <option value="completed">Completed</option>
                         <option value="planned">Planned</option>
                     </select>
-                    <button type="button">Add Treatment</button>
+                    <button type="button" className="btn-blue">Add Treatment</button>
                 </div>
 
                 <div className="form-group">
                     <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" />
                 </div>
 
-                <center><button type="submit" style={{width:'175px'}}>Add Patient</button></center>
+                <center><button type="submit" className="btn-green">Add Patient</button></center>
             </form>
         </div>
         </center>

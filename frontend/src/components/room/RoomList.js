@@ -1,88 +1,82 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getRoomById, updateRoom } from '../../services/api';
-import '../../css/PatientForm.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { getRooms, deleteRoom } from '../../services/api';
 import '../../css/PatientList.css';
 
-const RoomEdit = () => {
-    const { id } = useParams();
-    const [room, setRoom] = useState({
-        roomNumber: '',
-        bedNumber: '',
-        department: '',
-        hospital: ''
-    });
+const RoomList = () => {
+    const [rooms, setRooms] = useState([]);
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        getRoomById(id).then((response) => {
-            if (response.data.room) {
-                setRoom(response.data.room);
+    const fetchRooms = () => {
+        getRooms().then((response) => {
+            if (response.data) {
+                setRooms(response.data);
             } else {
-                console.error('Expected an object but got:', response.data);
+                console.error('Expected an array but got:', response.data);
             }
         }).catch(error => {
-            console.error('There was an error fetching the room details!', error);
+            console.error('There was an error fetching the rooms!', error);
         });
-    }, [id]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setRoom({ ...room, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        updateRoom(id, room)
-            .then(response => {
-                console.log('Room updated:', response.data);
-                navigate('/rooms');
-            })
-            .catch(error => console.error('Error updating room:', error));
+    useEffect(() => {
+        fetchRooms();
+    }, []);
+
+    const handleDelete = (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this room?");
+        if (confirmDelete) {
+            if (id) {
+                deleteRoom(id)
+                    .then(response => {
+                        setMessage('Room deleted successfully');
+                        setTimeout(() => {
+                            setMessage('');
+                        }, 3000);
+                        fetchRooms();
+                        navigate('/rooms');
+                    })
+                    .catch(error => {
+                        console.error('Error deleting:', error);
+                        setMessage('Error deleting room');
+                    });
+            } else {
+                console.error('ID is undefined');
+            }
+        }
     };
 
     return (
         <center>
-            <div className="form-container">
-            <h2>Edit Room</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="number"
-                    name="roomNumber"
-                    placeholder="Room Number"
-                    value={room.roomNumber}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="number"
-                    name="bedNumber"
-                    placeholder="Bed Number"
-                    value={room.bedNumber}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="department"
-                    placeholder="Department ID"
-                    value={room.department}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="hospital"
-                    placeholder="Hospital ID"
-                    value={room.hospital}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit" style={{width:'175px'}}>Update Room</button>
-            </form>
-        </div>
+            <div className="patient-list-container">
+                <h1>Rooms</h1>
+                {message && <p className="message">{message}</p>}
+                <center>
+                    <button type="button" className="add-patient-button">
+                        <Link to="/rooms/new">Add Room</Link>
+                    </button>
+                </center>
+                {rooms.length > 0 ? (
+                    <div className="patient-cards">
+                        {rooms.map((room) => (
+                            <div key={room._id} className="patient-card">
+                                <Link to={`/rooms/${room._id}`}>
+                                    <p>Room Number: {room.roomNumber}</p>
+                                    <p>Bed Number: {room.bedNumber}</p>
+                                </Link>
+                                <button onClick={() => handleDelete(room._id)} type="button">
+                                    Delete
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No rooms found</p>
+                )}
+            </div>
         </center>
     );
 };
 
-export default RoomEdit;
+export default RoomList;

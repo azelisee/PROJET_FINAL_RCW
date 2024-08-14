@@ -18,6 +18,8 @@ const DoctorForm = () => {
         schedule: []
     });
 
+    const [message, setMessage] = useState({ type: '', content: '' });
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -39,17 +41,27 @@ const DoctorForm = () => {
         e.preventDefault();
         createDoctor(doctor)
             .then(response => {
-                console.log('Doctor created:', response.data);
+                setMessage({ type: 'success', content: 'Doctor created successfully!' });
+                console.log('Doctor created', response.data);
                 navigate('/doctors');
             })
-            .catch(error => console.error('Error creating doctor:', error));
+            .catch(error => {
+                setMessage({ type: 'error', content: 'Failed to create doctor.' });
+                console.error('There was an error creating the doctor!', error);
+            });
     };
 
     return (
         <center>
-            <div className="form-container">
-            <h2>Add Doctor</h2>
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
+            <h2>Add Doctor</h2>
+            {message.content && (
+                <div className={`message ${message.type}`}>
+                    {message.content}
+                </div>
+            )}
+                <div className="form-group">
                 <input
                     type="text"
                     name="name"
@@ -58,6 +70,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="text"
                     name="title"
@@ -66,6 +80,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="email"
                     name="email"
@@ -74,6 +90,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="password"
                     name="password"
@@ -82,6 +100,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="text"
                     name="phone"
@@ -90,6 +110,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="text"
                     name="speciality"
@@ -98,6 +120,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="number"
                     name="seniority"
@@ -106,6 +130,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="text"
                     name="department"
@@ -114,6 +140,8 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
                 <input
                     type="text"
                     name="hospital"
@@ -122,6 +150,10 @@ const DoctorForm = () => {
                     onChange={handleChange}
                     required
                 />
+                </div>
+                <div className="form-group">
+                </div>
+                <br/>
                 <h3>Schedule</h3>
                 {doctor.schedule.map((slot, index) => (
                     <div key={index}>
@@ -148,8 +180,9 @@ const DoctorForm = () => {
                         />
                     </div>
                 ))}
-                <button type="button" onClick={addScheduleSlot}>Add Schedule Slot</button>
-                <button type="submit">Add Doctor</button>
+                <button type="button" onClick={addScheduleSlot} className="btn-blue">Add Schedule</button>
+                <br/>
+                <button type="submit" className="btn-green">Add Doctor</button>
             </form>
         </div>
         </center>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getStaffById } from '../../services/api';
 import '../../css/PatientDetail.css';
 
@@ -9,11 +9,7 @@ const StaffDetail = () => {
 
     useEffect(() => {
         getStaffById(id).then((response) => {
-            if (response.data.staff) {
-                setStaff(response.data.staff);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
+            setStaff(response.data);
         }).catch(error => {
             console.error('There was an error fetching the staff details!', error);
         });
@@ -22,20 +18,17 @@ const StaffDetail = () => {
     if (!staff) return <div>Loading...</div>;
 
     return (
-        <center>
-            <div className="patient-detail-container">
-                <h2>{staff.name}</h2>
-                <p><strong>Email:</strong> {staff.email}</p>
-                <p><strong>Phone:</strong> {staff.phone}</p>
-                <p><strong>Role:</strong> {staff.role}</p>
-                <p><strong>Department:</strong> {staff.department.name}</p>
-                <p><strong>Hospital:</strong> {staff.hospital.name}</p>
-                <p><strong>Date of Birth:</strong> {new Date(staff.dateOfBirth).toLocaleDateString()}</p>
-                <p><strong>Hire Date:</strong> {new Date(staff.hireDate).toLocaleDateString()}</p>
-
-                <Link to={`/staff/${staff._id}/edit`} className="btn">Edit Staff</Link>
-            </div>
-        </center>
+        <div className="patient-detail-container">
+            <h2>Staff Details</h2>
+            <div className="patient-detail-field"><p><strong>Name:</strong> {staff.name}</p></div>
+            <div className="patient-detail-field"><p><strong>Email:</strong> {staff.email}</p></div>
+            <div className="patient-detail-field"><p><strong>Phone:</strong> {staff.phone}</p></div>
+            <div className="patient-detail-field"><p><strong>Role:</strong> {staff.role}</p></div>
+            <div className="patient-detail-field"><p><strong>Department:</strong> {staff.department}</p></div>
+            <div className="patient-detail-field"><p><strong>Hospital:</strong> {staff.hospital}</p></div>
+            <div className="patient-detail-field"><p><strong>Date of Birth:</strong> {new Date(staff.dateOfBirth).toLocaleDateString()}</p></div>
+            <center><Link to={`/staff/${staff._id}/edit`} className="btn" style={{ width: '150px' }}>Edit Staff</Link></center>
+        </div>
     );
 };
 

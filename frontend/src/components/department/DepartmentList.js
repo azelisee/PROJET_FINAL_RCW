@@ -1,48 +1,76 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getDepartments, deleteDepartment } from '../../services/api';
-import '../../css/PatientForm.css';
 import '../../css/PatientList.css';
 
 const DepartmentList = () => {
     const [departments, setDepartments] = useState([]);
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchDepartments = () => {
         getDepartments().then((response) => {
-            if (response.data.departments) {
-                setDepartments(response.data.departments);
+            if (response.data) {
+                setDepartments(response.data);
             } else {
                 console.error('Expected an array but got:', response.data);
             }
         }).catch(error => {
             console.error('There was an error fetching the departments!', error);
         });
+    };
+
+    useEffect(() => {
+        fetchDepartments();
     }, []);
 
     const handleDelete = (id) => {
-        deleteDepartment(id)
-            .then(response => console.log('Deleted successfully'))
-            .catch(error => console.error('Error deleting:', error));
+        const confirmDelete = window.confirm("Are you sure you want to delete this department?");
+        if (confirmDelete) {
+            if (id) {
+                deleteDepartment(id)
+                    .then(response => {
+                        setMessage('Department deleted successfully');
+                        setTimeout(() => {
+                            setMessage('');
+                        }, 3000);
+                        fetchDepartments();
+                        navigate('/departments');
+                    })
+                    .catch(error => {
+                        console.error('Error deleting:', error);
+                        setMessage('Error deleting department');
+                    });
+            } else {
+                console.error('ID is undefined');
+            }
+        }
     };
 
     return (
         <center>
             <div className="patient-list-container">
+                <h1>Departments</h1>
+                {message && <p className="message">{message}</p>}
                 <center>
-                <h2>Department List</h2>
-                <button type="button">
-                    <Link to="/departments/new">Add Department</Link>
-                </button>
+                    <button type="button" className="add-patient-button">
+                        <Link to="/departments/new">Add Department</Link>
+                    </button>
                 </center>
                 {departments.length > 0 ? (
-                    <ul>
+                    <div className="patient-cards">
                         {departments.map((department) => (
-                            <li key={department._id}>
-                                <Link to={`/departments/${department._id}`}>{department.name}</Link>
-                                <button onClick={() => handleDelete(department._id)} type="button">Delete</button>
-                            </li>
+                            <div key={department._id} className="patient-card">
+                                <Link to={`/departments/${department._id}`}>
+                                    <p>{department.name}</p>
+                                    <p>Description: {department.description}</p>
+                                </Link>
+                                <button onClick={() => handleDelete(department._id)} type="button">
+                                    Delete
+                                </button>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 ) : (
                     <p>No departments found</p>
                 )}
