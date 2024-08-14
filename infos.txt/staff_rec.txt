@@ -1,0 +1,59 @@
+{
+    "name": "John Dark",
+    "email": "john@gmail.com",
+    "password": "securepassword123",
+    "phone": "555-1234",
+    "role": "Technician",
+    "department": "64dce4c4692d843b1c8d1e78",
+    "hospital": "64dce4c4692d843b1c8d1e79",
+    "dateOfBirth": "1985-05-15",
+    "hireDate": "2020-03-01"
+}
+
+
+
+
+{
+    "name": "Jane Smith",
+    "email": "janesmith@gmail.com",
+    "password": "anothersecurepassword456",
+    "phone": "555-5678",
+    "role": "Administrator",
+    "department": "64dce4c4692d843b1c8d1e78",
+    "hospital": "64dce4c4692d843b1c8d1e79",
+    "dateOfBirth": "1990-09-25",
+    "hireDate": "2019-08-15"
+}
+
+
+
+
+
+{
+    "name": "Emily Johnson",
+    "email": "emil@gmail.com",
+    "password": "password789",
+    "phone": "555-9876",
+    "role": "Caregiver",
+    "department": "64dce4c4692d843b1c8d1e78",
+    "hospital": "64dce4c4692d843b1c8d1e79",
+    "dateOfBirth": "1982-12-10",
+    "hireDate": "2021-01-20"
+}
+
+
+
+
+
+
+{
+    "name": "Robert Brown",
+    "email": "robert@hotmail.com",
+    "password": "uniquePassword123",
+    "phone": "555-6543",
+    "role": "Other",
+    "department": "64dce4c4692d843b1c8d1e78",
+    "hospital": "64dce4c4692d843b1c8d1e79",
+    "dateOfBirth": "1978-07-20",
+    "hireDate": "2018-11-30"
+}
