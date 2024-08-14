@@ -1,58 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPatients, deletePatient } from '../../services/api';
-import '../css/PatientForm.css';
-import '../css/PatientList.css';
+import '../../css/PatientForm.css';
+import '../../css/PatientList.css';
 
 const PatientList = () => {
     const [patients, setPatients] = useState([]);
-    useEffect(() => {
+    const [message, setMessage] = useState('');
+
+    const fetchPatients = () => {
         getPatients().then((response) => {
-            if (response.data.patients) {
-                setPatients(response.data.patients);
+            if (response.data) {
+                setPatients(response.data);
             } else {
                 console.error('Expected an array but got:', response.data);
             }
         }).catch(error => {
             console.error('There was an error fetching the patients!', error);
         });
+    };
+
+    useEffect(() => {
+        fetchPatients();
     }, []);
 
-    const handleDelete = (id1, id2) => {
-        console.log('IDs to delete:', id1, id2);
-        if (id1 && id2) {
-            deletePatient(id1, id2)
-                .then(response => console.log('Deleted successfully'))
-                .catch(error => console.error('Error deleting:', error));
-        } else {
-            console.error('One or both IDs are undefined');
+    const handleDelete = (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this patient?");
+        if (confirmDelete) {
+            if (id) {
+                deletePatient(id)
+                    .then(response => {
+                        setMessage('Patient deleted successfully');
+                        setTimeout(() => {
+                            setMessage('');
+                        }, 3000); // Message disappears after 3 seconds
+                        fetchPatients(); // Re-fetch patients after deletion
+                    })
+                    .catch(error => {
+                        console.error('Error deleting:', error);
+                        setMessage('Error deleting patient');
+                    });
+            } else {
+                console.error('ID is undefined');
+            }
         }
-    }
+    };
 
     return (
         <center>
             <div className="patient-list-container">
-            <h2>Display all our Patients</h2>
-            <center>
-                <button type="button">
-                    <Link to="/patients/new">Add Patient</Link>
-                </button>
-            </center>
-            {patients.length > 0 ? (
-                <ul>
-                    {patients.map((patient) => (
-                        <li key={patient.id1}>
-                            <Link to={`/patients/${patient.id1}`}>{patient.name}</Link>
-                            <button onClick={() => handleDelete(patient.id1, patient.id2)} type="button">
-                                Delete
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No patients found</p>
-            )}
-        </div>
+                <h2>Display all our Patients</h2>
+                {message && <p className="message">{message}</p>}
+                <center>
+                    <button type="button" className="add-patient-button">
+                        <Link to="/patients/new">Add Patient</Link>
+                    </button>
+                </center>
+                {patients.length > 0 ? (
+                    <div className="patient-cards">
+                        {patients.map((patient) => (
+                            <div key={patient._id} className="patient-card">
+                                <Link to={`/patients/${patient._id}`}>
+                                    <p>{patient.name}</p>
+                                </Link>
+                                <button onClick={() => handleDelete(patient._id)} type="button">
+                                    Delete
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No patients found</p>
+                )}
+            </div>
         </center>
     );
 };

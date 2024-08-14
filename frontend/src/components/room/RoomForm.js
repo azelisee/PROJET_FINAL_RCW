@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import {createRoom} from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { createRoom } from '../../services/api';
+import '../../css/PatientForm.css';
 
 const RoomForm = () => {
     const [room, setRoom] = useState({
         roomNumber: '',
         bedNumber: '',
-        department: ''
+        department: '',
+        hospital: ''
     });
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,19 +20,55 @@ const RoomForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createRoom.create(room).then(() => {
-            history.push('/rooms');
-        });
+        createRoom(room)
+            .then(response => {
+                console.log('Room created:', response.data);
+                navigate('/rooms');
+            })
+            .catch(error => console.error('Error creating room:', error));
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <center>
+            <div className="form-container">
             <h2>Add Room</h2>
-            <input type="number" name="roomNumber" value={room.roomNumber} onChange={handleChange} placeholder="Room Number" required />
-            <input type="number" name="bedNumber" value={room.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
-            <input type="text" name="department" value={room.department} onChange={handleChange} placeholder="Department ID" required />
-            <button type="submit">Submit</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="number"
+                    name="roomNumber"
+                    placeholder="Room Number"
+                    value={room.roomNumber}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="number"
+                    name="bedNumber"
+                    placeholder="Bed Number"
+                    value={room.bedNumber}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="department"
+                    placeholder="Department ID"
+                    value={room.department}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="hospital"
+                    placeholder="Hospital ID"
+                    value={room.hospital}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit" style={{width:'175px'}}>Add Room</button>
+            </form>
+        </div>
+        </center>
     );
 };
 

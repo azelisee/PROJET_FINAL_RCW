@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import {createTransfer} from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { createTransfer } from '../../services/api';
+import '../../css/PatientForm.css';
 
 const TransferForm = () => {
     const [transfer, setTransfer] = useState({
-        roomNumber: '',
-        bedNumber: '',
-        department: ''
+        patient: '',
+        fromHospital: '',
+        toHospital: '',
+        toDepartment: '',
+        transferDate: '',
+        reason: ''
     });
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,19 +22,70 @@ const TransferForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createTransfer.create(transfer).then(() => {
-            history.push('/transfers');
-        });
+        createTransfer(transfer)
+            .then(response => {
+                console.log('Transfer created:', response.data);
+                navigate('/transfers');
+            })
+            .catch(error => console.error('Error creating transfer:', error));
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <center>
+            <div className="patient-form-container">
             <h2>Add Transfer</h2>
-            <input type="number" name="roomNumber" value={transfer.roomNumber} onChange={handleChange} placeholder="Room Number" required />
-            <input type="number" name="bedNumber" value={transfer.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
-            <input type="text" name="department" value={transfer.department} onChange={handleChange} placeholder="Department ID" required />
-            <button type="submit">Submit</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="patient"
+                    placeholder="Patient ID"
+                    value={transfer.patient}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="fromHospital"
+                    placeholder="From Hospital ID"
+                    value={transfer.fromHospital}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="toHospital"
+                    placeholder="To Hospital ID"
+                    value={transfer.toHospital}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="toDepartment"
+                    placeholder="To Department ID"
+                    value={transfer.toDepartment}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="date"
+                    name="transferDate"
+                    placeholder="Transfer Date"
+                    value={transfer.transferDate}
+                    onChange={handleChange}
+                    required
+                />
+                <textarea
+                    name="reason"
+                    placeholder="Reason for Transfer"
+                    value={transfer.reason}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit" style={{width:'175px'}}>Add Transfer</button>
+            </form>
+        </div>
+        </center>
     );
 };
 

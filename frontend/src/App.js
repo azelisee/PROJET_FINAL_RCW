@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import Home from './components/Home';
+import  AuthContext  from './components/context/AuthContext';
 
 import PatientList from './components/patient/PatientList';
 import PatientForm from './components/patient/PatientForm';
@@ -39,58 +39,66 @@ import TransferForm from './components/transfer/TransferForm';
 import TransferDetail from './components/transfer/TransferDetail';
 import TransferEdit from './components/transfer/TransferEdit';
 
+import StaffList from './components/staff/StaffList';
+import StaffForm from './components/staff/StaffForm';
+import StaffDetail from './components/staff/StaffDetail';
+import StaffEdit from './components/staff/StaffEdit';
 
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 
 const App = () => {
     return (
-        <AuthProvider>
             <Router>
                 <Navbar />
                 <Routes>
                     <Route path ="/" element={<Home/>} />
+                    <Route path="/login" element={<AuthContext />} />
 
                     <Route path="/patients" element={<PatientList />} />
                     <Route path="/patients/new" element={<PatientForm />} />
-                    <Route path="/patients/:id" element={<PatientDetail />} />
-                    <Route path="/patients/:id1,:id2/edit" element={<PatientEdit />} />
+                    <Route path="/patients/:id/" element={<PatientDetail />} />
+                    <Route path="/patients/:id/edit" element={<PatientEdit />} />
 
 
                     <Route path="/doctors" element={<DoctorList />} />
                     <Route path="/doctors/new" element={<DoctorForm />} />
                     <Route path="/doctors/:id" element={<DoctorDetail />} />
-                    <Route path="/doctors/:id1,:id2/edit" element={<DoctorEdit />} />
+                    <Route path="/doctors/:id/edit" element={<DoctorEdit />} />
 
                     <Route path="/nurses" element={<NurseList />} />
                     <Route path="/nurses/new" element={<NurseForm />} />
                     <Route path="/nurses/:id" element={<NurseDetail />} />
-                    <Route path="/nurses/:id1,:id2/edit" element={<NurseEdit />} />
+                    <Route path="/nurses/:id/edit" element={<NurseEdit />} />
 
                     <Route path="/rooms" element={<RoomList />} />
                     <Route path="/rooms/new" element={<RoomForm />} />
                     <Route path="/rooms/:id" element={<RoomDetail />} />
-                    <Route path="/rooms/:id1,:id2/edit" element={<RoomEdit />} />
+                    <Route path="/rooms/:id/edit" element={<RoomEdit />} />
 
                     <Route path="/departments" element={<DepartmentList />} />
                     <Route path="/departments/new" element={<DepartmentForm />} />
                     <Route path="/departments/:id" element={<DepartmentDetail />} />
-                    <Route path="/departments/:id1,:id2/edit" element={<DepartmentEdit />} />
+                    <Route path="/departments/:id/edit" element={<DepartmentEdit />} />
 
                     <Route path="/hospitals" element={<HospitalList />} />
                     <Route path="/hospitals/new" element={<HospitalForm />} />
                     <Route path="/hospitals/:id" element={<HospitalDetail />} />
-                    <Route path="/hospitals/:id1,:id2/edit" element={<HospitalEdit />} />
+                    <Route path="/hospitals/:id/edit" element={<HospitalEdit />} />
 
                     <Route path="/transfers" element={<TransferList />} />
                     <Route path="/transfers/new" element={<TransferForm />} />
                     <Route path="/transfers/:id" element={<TransferDetail />} />
-                    <Route path="/transfers/:id1,:id2/edit" element={<TransferEdit />} />
+                    <Route path="/transfers/:id/edit" element={<TransferEdit />} />
+
+                    <Route path="/staff" element={<StaffList />} />
+                    <Route path="/staff/new" element={<StaffForm />} />
+                    <Route path="/staff/:id" element={<StaffDetail />} />
+                    <Route path="/staff/:id/edit" element={<StaffEdit />} />
 
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>
-        </AuthProvider>
     );
 };
 

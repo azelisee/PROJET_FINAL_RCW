@@ -1,0 +1,101 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.patient-list-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.patient-list-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.patient-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.patient-card {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    width: 180px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.patient-card p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.patient-card button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.patient-card button:hover {
+    background-color: orangered;
+}
+
+.add-patient-button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.add-patient-button:hover {
+    background-color: royalblue;
+}
+
+.patient-card a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.patient-card a:hover {
+    text-decoration: underline;
+}
+
+
+.message {
+    color: green;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.message.error {
+    color: red;
+}

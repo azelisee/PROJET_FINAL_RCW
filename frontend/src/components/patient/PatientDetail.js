@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getPatientById } from '../../services/api';
-import '../css/PatientDetail.css';
+import '../../css/PatientDetail.css';
+
 
 const PatientDetail = () => {
-    const { id } = useParams();
-    const [patient, setPatient] = useState(null);
+    const {id} = useParams();
+    console.log('id:',id );
 
+    const [patient, setPatient] = useState(null);
     useEffect(() => {
         getPatientById(id).then((response) => {
-            if (response.data.patient) {
-                setPatient(response.data.patient);
+            if (response.data) {
+                setPatient(response.data);
             } else {
                 console.error('Expected an object but got:', response.data);
             }
@@ -18,6 +20,7 @@ const PatientDetail = () => {
             console.error('There was an error fetching the patient details!', error);
         });
     }, [id]);
+
 
     if (!patient) return <div>Loading...</div>;
 
@@ -98,7 +101,7 @@ const PatientDetail = () => {
             <h3>Current Room</h3>
             <p>{patient.currentRoom}</p>
 
-            <Link to={`/patients/edit/${patient._id}`} className="btn">Edit Patient</Link>
+            <center><Link to={`/patients/${patient._id}/edit`} className="btn" style={{width : '150px'}}>Edit Patient</Link></center>
         </div>
     );
 };

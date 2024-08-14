@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './css/Home.css';
+import '../css/Home.css';
+import '../css/footer.css';
 
 const Home = () => {
     return (
@@ -46,6 +47,13 @@ const Home = () => {
                     </Link>
                 </div>
                 <div className="home-card">
+                    <Link to="/staff">
+                        <img src="/images/staff1.jpg" alt="Manage Staff"/>
+                        <h2>Manage Staff</h2>
+                        <p>Manage other medical staff including technicians, admin, and caregivers.</p>
+                    </Link>
+                </div>
+                <div className="home-card">
                     <Link to="/patients">
                         <img src="/images/patient1.jpg" alt="Manage Patients"/>
                         <h2>Manage Patients</h2>
@@ -60,6 +68,15 @@ const Home = () => {
                     </Link>
                 </div>
             </main>
+            <footer className="home-footer">
+                <div className="footer-content">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:azoumakokou@teccart.online" style={{color:'white'}}>azoumakokou@teccart.online</a></p>
+                    <p>Phone: 438-456-7890</p>
+                    <p>For appointments, please send an email to our support.</p>
+                    <p>You will receive a confirmation email once your request is received.</p>
+                </div>
+            </footer>
         </div>
     );
 };

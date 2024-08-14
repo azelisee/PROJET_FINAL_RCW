@@ -6,7 +6,7 @@
     "email": "contact@stmarys.com",
     "phone": "(123) 456-7890",
     "departments": ["60d21b4667d0d8992e610c88", "60d21b4667d0d8992e610c89"]
-  },
+  }
 
 
 
@@ -18,7 +18,7 @@
     "email": "info@citygeneral.com",
     "phone": "(234) 567-8901",
     "departments": ["60d21b4667d0d8992e610c8a", "60d21b4667d0d8992e610c8b"]
-  },
+  }
 
 
 
@@ -30,7 +30,7 @@
     "email": "support@eastside-med.com",
     "phone": "(345) 678-9012",
     "departments": ["60d21b4667d0d8992e610c8c", "60d21b4667d0d8992e610c8d"]
-  },
+  }
 
 
 
@@ -43,7 +43,7 @@
     "email": "contact@northvalley.com",
     "phone": "(456) 789-0123",
     "departments": ["60d21b4667d0d8992e610c8e", "60d21b4667d0d8992e610c8f"]
-  },
+  }
 
 
 
@@ -56,7 +56,7 @@
     "email": "info@westsidehealth.com",
     "phone": "(567) 890-1234",
     "departments": ["60d21b4667d0d8992e610c90", "60d21b4667d0d8992e610c91"]
-  },
+  }
 
 
 

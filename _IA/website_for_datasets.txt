@@ -1,0 +1,52 @@
+datasets d'images médicales accessibles publiquement:
+
+1. Kaggle
+- Chest X-ray Images (Pneumonia)https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
+- Skin Cancer MNIST: HAM10000
+https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+
+-RSNA Pneumonia Detection Challenge
+https://www.kaggle.com/c/rsna-pneumonia-detection-challenge
+
+
+
+
+
+2. NIH Chest X-rays Dataset
+https://nihcc.app.box.com/v/ChestXray-NIHCC
+
+
+
+
+
+
+3. ISIC Archive (International Skin Imaging Collaboration)
+https://www.isic-archive.com/
+
+
+
+
+
+4. Cancer Imaging Archive (TCIA)
+https://www.cancerimagingarchive.net/
+
+
+
+
+
+5. Medical Decathlon
+http://medicaldecathlon.com/
+
+
+
+
+6. Open Access Biomedical Image Search Engine (OASIS)
+https://www.oasis-open.org/
+
+
+
+
+7. Google Dataset Search
+https://datasetsearch.research.google.com/
+

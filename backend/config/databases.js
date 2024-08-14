@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// Main database
-const connectToDatabase1 = async() => {
+const connectToDatabase = async() => {
     try {
         mongoose.set('strictQuery', false);
         const conn1 = await mongoose.createConnection(process.env.DATABASE_URI1);
@@ -10,16 +9,4 @@ const connectToDatabase1 = async() => {
         console.log(`Connection error : ${error.message}`);
     }
 };
-
-// Second hand database
-const connectToDatabase2 = async() => {
-    try {
-        mongoose.set('strictQuery', false);
-        const conn2 = await mongoose.createConnection(process.env.DATABASE_URI2);
-        return conn2;
-    } catch (error) {
-        console.log(`Connection error : ${error.message}`);
-    }
-};
-
-module.exports = { connectToDatabase1, connectToDatabase2 };
+module.exports = connectToDatabase;

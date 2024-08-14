@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createPatient } from '../../services/api';
-import '../css/PatientForm.css';
+import '../../css/PatientForm.css';
 
 const PatientForm = () => {
     const [patient, setPatient] = useState({
@@ -31,6 +31,7 @@ const PatientForm = () => {
     };
 
     return (
+        <center>
         <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <h2>Add New Patient</h2>
@@ -62,8 +63,8 @@ const PatientForm = () => {
 
                 <h3>Medical Folders</h3>
                 <div className="form-group">
-                    <input type="text" name="folderName" placeholder="Folder Name" />
                     <div>
+                        <input type="text" name="folderName" placeholder="Folder Name"/>
                         <input type="text" name="documentType" placeholder="Document Type" />
                         <input type="url" name="documentUrl" placeholder="Document URL" />
                         <input type="date" name="documentDate" />
@@ -101,9 +102,10 @@ const PatientForm = () => {
                     <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" />
                 </div>
 
-                <center><button type="submit"  style={{width:'175px'}}>Add Patient</button></center>
+                <center><button type="submit" style={{width:'175px'}}>Add Patient</button></center>
             </form>
         </div>
+        </center>
     );
 };
 

@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useParams,  useNavigate  } from 'react-router-dom';
-import {getNurseById, updateNurse} from '../../services/api';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getNurseById, updateNurse } from '../../services/api';
+import '../../css/PatientForm.css';
 
 const NurseEdit = () => {
     const { id } = useParams();
-    const history =  useNavigate ();
+    const navigate = useNavigate();
     const [nurse, setNurse] = useState({
         name: '',
+        title: '',
         email: '',
-        phone: '',
+        password: '',
         gender: '',
+        phone: '',
         department: '',
+        hospital: '',
         dateOfBirth: '',
         qualifications: '',
-        seniority: ''
+        seniority: '',
+        schedule: []
     });
 
     useEffect(() => {
-        getNurseById.get(id).then(data => setNurse(data));
+        getNurseById(id).then((response) => {
+            setNurse(response.data.nurse);
+        }).catch(error => {
+            console.error('Error fetching nurse details:', error);
+        });
     }, [id]);
 
     const handleChange = (e) => {
@@ -27,29 +36,29 @@ const NurseEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateNurse.update(id, nurse).then(() => {
-            history.push(`/nurses/${id}`);
-        });
+        updateNurse(id, nurse).then(() => {
+            navigate('/nurses');
+        }).catch(error => console.error('Error updating nurse:', error));
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <center>
+            <form onSubmit={handleSubmit} className="form-container">
             <h2>Edit Nurse</h2>
-            <input type="text" name="name" value={nurse.name} onChange={handleChange} placeholder="Name" required />
-            <input type="email" name="email" value={nurse.email} onChange={handleChange} placeholder="Email" required />
-            <input type="tel" name="phone" value={nurse.phone} onChange={handleChange} placeholder="Phone" required />
-            <select name="gender" value={nurse.gender} onChange={handleChange} required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="text" name="department" value={nurse.department} onChange={handleChange} placeholder="Department ID" required />
-            <input type="date" name="dateOfBirth" value={nurse.dateOfBirth} onChange={handleChange} placeholder="Date of Birth" required />
-            <input type="text" name="qualifications" value={nurse.qualifications} onChange={handleChange} placeholder="Qualifications" required />
-            <input type="number" name="seniority" value={nurse.seniority} onChange={handleChange} placeholder="Seniority" required />
-            <button type="submit">Submit</button>
+            <input type="text" name="name" value={nurse.name} onChange={handleChange} required />
+            <input type="text" name="title" value={nurse.title} onChange={handleChange} required />
+            <input type="email" name="email" value={nurse.email} onChange={handleChange} required />
+            <input type="password" name="password" value={nurse.password} onChange={handleChange} required />
+            <input type="text" name="gender" value={nurse.gender} onChange={handleChange} required />
+            <input type="text" name="phone" value={nurse.phone} onChange={handleChange} required />
+            <input type="text" name="department" value={nurse.department} onChange={handleChange} required />
+            <input type="text" name="hospital" value={nurse.hospital} onChange={handleChange} required />
+            <input type="date" name="dateOfBirth" value={nurse.dateOfBirth} onChange={handleChange} required />
+            <input type="text" name="qualifications" value={nurse.qualifications} onChange={handleChange} required />
+            <input type="number" name="seniority" value={nurse.seniority} onChange={handleChange} required />
+            <button type="submit" style={{width:'175px'}}>Update Nurse</button>
         </form>
+        </center>
     );
 };
 

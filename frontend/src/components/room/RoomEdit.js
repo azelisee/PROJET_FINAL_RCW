@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {getRoomById, updateRoom} from '../../services/api';
+import { getRoomById, updateRoom } from '../../services/api';
+import '../../css/PatientForm.css';
 
 const RoomEdit = () => {
     const { id } = useParams();
-    const history = useNavigate();
     const [room, setRoom] = useState({
         roomNumber: '',
         bedNumber: '',
-        department: ''
+        department: '',
+        hospital: ''
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getRoomById.get(id).then(data => setRoom(data));
+        getRoomById(id).then((response) => {
+            if (response.data.room) {
+                setRoom(response.data.room);
+            } else {
+                console.error('Expected an object but got:', response.data);
+            }
+        }).catch(error => {
+            console.error('There was an error fetching the room details!', error);
+        });
     }, [id]);
 
     const handleChange = (e) => {
@@ -22,19 +32,58 @@ const RoomEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateRoom.update(id, room).then(() => {
-            history.push(`/rooms/${id}`);
-        });
+        updateRoom(id, room)
+            .then(response => {
+                console.log('Room updated:', response.data);
+                navigate('/rooms');
+            })
+            .catch(error => console.error('Error updating room:', error));
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <center>
+            <div className="form-container">
             <h2>Edit Room</h2>
-            <input type="number" name="roomNumber" value={room.roomNumber} onChange={handleChange} placeholder="Room Number" required />
-            <input type="number" name="bedNumber" value={room.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
-            <input type="text" name="department" value={room.department} onChange={handleChange} placeholder="Department ID" required />
-            <button type="submit">Submit</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <input style={{width:'175px'}}
+                    type="number"
+                    name="roomNumber"
+                    placeholder="Room Number"
+                    value={room.roomNumber}
+                    onChange={handleChange}
+                    required
+                />
+                <br/>
+                <input style={{width:'175px'}}
+                    type="number"
+                    name="bedNumber"
+                    placeholder="Bed Number"
+                    value={room.bedNumber}
+                    onChange={handleChange}
+                    required
+                />
+                <br/>
+                <input style={{width:'175px'}}
+                    type="text"
+                    name="department"
+                    placeholder="Department ID"
+                    value={room.department}
+                    onChange={handleChange}
+                    required
+                />
+                <br/>
+                <input style={{width:'175px'}}
+                    type="text"
+                    name="hospital"
+                    placeholder="Hospital ID"
+                    value={room.hospital}
+                    onChange={handleChange}
+                    required
+                />
+                <center><button type="submit" style={{width:'175px'}}>Update Room</button></center>
+            </form>
+        </div>
+        </center>
     );
 };
 

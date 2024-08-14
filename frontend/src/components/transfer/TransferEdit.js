@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {getTransferById, updateTransfer} from '../../services/api';
+import { getTransferById, updateTransfer } from '../../services/api';
+import '../../css/PatientForm.css';
 
 const TransferEdit = () => {
     const { id } = useParams();
-    const history = useNavigate();
     const [transfer, setTransfer] = useState({
-        roomNumber: '',
-        bedNumber: '',
-        department: ''
+        patient: '',
+        fromHospital: '',
+        toHospital: '',
+        toDepartment: '',
+        transferDate: '',
+        reason: ''
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getTransferById.get(id).then(data => setTransfer(data));
+        getTransferById(id).then((response) => {
+            if (response.data.transfer) {
+                setTransfer(response.data.transfer);
+            } else {
+                console.error('Expected an object but got:', response.data);
+            }
+        }).catch(error => {
+            console.error('There was an error fetching the transfer details!', error);
+        });
     }, [id]);
 
     const handleChange = (e) => {
@@ -22,19 +34,70 @@ const TransferEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateTransfer.update(id, transfer).then(() => {
-            history.push(`/transfers/${id}`);
-        });
+        updateTransfer(id, transfer)
+            .then(response => {
+                console.log('Transfer updated:', response.data);
+                navigate('/transfers');
+            })
+            .catch(error => console.error('Error updating transfer:', error));
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Edit transfer</h2>
-            <input type="number" name="roomNumber" value={transfer.roomNumber} onChange={handleChange} placeholder="Room Number" required />
-            <input type="number" name="bedNumber" value={transfer.bedNumber} onChange={handleChange} placeholder="Bed Number" required />
-            <input type="text" name="department" value={transfer.department} onChange={handleChange} placeholder="Department ID" required />
-            <button type="submit">Submit</button>
-        </form>
+        <center>
+            <div className="patient-form-container">
+            <h2>Edit Transfer</h2>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="patient"
+                    placeholder="Patient ID"
+                    value={transfer.patient}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="fromHospital"
+                    placeholder="From Hospital ID"
+                    value={transfer.fromHospital}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="toHospital"
+                    placeholder="To Hospital ID"
+                    value={transfer.toHospital}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="toDepartment"
+                    placeholder="To Department ID"
+                    value={transfer.toDepartment}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="date"
+                    name="transferDate"
+                    placeholder="Transfer Date"
+                    value={transfer.transferDate}
+                    onChange={handleChange}
+                    required
+                />
+                <textarea
+                    name="reason"
+                    placeholder="Reason for Transfer"
+                    value={transfer.reason}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">Update Transfer</button>
+            </form>
+        </div>
+        </center>
     );
 };
 

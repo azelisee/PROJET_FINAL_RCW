@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPatientById, updatePatient } from '../../services/api';
-import '../css/PatientForm.css';
+import '../../css/PatientForm.css';
 
 const PatientEdit = () => {
-    const { id1, id2 } = useParams();
+    const { id} = useParams();
+    console.log('id:', id);
+
     const navigate = useNavigate();
     const [patient, setPatient] = useState({
         name: '',
@@ -22,12 +24,37 @@ const PatientEdit = () => {
     });
 
     const [error, setError] = useState('');
+
     useEffect(() => {
-        console.log("id1:", id1, "id2:", id2);
-        if (id1 && id2) {
-            getPatientById(id1).then((response) => {
-                if (response.data && response.data.patient) {
-                    setPatient(response.data.patient);
+        if (!id) {
+            setError('Patient ID is missing! Redirecting...');
+            //setTimeout(() => navigate('/patients'), 3000); // Redirection après 3 secondes
+        } else {
+            getPatientById(id).then((response) => {
+                if (response.data) {
+                    const patientData = response.data;
+
+                    // Format the dates to 'yyyy-MM-dd'
+                    patientData.dateOfBirth = patientData.dateOfBirth ? new Date(patientData.dateOfBirth).toISOString().split('T')[0] : '';
+                    patientData.medicalFolders = patientData.medicalFolders.map(folder => {
+                        return {
+                            ...folder,
+                            documents: folder.documents.map(doc => ({
+                                ...doc,
+                                dateAdded: doc.dateAdded ? new Date(doc.dateAdded).toISOString().split('T')[0] : ''
+                            }))
+                        };
+                    });
+                    patientData.consultationHistory = patientData.consultationHistory.map(consultation => ({
+                        ...consultation,
+                        date: consultation.date ? new Date(consultation.date).toISOString().split('T')[0] : ''
+                    }));
+                    patientData.treatments = patientData.treatments.map(treatment => ({
+                        ...treatment,
+                        startDate: treatment.startDate ? new Date(treatment.startDate).toISOString().split('T')[0] : '',
+                        endDate: treatment.endDate ? new Date(treatment.endDate).toISOString().split('T')[0] : ''
+                    }));
+                    setPatient(patientData);
                 } else {
                     setError('Invalid response data');
                     console.error('Invalid response data:', response.data);
@@ -36,13 +63,8 @@ const PatientEdit = () => {
                 setError('There was an error fetching the patient details!');
                 console.error('There was an error fetching the patient details!', error);
             });
-        } else {
-            setError('Patient ID is missing!');
-            console.error('Patient ID is missing!');
         }
-    }, [id1, id2]);
-
-
+    }, [id, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -65,7 +87,6 @@ const PatientEdit = () => {
         }
         setPatient({ ...patient, [field]: updatedField });
     };
-
 
     const addNestedField = (field) => {
         let newField = {};
@@ -91,23 +112,23 @@ const PatientEdit = () => {
             return;
         }
         if (patient.treatments.some(treatment => !treatment.treatmentName || !treatment.description)) {
-            setError('All treatments must have a name and description)');
+            setError('All treatments must have a name and description');
             return;
         }
 
-        updatePatient(id1, id2, patient).then(() => {
-            navigate(`/patients/${id1},${id2}`);
+        updatePatient(id, patient).then(() => {
+            navigate(`/patients/${id}`);
         }).catch(error => {
             setError('There was an error updating the patient!');
             console.error('There was an error updating the patient!', error);
         });
     };
 
-
     return (
-        <form onSubmit={handleSubmit} className="form-container">
-            {error && <div className="error-message">{error}</div>}
+        <center>
+            <form onSubmit={handleSubmit} className="form-container">
             <h2>Edit Patient</h2>
+            {error && <p>{error}</p>}
             <div className="form-group">
                 <input type="text" name="name" value={patient.name} onChange={handleChange} placeholder="Name" required />
                 <input type="number" name="age" value={patient.age} onChange={handleChange} placeholder="Age" required />
@@ -154,7 +175,7 @@ const PatientEdit = () => {
                     ))}
                 </div>
             ))}
-            <button type="button" onClick={() => addNestedField('medicalFolders')}  style={{width:'175px'}}>Add Medical Folder</button>
+            <button type="button" onClick={() => addNestedField('medicalFolders')} style={{width:'175px'}}>Add Medical Folder</button>
 
             <h3>Consultation History</h3>
             {patient.consultationHistory.map((consultation, index) => (
@@ -166,7 +187,7 @@ const PatientEdit = () => {
                     <input type="text" name="diagnosis" value={consultation.diagnosis} onChange={(e) => handleNestedChange(e, index, 'consultationHistory')} placeholder="Diagnosis" />
                 </div>
             ))}
-            <button type="button" onClick={() => addNestedField('consultationHistory')}  style={{width:'175px'}}>Add Consultation</button>
+            <button type="button" onClick={() => addNestedField('consultationHistory')} style={{width:'175px'}}>Add Consultation</button>
 
             <h3>Treatments</h3>
             {patient.treatments.map((treatment, index) => (
@@ -183,12 +204,13 @@ const PatientEdit = () => {
                     </select>
                 </div>
             ))}
-            <button type="button" onClick={() => addNestedField('treatments')}  style={{width:'175px'}}>Add Treatment</button>
+            <button type="button" onClick={() => addNestedField('treatments')} style={{width:'175px'}}>Add Treatment</button>
             <br/>
-            <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" style={{width:'185px'}}  required />
+            <input type="text" name="currentRoom" value={patient.currentRoom} onChange={handleChange} placeholder="Current Room" style={{width:'185px'}} required />
 
-            <center><button type="submit"  style={{width:'175px'}}>Submit</button></center>
+            <center><button type="submit" style={{width:'175px'}}>Submit</button></center>
         </form>
+        </center>
     );
 };
 

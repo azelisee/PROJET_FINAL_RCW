@@ -8,8 +8,8 @@ router.get('/', transferController.getTransfers);
 
 router.get('/:id', transferController.getTransferById);
 
-router.put('/:id1,:id2', transferController.updateTransfer);
+router.put('/:id', transferController.updateTransfer);
 
-router.delete('/:id1,:id2', transferController.deleteTransfer);
+router.delete('/:id', transferController.deleteTransfer);
 
 module.exports = router;

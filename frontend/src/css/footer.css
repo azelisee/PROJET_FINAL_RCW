@@ -1,0 +1,23 @@
+.home-footer {
+    background-color:royalblue;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 100px;
+    border-radius: 5px;
+    max-width: 3000px
+}
+
+.home-footer .footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.home-footer h3 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.home-footer p {
+    margin: 5px 0;
+}

@@ -7,11 +7,9 @@ dotenv.config({path: './config/.env'});
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000',
-}));
+app.use(cors());
 
-const { connectToDatabase1, connectToDatabase2 } = require('./config/databases');
+const connectToDatabase  = require('./config/databases');
 
 const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
@@ -20,6 +18,9 @@ const departmentRoutes = require('./routes/departmentRoutes');
 const roomRoutes = require('./routes/roomRoutes');
 const hospitalRoutes = require('./routes/hospitalRoutes');
 const transferRoutes = require('./routes/transferRoutes');
+const authRoutes = require('./routes/authRoutes');
+const staffRoutes = require('./routes/staffRoutes');
+const appointmentRoutes = require('./routes/appointmentRoutes');
 
 app.use(bodyParser.json());
 
@@ -30,14 +31,14 @@ app.use('/departments', departmentRoutes);
 app.use('/rooms', roomRoutes);
 app.use('/hospitals', hospitalRoutes);
 app.use('/transfers', transferRoutes);
+app.use('/auth', authRoutes);
+app.use('/staff', staffRoutes);
+app.use('/appointments', appointmentRoutes);
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
-    console.log(connectToDatabase1);
+    console.log(connectToDatabase);
     console.log('Connected to MongoDB Atlas');
-    console.log(connectToDatabase2);
-    console.log('Connected to MongoDB Compass');
-    console.log('\n')
 });
