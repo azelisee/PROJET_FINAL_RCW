@@ -1,20 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getDepartmentById } from '../../services/api';
 import '../../css/PatientDetail.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const DepartmentDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [department, setDepartment] = useState(null);
+    const [error, setError] = useState('');
+
+    const verifyAccess = useVerifyAccess(['Administrator','Technician','Caregiver','Other', 'Doctor','Nurse']);
 
     useEffect(() => {
-        getDepartmentById(id).then((response) => {
-            setDepartment(response.data);
-        }).catch(error => {
-            console.error('There was an error fetching the department details!', error);
-        });
-    }, [id]);
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            getDepartmentById(id)
+                .then((response) => {
+                    if (response.data) {
+                        setDepartment(response.data);
+                    } else {
+                        console.error('Expected an object but got:', response.data);
+                        setError('Invalid response data.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('There was an error fetching the department details!', error);
+                    setError('There was an error fetching the department details!');
+                });
+        }
+    }, [id, navigate, verifyAccess]);
 
+    if (error) return <div>{error}</div>;
     if (!department) return <div>Loading...</div>;
 
     return (

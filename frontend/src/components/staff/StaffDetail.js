@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getStaffById } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientDetail.css';
 
 const StaffDetail = () => {
     const { id } = useParams();
     const [staff, setStaff] = useState(null);
+    const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
 
     useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+        fetchStaffDetails();
+
+    }, [id, navigate, verifyAccess]);
+
+    const fetchStaffDetails = () => {
         getStaffById(id).then((response) => {
             setStaff(response.data);
         }).catch(error => {
             console.error('There was an error fetching the staff details!', error);
         });
-    }, [id]);
+    };
 
     if (!staff) return <div>Loading...</div>;
 

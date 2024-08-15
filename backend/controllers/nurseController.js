@@ -11,16 +11,16 @@ initDatabases();
 
 exports.createNurse = async (req, res) => {
     try {
-        const existingNurse = await NurseModel.findOne(req.body.email);
+        const existingNurse = await NurseModel.findOne({email: req.body.email});
         if (existingNurse) {
             return res.status(400).send('A nurse with this email already exists');
         }
         const nurse = new NurseModel(req.body);
         await nurse.save();
-        res.status(201).send('New Nurse registered',nurse);
+        res.status(201).json('New Nurse registered',nurse);
         console.log('Recorded in MongoDB Atlas : ', nurse);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).send({ error: error.message });
         console.log(error);
     }
 };

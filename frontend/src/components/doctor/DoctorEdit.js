@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getDoctorById, updateDoctor } from '../../services/api';
 import '../../css/PatientForm.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const DoctorEdit = () => {
     const { id } = useParams();
@@ -19,15 +20,20 @@ const DoctorEdit = () => {
         schedule: []
     });
     const [error, setError] = useState('');
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
 
     useEffect(() => {
-        getDoctorById(id).then((response) => {
-            setDoctor(response.data);
-        }).catch(error => {
-            setError('There was an error fetching the doctor details!');
-            console.error('There was an error fetching the doctor details!', error);
-        });
-    }, [id]);
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            getDoctorById(id).then((response) => {
+                setDoctor(response.data);
+            }).catch(error => {
+                setError('There was an error fetching the doctor details!');
+                console.error('There was an error fetching the doctor details!', error);
+            });
+        }
+    }, [id, navigate, verifyAccess]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

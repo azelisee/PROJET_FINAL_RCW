@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNurses, deleteNurse } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientList.css';
 
 const NurseList = () => {
     const [nurses, setNurses] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator', 'Technician','Caregiver','Other','Doctor', 'Nurse']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            fetchNurses();
+        }
+    }, [verifyAccess, navigate]);
 
     const fetchNurses = () => {
         getNurses().then((response) => {
@@ -20,10 +31,6 @@ const NurseList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchNurses();
-    }, []);
-
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this nurse?");
         if (confirmDelete) {
@@ -35,7 +42,6 @@ const NurseList = () => {
                             setMessage('');
                         }, 3000);
                         fetchNurses();
-                        navigate('/nurses');
                     })
                     .catch(error => {
                         console.error('Error deleting:', error);
@@ -63,7 +69,7 @@ const NurseList = () => {
                             <div key={nurse._id} className="patient-card">
                                 <Link to={`/nurses/${nurse._id}`}>
                                     <p>{nurse.name}</p>
-                                    <p>Sex: {nurse.gender}</p>
+                                    <p>Gender: {nurse.gender}</p>
                                     <p>Seniority: {nurse.seniority} years</p>
                                 </Link>
                                 <button onClick={() => handleDelete(nurse._id)} type="button">

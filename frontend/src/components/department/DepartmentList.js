@@ -2,11 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getDepartments, deleteDepartment } from '../../services/api';
 import '../../css/PatientList.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const DepartmentList = () => {
     const [departments, setDepartments] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator','Technician','Caregiver','Other', 'Doctor']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            fetchDepartments();
+        }
+    }, [navigate, verifyAccess]);
 
     const fetchDepartments = () => {
         getDepartments().then((response) => {
@@ -20,10 +31,6 @@ const DepartmentList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchDepartments();
-    }, []);
-
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this department?");
         if (confirmDelete) {
@@ -35,7 +42,6 @@ const DepartmentList = () => {
                             setMessage('');
                         }, 3000);
                         fetchDepartments();
-                        navigate('/departments');
                     })
                     .catch(error => {
                         console.error('Error deleting:', error);

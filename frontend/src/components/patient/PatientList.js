@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getPatients, deletePatient } from '../../services/api';
 import '../../css/PatientList.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const PatientList = () => {
     const [patients, setPatients] = useState([]);
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+    const verifyAccess = useVerifyAccess(['Administrator','Technician','Caregiver','Other','Doctor', 'Nurse']);
+
+    useEffect(() => {
+        if (verifyAccess()) {
+            fetchPatients();
+        }
+    }, [verifyAccess]);
 
     const fetchPatients = () => {
         getPatients().then((response) => {
@@ -19,9 +28,19 @@ const PatientList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchPatients();
-    }, []);
+    const handleAddPatientClick = (e) => {
+        e.preventDefault();
+        if (verifyAccess()) {
+            navigate('/patients/new');
+        }
+    };
+
+    const handlePatientDetailClick = (e, id) => {
+        e.preventDefault();
+        if (verifyAccess()) {
+            navigate(`/patients/${id}`);
+        }
+    };
 
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this patient?");
@@ -51,18 +70,25 @@ const PatientList = () => {
                 <h1>Patients</h1>
                 {message && <p className="message">{message}</p>}
                 <center>
-                    <button type="button" className="add-patient-button">
-                        <Link to="/patients/new">Add Patient</Link>
+                    <button
+                        type="button"
+                        className="add-patient-button"
+                        onClick={handleAddPatientClick}
+                    >
+                        Add Patient
                     </button>
                 </center>
                 {patients.length > 0 ? (
                     <div className="patient-cards">
                         {patients.map((patient) => (
                             <div key={patient._id} className="patient-card">
-                                <Link to={`/patients/${patient._id}`}>
+                                <Link
+                                    to="#"
+                                    onClick={(e) => handlePatientDetailClick(e, patient._id)}
+                                >
                                     <p>{patient.name}</p>
-                                    <p>Age : {patient.age} years old</p>
-                                    <p>Sex : {patient.gender}</p>
+                                    <p>Age: {patient.age} years old</p>
+                                    <p>Sex: {patient.gender}</p>
                                 </Link>
                                 <button onClick={() => handleDelete(patient._id)} type="button">
                                     Delete

@@ -10,10 +10,10 @@ initDatabases();
 
 exports.createStaff = async (req, res) => {
     try {
-        const staffExists = await StaffModel.findOne(req.body.email);
+        const staffExists = await StaffModel.findOne({email : req.body.email});
         if (staffExists) {
-            res.status(400).json('Staff member already exists');
             console.log('Staff member already exists');
+            return ('Staff member already exists');
         }
         const staff = await StaffModel.create(req.body);
         res.status(201).json(staff);

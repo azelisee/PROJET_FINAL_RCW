@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getPatientById } from '../../services/api';
 import '../../css/PatientDetail.css';
-
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const PatientDetail = () => {
-    const {id} = useParams();
-    console.log('id:',id );
-
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [patient, setPatient] = useState(null);
+    const [error, setError] = useState('');
+
+    const verifyAccess = useVerifyAccess(['Doctor', 'Nurse']);
+
     useEffect(() => {
-        getPatientById(id).then((response) => {
-            if (response.data) {
-                setPatient(response.data);
-            } else {
-                console.error('Expected an object but got:', response.data);
-            }
-        }).catch(error => {
-            console.error('There was an error fetching the patient details!', error);
-        });
-    }, [id]);
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            getPatientById(id)
+                .then((response) => {
+                    if (response.data) {
+                        setPatient(response.data);
+                    } else {
+                        console.error('Expected an object but got:', response.data);
+                        setError('Invalid response data.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('There was an error fetching the patient details!', error);
+                    setError('There was an error fetching the patient details!');
+                });
+        }
+    }, [id, navigate, verifyAccess]);
 
-
+    if (error) return <div>{error}</div>;
     if (!patient) return <div>Loading...</div>;
 
     return (
@@ -101,7 +112,7 @@ const PatientDetail = () => {
             <h3>Current Room</h3>
             <p>{patient.currentRoom}</p>
 
-            <center><Link to={`/patients/${patient._id}/edit`} className="btn" style={{width : '150px'}}>Edit Patient</Link></center>
+            <center><Link to={`/patients/${patient._id}/edit`} className="btn" style={{ width: '150px' }}>Edit Patient</Link></center>
         </div>
     );
 };

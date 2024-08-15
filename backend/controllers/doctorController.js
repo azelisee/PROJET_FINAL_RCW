@@ -17,7 +17,7 @@ exports.createDoctor = async (req, res) => {
         }
         const doctor = new DoctorModel(req.body);
         await doctor.save();
-        res.status(201).send('New Doctor recorded',doctor);
+        res.status(201).json('New Doctor recorded', doctor);
         console.log('Recorded in MongoDB Atlas : ', doctor);
     } catch (error) {
         res.status(400).json({ error: error.message });

@@ -12,56 +12,56 @@ const Home = () => {
             </header>
             <main className="home-main">
                 <div className="home-card">
-                    <Link to="/hospitals">
+                    <Link to="/i-hospitals">
                         <img src="/images/hospital2.png" alt="Manage Hospitals"/>
                         <h2>Manage Hospitals</h2>
                         <p>Oversee hospital facilities, staff, and departments.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/departments">
+                    <Link to="/i-departments">
                         <img src="/images/departments3.jpg" alt="Manage Departments"/>
                         <h2>Manage Departments</h2>
                         <p>Coordinate departmental activities, staff, and resources.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/rooms">
+                    <Link to="/i-rooms">
                         <img src="/images/room8.jpg" alt="Manage Rooms"/>
                         <h2>Manage Rooms</h2>
                         <p>Track room availability, assignments, and conditions.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/doctors">
+                    <Link to="/i-doctors">
                         <img src="/images/doctor3.jpg" alt="Manage Doctors"/>
                         <h2>Manage Doctors</h2>
                         <p>Organize doctor schedules, specialties, and profiles.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/nurses">
+                    <Link to="/i-nurses">
                         <img src="/images/nurse4.jpg" alt="Manage Nurses"/>
                         <h2>Manage Nurses</h2>
                         <p>Manage nurse assignments, shifts, and qualifications.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/staff">
+                    <Link to="/i-staff">
                         <img src="/images/staff1.jpg" alt="Manage Staff"/>
                         <h2>Manage Staff</h2>
                         <p>Manage other medical staff including technicians, admin, and caregivers.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/patients">
+                    <Link to="/i-patients">
                         <img src="/images/patient1.jpg" alt="Manage Patients"/>
                         <h2>Manage Patients</h2>
                         <p>View and manage patient information, medical records, and more.</p>
                     </Link>
                 </div>
                 <div className="home-card">
-                    <Link to="/transfers">
+                    <Link to="/i-transfers">
                         <img src="/images/transfer4.jpg" alt="Manage Transfers"/>
                         <h2>Manage Transfers</h2>
                         <p>Manage patient transfers between hospitals and departments.</p>

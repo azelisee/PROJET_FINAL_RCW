@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getRooms, deleteRoom } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientList.css';
 
 const RoomList = () => {
     const [rooms, setRooms] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor', 'Nurse']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            return;
+        }
+        fetchRooms();
+    }, [navigate, verifyAccess]);
 
     const fetchRooms = () => {
         getRooms().then((response) => {
@@ -20,10 +30,6 @@ const RoomList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchRooms();
-    }, []);
-
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this room?");
         if (confirmDelete) {
@@ -35,7 +41,6 @@ const RoomList = () => {
                             setMessage('');
                         }, 3000);
                         fetchRooms();
-                        navigate('/rooms');
                     })
                     .catch(error => {
                         console.error('Error deleting:', error);

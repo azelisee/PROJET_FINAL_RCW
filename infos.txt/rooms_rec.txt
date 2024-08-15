@@ -34,7 +34,7 @@
     "roomNumber": 700,
     "bedNumber": 4,
     "department": "60d21b4667d0d8992e610c86" ,
-"hospital": "66af1e6dd409cb0d230704e1",
+"hospital": "66af1e6dd409cb0d230704e1"
 }
 
 
@@ -43,7 +43,7 @@
     "roomNumber": 703,
     "bedNumber": 2,
     "department": "60d21b4667d0d8992e610c86" ,
-"hospital": "66af1e6dd409cb0d230704e1",
+"hospital": "66af1e6dd409cb0d230704e1"
 }
 
 
@@ -52,7 +52,7 @@
     "roomNumber": 74,
     "bedNumber": 3,
     "department": "60d21b4667d0d8992e610c86" ,
-"hospital": "66af1e6dd409cb0d230704e1",
+"hospital": "66af1e6dd409cb0d230704e1"
 }
 
 
@@ -60,5 +60,5 @@
     "roomNumber": 254,
     "bedNumber": 2,
     "department": "60d21b4667d0d8992e610c86" ,
-"hospital": "66af1e6dd409cb0d230704e1",
+"hospital": "66af1e6dd409cb0d230704e1"
 }

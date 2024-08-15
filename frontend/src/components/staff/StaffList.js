@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getStaff, deleteStaff } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientList.css';
 
 const StaffList = () => {
     const [staffs, setStaffs] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+
+        fetchStaff();
+    }, [navigate, verifyAccess]);
 
     const fetchStaff = () => {
         getStaff().then((response) => {
@@ -20,10 +32,6 @@ const StaffList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchStaff();
-    }, []);
-
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this staff member?");
         if (confirmDelete) {
@@ -35,8 +43,8 @@ const StaffList = () => {
                             setMessage('');
                         }, 3000);
                         fetchStaff();
-                        navigate('/staffs');
-;                    })
+                        navigate('/staff');
+                    })
                     .catch(error => {
                         console.error('Error deleting:', error);
                         setMessage('Error deleting staff member');

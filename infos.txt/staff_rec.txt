@@ -57,3 +57,186 @@
     "dateOfBirth": "1978-07-20",
     "hireDate": "2018-11-30"
 }
+
+
+{
+    "name": "Alice Johnson",
+    "email": "alice.johnson@gmail.com",
+    "password": "securePass456",
+    "phone": "555-9876",
+    "role": "Administrator",
+    "department": "64dce4c4692d843b1c8d1e80",
+    "hospital": "64dce4c4692d843b1c8d1e81",
+    "dateOfBirth": "1985-03-15",
+    "hireDate": "2015-05-12"
+}
+
+
+{
+    "name": "David Smith",
+    "email": "d.smith@outlook.com",
+    "password": "passDavid789",
+    "phone": "555-1234",
+    "role": "Technician",
+    "department": "64dce4c4692d843b1c8d1e82",
+    "hospital": "64dce4c4692d843b1c8d1e83",
+    "dateOfBirth": "1990-12-02",
+    "hireDate": "2020-07-19"
+}
+
+
+{
+    "name": "Laura Williams",
+    "email": "laura.williams@yahoo.com",
+    "password": "lauraPass321",
+    "phone": "555-4321",
+    "role": "Caregiver",
+    "department": "64dce4c4692d843b1c8d1e84",
+    "hospital": "64dce4c4692d843b1c8d1e85",
+    "dateOfBirth": "1982-08-25",
+    "hireDate": "2017-03-30"
+}
+
+{
+    "name": "Michael Clark",
+    "email": "michael.clark@hotmail.com",
+    "password": "clarkPass654",
+    "phone": "555-8765",
+    "role": "Other",
+    "department": "64dce4c4692d843b1c8d1e86",
+    "hospital": "64dce4c4692d843b1c8d1e87",
+    "dateOfBirth": "1975-05-18",
+    "hireDate": "2010-11-22"
+}
+
+
+{
+    "name": "Sophia Miller",
+    "email": "sophia.miller@gmail.com",
+    "password": "sophiaPass987",
+    "phone": "555-5678",
+    "role": "Administrator",
+    "department": "64dce4c4692d843b1c8d1e88",
+    "hospital": "64dce4c4692d843b1c8d1e89",
+    "dateOfBirth": "1992-01-10",
+    "hireDate": "2018-08-14"
+}
+
+{
+    "name": "Kwame Mensah",
+    "email": "kwame.mensah@ghana.com",
+    "password": "ghanaPass123",
+    "phone": "555-2345",
+    "role": "Technician",
+    "department": "64dce4c4692d843b1c8d1e90",
+    "hospital": "64dce4c4692d843b1c8d1e91",
+    "dateOfBirth": "1987-11-21",
+    "hireDate": "2016-09-05"
+}
+
+
+{
+    "name": "Chen Wei",
+    "email": "chen.wei@china.cn",
+    "password": "chinaSecure456",
+    "phone": "555-3456",
+    "role": "Caregiver",
+    "department": "64dce4c4692d843b1c8d1e92",
+    "hospital": "64dce4c4692d843b1c8d1e93",
+    "dateOfBirth": "1993-04-17",
+    "hireDate": "2019-01-22"
+}
+
+
+{
+    "name": "Aarav Sharma",
+    "email": "aarav.sharma@india.in",
+    "password": "indiaStrong789",
+    "phone": "555-4567",
+    "role": "Administrator",
+    "department": "64dce4c4692d843b1c8d1e94",
+    "hospital": "64dce4c4692d843b1c8d1e95",
+    "dateOfBirth": "1980-09-10",
+    "hireDate": "2012-06-11"
+}
+
+
+
+
+{
+    "name": "Linh Nguyen",
+    "email": "linh.nguyen@vietnam.vn",
+    "password": "vietNam654",
+    "phone": "555-5678",
+    "role": "Other",
+    "department": "64dce4c4692d843b1c8d1e96",
+    "hospital": "64dce4c4692d843b1c8d1e97",
+    "dateOfBirth": "1996-05-08",
+    "hireDate": "2021-10-03"
+}
+
+
+
+
+{
+    "name": "Fatoumata Diallo",
+    "email": "fatou.diallo@senegal.sn",
+    "password": "senegalPass321",
+    "phone": "555-6789",
+    "role": "Technician",
+    "department": "64dce4c4692d843b1c8d1e98",
+    "hospital": "64dce4c4692d843b1c8d1e99",
+    "dateOfBirth": "1983-02-14",
+    "hireDate": "2014-07-26"
+}
+
+
+
+
+{
+    "name": "Hiroshi Tanaka",
+    "email": "hiroshi.tanaka@japan.jp",
+    "password": "japanPass987",
+    "phone": "555-7890",
+    "role": "Administrator",
+    "department": "64dce4c4692d843b1c8d1e100",
+    "hospital": "64dce4c4692d843b1c8d1e101",
+    "dateOfBirth": "1972-12-30",
+    "hireDate": "2009-02-28"
+}
+
+
+
+
+
+{
+    "name": "Zanele Ndlovu",
+    "email": "zanele.ndlovu@southafrica.za",
+    "password": "southAfrica654",
+    "phone": "555-8901",
+    "role": "Caregiver",
+    "department": "64dce4c4692d843b1c8d1e102",
+    "hospital": "64dce4c4692d843b1c8d1e103",
+    "dateOfBirth": "1991-07-19",
+    "hireDate": "2017-11-15"
+}
+
+
+
+
+{
+    "name": "Priya Patel",
+    "email": "priya.patel@india.in",
+    "password": "indiaCare123",
+    "phone": "555-9012",
+    "role": "Other",
+    "department": "64dce4c4692d843b1c8d1e104",
+    "hospital": "64dce4c4692d843b1c8d1e105",
+    "dateOfBirth": "1989-08-22",
+    "hireDate": "2015-04-20"
+}
+
+
+
+
+

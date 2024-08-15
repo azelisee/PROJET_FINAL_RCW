@@ -1,4 +1,4 @@
-[
+
     {
         "name": "Hillary Mayer",
         "title": "Nurse",
@@ -114,7 +114,10 @@
             }
         ],
         "seniority": 6
-    },
+    }
+
+
+
     {
         "name": "John Doe",
         "title": "Nurse",
@@ -139,7 +142,11 @@
             }
         ],
         "seniority": 8
-    },
+    }
+
+
+
+
     {
         "name": "Sarah Connor",
         "title": "Nurse",
@@ -164,7 +171,11 @@
             }
         ],
         "seniority": 9
-    },
+    }
+
+
+
+
     {
         "name": "Tom Hanks",
         "title": "Nurse",
@@ -189,7 +200,9 @@
             }
         ],
         "seniority": 7
-    },
+    }
+
+
     {
         "name": "Lucy Liu",
         "title": "Nurse",
@@ -214,7 +227,10 @@
             }
         ],
         "seniority": 12
-    },
+    }
+
+
+
     {
         "name": "Jack Ryan",
         "title": "Nurse",
@@ -264,7 +280,9 @@
             }
         ],
         "seniority": 3
-    },
+    }
+
+
     {
         "name": "Mark Sloan",
         "title": "Nurse",
@@ -289,7 +307,12 @@
             }
         ],
         "seniority": 15
-    },
+    }
+
+
+
+
+
     {
         "name": "Lisa Kudrow",
         "title": "Nurse",
@@ -314,7 +337,10 @@
             }
         ],
         "seniority": 20
-    },
+    }
+
+
+
     {
         "name": "Monica Geller",
         "title": "Nurse",
@@ -339,7 +365,10 @@
             }
         ],
         "seniority": 18
-    },
+    }
+
+
+
     {
         "name": "Ross Geller",
         "title": "Nurse",
@@ -364,7 +393,10 @@
             }
         ],
         "seniority": 15
-    },
+    }
+
+
+
     {
         "name": "Rachel Green",
         "title": "Nurse",
@@ -389,7 +421,10 @@
             }
         ],
         "seniority": 10
-    },
+    }
+
+
+
     {
         "name": "Chandler Bing",
         "title": "Nurse",
@@ -414,7 +449,11 @@
             }
         ],
         "seniority": 12
-    },
+    }
+
+
+
+
     {
         "name": "Phoebe Buffay",
         "title": "Nurse",
@@ -439,7 +478,10 @@
             }
         ],
         "seniority": 15
-    },
+    }
+
+
+
     {
         "name": "Jessica Day",
         "title": "Nurse",
@@ -464,7 +506,11 @@
             }
         ],
         "seniority": 9
-    },
+    }
+
+
+
+
     {
         "name": "Winston Schmidt",
         "title": "Nurse",
@@ -489,7 +535,11 @@
             }
         ],
         "seniority": 10
-    },
+    }
+
+
+
+
     {
         "name": "Nick Miller",
         "title": "Nurse",
@@ -515,4 +565,4 @@
         ],
         "seniority": 15
     }
-]
+

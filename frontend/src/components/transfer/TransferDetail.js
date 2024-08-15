@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getTransferById } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientDetail.css';
 
 const TransferDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [transfer, setTransfer] = useState(null);
 
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
+
     useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+
         getTransferById(id).then((response) => {
             setTransfer(response.data);
         }).catch(error => {
             console.error('There was an error fetching the transfer details!', error);
         });
-    }, [id]);
+    }, [id, navigate, verifyAccess]);
 
     if (!transfer) return <div>Loading...</div>;
 

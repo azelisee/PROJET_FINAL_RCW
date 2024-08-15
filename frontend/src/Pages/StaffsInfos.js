@@ -7,13 +7,13 @@ const StaffInfos = () => {
             <h1>Our Staff</h1>
             <p>Beyond our medical professionals, our hospital is supported by a dedicated staff that ensures everything runs smoothly...</p>
             <div className="image-gallery">
-                <img src="/images/staff1.jpg" alt="Admin Staff" />
-                <img src="/images/staff2.jpg" alt="Technical Team" />
-                <img src="/images/staff3.jpg" alt="Support Staff" />
+                <img src="/images/i-s1.jpg" alt="Admin Staff"  height="100px" width="150px"/>
+                <img src="/images/i-s2.jpg" alt="Technical Team" height="100px" width="150px"/>
+                <img src="/images/i-s3.jpg" alt="Support Staff" height="100px" width="150px"/>
             </div>
             <div className="video-container">
                 <video controls>
-                    <source src="/videos/staff-demo.mp4" type="video/mp4" />
+                    <source src="/videos/vs.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

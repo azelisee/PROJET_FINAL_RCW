@@ -1,6 +1,7 @@
 .infos-container {
+    font-family: 'Times New Roman', Times, serif;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -9,8 +10,9 @@
 }
 
 .infos-container h1 {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 2.5em;
-    color: #004080;
+    color: navy;
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -18,9 +20,10 @@
 }
 
 .infos-container p {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.1em;
     line-height: 1.6;
-    color: #333;
+    color: navy;
     margin-bottom: 20px;
     text-align: justify;
 }
@@ -30,11 +33,12 @@
 }
 
 .info-section h2 {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 2em;
-    color: #004080;
+    color: navy;
     margin-bottom: 15px;
     text-transform: uppercase;
-    border-bottom: 2px solid #004080;
+    border-bottom: 2px solid navy;
     padding-bottom: 5px;
 }
 
@@ -69,9 +73,10 @@
 }
 
 blockquote {
+    font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     color: #555;
-    border-left: 5px solid #004080;
+    border-left: 5px solid navy;
     padding-left: 15px;
     margin: 20px 0;
 }
@@ -79,7 +84,7 @@ blockquote {
 blockquote footer {
     text-align: right;
     font-weight: bold;
-    color: #004080;
+    color: navy;
 }
 
 .video-container {
@@ -99,10 +104,12 @@ blockquote footer {
 }
 
 .info-section ul li {
+    font-family: 'Times New Roman', Times, serif;
     margin-bottom: 10px;
 }
 
 .info-section h2 {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.8em;
     color: #2c3e50;
     margin-bottom: 15px;
@@ -111,7 +118,8 @@ blockquote footer {
 }
 
 footer a {
-    color: #004080;
+    font-family: 'Times New Roman', Times, serif;
+    color:navy;
     text-decoration: none;
     font-weight: bold;
 }

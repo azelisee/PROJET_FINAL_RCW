@@ -10,7 +10,7 @@ initDatabases();
 
 exports.createRoom = async (req, res) => {
     try {
-        const existingRoom = await RoomModel.findOne(req.body.roomNumber);
+        const existingRoom = await RoomModel.findOne({roomNumber : req.body.roomNumber});
         if (existingRoom) {
             return res.status(400).send('A room with this number already exists');
         }

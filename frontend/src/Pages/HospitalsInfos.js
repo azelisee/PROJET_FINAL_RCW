@@ -17,9 +17,9 @@ const HospitalsInfos = () => {
                     diagnostic and treatment equipment, spacious patient rooms, and comfortable waiting areas for families and visitors.
                 </p>
                 <div className="image-gallery">
-                    <img src="/images/hospital-facility1.jpg" alt="Hospital Facility 1" />
-                    <img src="/images/hospital-facility2.jpg" alt="Hospital Facility 2" />
-                    <img src="/images/hospital-facility3.jpg" alt="Hospital Facility 3" />
+                    <img src="/images/h1.jpg" alt="Hospital Facility 1" height="100px" width="150px"/>
+                    <img src="/images/h2.webp" alt="Hospital Facility 2"  height="100px" width="150px"/>
+                    <img src="/images/h3.jpg" alt="Hospital Facility 3" height="100px" width="150px"/>
                 </div>
             </div>
 
@@ -41,8 +41,8 @@ const HospitalsInfos = () => {
                     <li>And many others</li>
                 </ul>
                 <div className="image-gallery">
-                    <img src="/images/hospital-services1.jpg" alt="Hospital Services 1" />
-                    <img src="/images/hospital-services2.jpg" alt="Hospital Services 2" />
+                    <img src="/images/h4.jpg" alt="Hospital Services 1"  height="100px" width="150px" />
+                    <img src="/images/h5.webp" alt="Hospital Services 2" height="100px" width="150px"/>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ const HospitalsInfos = () => {
                 </p>
                 <div className="video-container">
                     <video controls>
-                        <source src="/videos/hospital-demo.mp4" type="video/mp4" />
+                        <source src="/videos/vh2.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -84,7 +84,7 @@ const HospitalsInfos = () => {
                     For more information about our hospitals or to schedule a visit, please contact us:
                 </p>
                 <ul>
-                    <li>Email: <a href="mailto:azoumakokou@teccart.online" style={{color:'white'}}>azoumakokou@teccart.online</a></li>
+                    <li>Email: <a href="mailto:azoumakokou@teccart.online">azoumakokou@teccart.online</a></li>
                     <li>Phone: (438)-456-7890</li>
                 </ul>
             </div>

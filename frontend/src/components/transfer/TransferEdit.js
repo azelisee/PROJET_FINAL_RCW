@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getTransferById, updateTransfer } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientForm.css';
 
 const TransferEdit = () => {
@@ -16,14 +17,21 @@ const TransferEdit = () => {
     });
     const [error, setError] = useState('');
 
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
+
     useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+
         getTransferById(id).then((response) => {
             setTransfer(response.data);
         }).catch(error => {
             setError('There was an error fetching the transfer details!');
             console.error('There was an error fetching the transfer details!', error);
         });
-    }, [id]);
+    }, [id, navigate, verifyAccess]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

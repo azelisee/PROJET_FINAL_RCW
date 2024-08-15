@@ -7,13 +7,13 @@ const NursesInfos = () => {
             <h1>Our Nurses</h1>
             <p>Our nursing staff is the backbone of our hospital, providing compassionate care and support to our patients around the clock...</p>
             <div className="image-gallery">
-                <img src="/images/nurse1.jpg" alt="Nurse Assisting Patient" />
-                <img src="/images/nurse2.jpg" alt="Nurse Station" />
-                <img src="/images/nurse3.jpg" alt="Nurse in ICU" />
+                <img src="/images/n1.jpg" alt="Nurse Assisting Patient" height="100px" width="150px"/>
+                <img src="/images/n2.jpg" alt="Nurse Station" height="100px" width="150px" />
+                <img src="/images/n3.jpg" alt="Nurse in ICU"  height="100px" width="150px"/>
             </div>
             <div className="video-container">
                 <video controls>
-                    <source src="/videos/nurse-demo.mp4" type="video/mp4" />
+                    <source src="/videos/vn.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

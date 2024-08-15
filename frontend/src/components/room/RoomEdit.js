@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRoomById, updateRoom } from '../../services/api';
+import {useVerifyAccess}  from '../../utils/DecodeToken';
 import '../../css/PatientForm.css';
 
 const RoomEdit = () => {
@@ -14,14 +15,21 @@ const RoomEdit = () => {
     });
     const [error, setError] = useState('');
 
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
+
     useEffect(() => {
+        if (!verifyAccess) {
+            navigate('/unauthorized');
+            return;
+        }
+
         getRoomById(id).then((response) => {
             setRoom(response.data);
         }).catch(error => {
             setError('There was an error fetching the room details!');
             console.error('There was an error fetching the room details!', error);
         });
-    }, [id]);
+    }, [id, navigate, verifyAccess]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

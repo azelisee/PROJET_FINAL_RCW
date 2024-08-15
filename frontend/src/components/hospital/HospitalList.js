@@ -2,11 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getHospitals, deleteHospital } from '../../services/api';
 import '../../css/PatientList.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const HospitalList = () => {
     const [hospitals, setHospitals] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+    const verifyAccess = useVerifyAccess(['Administrator', 'Technician','Caregiver','Other','Doctor']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+        fetchHospitals();
+    }, [verifyAccess, navigate]);
 
     const fetchHospitals = () => {
         getHospitals().then((response) => {
@@ -19,10 +29,6 @@ const HospitalList = () => {
             console.error('There was an error fetching the hospitals!', error);
         });
     };
-
-    useEffect(() => {
-        fetchHospitals();
-    }, []);
 
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this hospital?");

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createDoctor } from '../../services/api';
 import '../../css/PatientForm.css';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 
 const DoctorForm = () => {
     const [doctor, setDoctor] = useState({
@@ -19,8 +20,14 @@ const DoctorForm = () => {
     });
 
     const [message, setMessage] = useState({ type: '', content: '' });
-
     const navigate = useNavigate();
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        }
+    }, [verifyAccess, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,138 +60,136 @@ const DoctorForm = () => {
 
     return (
         <center>
-        <div className="form-container">
-            <form onSubmit={handleSubmit}>
-            <h2>Add Doctor</h2>
-            {message.content && (
-                <div className={`message ${message.type}`}>
-                    {message.content}
-                </div>
-            )}
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={doctor.name}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Title"
-                    value={doctor.title}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={doctor.email}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={doctor.password}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="phone"
-                    placeholder="Phone"
-                    value={doctor.phone}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="speciality"
-                    placeholder="Speciality"
-                    value={doctor.speciality}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="number"
-                    name="seniority"
-                    placeholder="Seniority (years)"
-                    value={doctor.seniority}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="department"
-                    placeholder="Department ID"
-                    value={doctor.department}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                <input
-                    type="text"
-                    name="hospital"
-                    placeholder="Hospital ID"
-                    value={doctor.hospital}
-                    onChange={handleChange}
-                    required
-                />
-                </div>
-                <div className="form-group">
-                </div>
-                <br/>
-                <h3>Schedule</h3>
-                {doctor.schedule.map((slot, index) => (
-                    <div key={index}>
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <h2>Add Doctor</h2>
+                    {message.content && (
+                        <div className={`message ${message.type}`}>
+                            {message.content}
+                        </div>
+                    )}
+                    <div className="form-group">
                         <input
                             type="text"
-                            placeholder="Day"
-                            value={slot.day}
-                            onChange={(e) => handleScheduleChange(index, 'day', e.target.value)}
-                            required
-                        />
-                        <input
-                            type="time"
-                            placeholder="Start Time"
-                            value={slot.startTime}
-                            onChange={(e) => handleScheduleChange(index, 'startTime', e.target.value)}
-                            required
-                        />
-                        <input
-                            type="time"
-                            placeholder="End Time"
-                            value={slot.endTime}
-                            onChange={(e) => handleScheduleChange(index, 'endTime', e.target.value)}
+                            name="name"
+                            placeholder="Name"
+                            value={doctor.name}
+                            onChange={handleChange}
                             required
                         />
                     </div>
-                ))}
-                <button type="button" onClick={addScheduleSlot} className="btn-blue">Add Schedule</button>
-                <br/>
-                <button type="submit" className="btn-green">Add Doctor</button>
-            </form>
-        </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Title"
+                            value={doctor.title}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={doctor.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={doctor.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="phone"
+                            placeholder="Phone"
+                            value={doctor.phone}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="speciality"
+                            placeholder="Speciality"
+                            value={doctor.speciality}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="number"
+                            name="seniority"
+                            placeholder="Seniority (years)"
+                            value={doctor.seniority}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="department"
+                            placeholder="Department ID"
+                            value={doctor.department}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="hospital"
+                            placeholder="Hospital ID"
+                            value={doctor.hospital}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <h3>Schedule</h3>
+                    {doctor.schedule.map((slot, index) => (
+                        <div key={index}>
+                            <input
+                                type="text"
+                                placeholder="Day"
+                                value={slot.day}
+                                onChange={(e) => handleScheduleChange(index, 'day', e.target.value)}
+                                required
+                            />
+                            <input
+                                type="time"
+                                placeholder="Start Time"
+                                value={slot.startTime}
+                                onChange={(e) => handleScheduleChange(index, 'startTime', e.target.value)}
+                                required
+                            />
+                            <input
+                                type="time"
+                                placeholder="End Time"
+                                value={slot.endTime}
+                                onChange={(e) => handleScheduleChange(index, 'endTime', e.target.value)}
+                                required
+                            />
+                        </div>
+                    ))}
+                    <button type="button" onClick={addScheduleSlot} className="btn-blue">Add Schedule</button>
+                    <br />
+                    <button type="submit" className="btn-green">Add Doctor</button>
+                </form>
+            </div>
         </center>
     );
 };

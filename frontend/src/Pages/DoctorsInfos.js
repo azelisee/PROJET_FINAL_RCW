@@ -5,15 +5,15 @@ const DoctorsInfos = () => {
     return (
         <div className="infos-container">
             <h1>Our Doctors</h1>
-            <p>Meet our team of highly qualified doctors who are experts in their respective fields and dedicated to providing the best care...</p>
+            <p>Meet ours teams of highly qualified doctors who are experts in their respective fields and dedicated to providing the best care...</p>
             <div className="image-gallery">
-                <img src="/images/doctor1.jpg" alt="Doctor in Consultation" />
-                <img src="/images/doctor2.jpg" alt="Surgical Team" />
-                <img src="/images/doctor3.jpg" alt="Pediatrician with Patient" />
+                <img src="/images/i-doc1.jpg" alt="Doctor in Consultation"  height="100px" width="150px"/>
+                <img src="/images/i-doc2.jpg" alt="Surgical Team" height="100px" width="150px"/>
+                <img src="/images/i-doc3.jpg" alt="Pediatrician with Patient" height="100px" width="150px"/>
             </div>
             <div className="video-container">
                 <video controls>
-                    <source src="/videos/doctor-demo.mp4" type="video/mp4" />
+                    <source src="/videos/vdoc.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

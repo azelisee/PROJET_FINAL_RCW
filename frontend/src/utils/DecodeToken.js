@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 
-const verifyAccess = (allowedRoles) => {
+export const useVerifyAccess = (allowedRoles) => {
     const navigate = useNavigate();
 
     return () => {
@@ -30,4 +30,4 @@ const verifyAccess = (allowedRoles) => {
     };
 };
 
-export default verifyAccess;
+export default useVerifyAccess;

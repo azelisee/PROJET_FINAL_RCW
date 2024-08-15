@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getRoomById } from '../../services/api';
+import {useVerifyAccess} from '../../utils/DecodeToken';
 import '../../css/PatientDetail.css';
 
 const RoomDetail = () => {
     const { id } = useParams();
     const [room, setRoom] = useState(null);
+    const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor', 'Nurse', 'Technician']);
 
     useEffect(() => {
-        getRoomById(id).then((response) => {
-            setRoom(response.data);
-        }).catch(error => {
-            console.error('There was an error fetching the room details!', error);
-        });
-    }, [id]);
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+        } else {
+            getRoomById(id).then((response) => {
+                setRoom(response.data);
+            }).catch(error => {
+                console.error('There was an error fetching the room details!', error);
+            });
+        }
+    }, [id, verifyAccess, navigate]);
 
     if (!room) return <div>Loading...</div>;
 

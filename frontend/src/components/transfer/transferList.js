@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getTransfers, deleteTransfer } from '../../services/api';
+import { useVerifyAccess } from '../../utils/DecodeToken';
 import '../../css/PatientList.css';
 
 const TransferList = () => {
     const [transfers, setTransfers] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    const verifyAccess = useVerifyAccess(['Administrator', 'Doctor', 'Nurse']);
+
+    useEffect(() => {
+        if (!verifyAccess()) {
+            navigate('/unauthorized');
+            return;
+        }
+        fetchTransfers();
+    }, [navigate, verifyAccess]);
 
     const fetchTransfers = () => {
         getTransfers().then((response) => {
@@ -20,10 +31,6 @@ const TransferList = () => {
         });
     };
 
-    useEffect(() => {
-        fetchTransfers();
-    }, []);
-
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this transfer?");
         if (confirmDelete) {
@@ -35,7 +42,6 @@ const TransferList = () => {
                             setMessage('');
                         }, 3000);
                         fetchTransfers();
-                        navigate('/transfers');
                     })
                     .catch(error => {
                         console.error('Error deleting:', error);
@@ -62,7 +68,7 @@ const TransferList = () => {
                         {transfers.map((transfer) => (
                             <div key={transfer._id} className="patient-card">
                                 <Link to={`/transfers/${transfer._id}`}>
-                                    <p>Date: {transfer.transferDate}</p>
+                                    <p>Date: {new Date(transfer.transferDate).toLocaleDateString()}</p>
                                 </Link>
                                 <button onClick={() => handleDelete(transfer._id)} type="button">
                                     Delete
