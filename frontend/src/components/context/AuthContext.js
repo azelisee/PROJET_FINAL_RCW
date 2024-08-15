@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../css/AuthContext.css';
 
 const AuthContext = () => {
-    const [role, setRole] = useState('Doctor');
+    const [role, setRole] = useState('Technician');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -15,19 +15,29 @@ const AuthContext = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
         try {
-            const endpoint = role.toLowerCase();
+            let endpoint;
+            if (role === 'Doctor') {
+                endpoint = 'doctor';
+            } else if (role === 'Nurse') {
+                endpoint = 'nurse';
+            } else {
+                endpoint = 'staff';
+            }
+
             const response = await axios.post(`http://localhost:7000/auth/login/${endpoint}`, {
-                role,
+                role: endpoint === 'staff' ? role : undefined,
+                title: endpoint !== 'staff' ? role : undefined,
                 email,
                 password
             });
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                navigate('/dashboard');
+                localStorage.setItem('role', response.data.role || response.data.title);
+                navigate('/');
             }
+            console.log('role : ',role);
         } catch (error) {
             console.error('Login error:', error);
             alert('Invalid credentials. Please try again.');
@@ -39,11 +49,14 @@ const AuthContext = () => {
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="form-group">
-                    <label htmlFor="role">Role:</label>
+                    <label htmlFor="role">Role or Title:</label>
                     <select id="role" value={role} onChange={handleRoleChange}>
+                        <option value="Technician">Technician</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="Caregiver">Caregiver</option>
+                        <option value="Other">Other</option>
                         <option value="Doctor">Doctor</option>
                         <option value="Nurse">Nurse</option>
-                        <option value="Staff">Staff</option>
                     </select>
                 </div>
                 <div className="form-group">
@@ -66,15 +79,10 @@ const AuthContext = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="btn">Login</button>
+                <center><button type="submit" className="btn">Login</button></center>
             </form>
         </div>
     );
 };
 
 export default AuthContext;
-
-
-
-
-

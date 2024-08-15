@@ -11,7 +11,7 @@ initDatabases();
 
 exports.createDoctor = async (req, res) => {
     try {
-        const existingDoctor = await DoctorModel.findOne(req.body.email);
+        const existingDoctor = await DoctorModel.findOne({email : req.body.email});
         if (existingDoctor) {
             return res.status(400).send('A doctor with this email already exists');
         }

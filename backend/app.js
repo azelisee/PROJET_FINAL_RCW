@@ -21,6 +21,7 @@ const transferRoutes = require('./routes/transferRoutes');
 const authRoutes = require('./routes/authRoutes');
 const staffRoutes = require('./routes/staffRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
+const middlewareRoutes = require('./routes/middlewareRoutes');
 
 app.use(bodyParser.json());
 
@@ -34,6 +35,7 @@ app.use('/transfers', transferRoutes);
 app.use('/auth', authRoutes);
 app.use('/staff', staffRoutes);
 app.use('/appointments', appointmentRoutes);
+app.use('/access', middlewareRoutes);
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {

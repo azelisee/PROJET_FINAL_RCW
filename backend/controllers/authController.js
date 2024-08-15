@@ -4,7 +4,7 @@ const initNurseModel = require('../models/nurseModel');
 const initStaffModel = require('../models/staffModel');
 const connectToDatabase  = require('../config/databases');
 
-let db, DoctorModel, NurseModel, StaffModel1;
+let db, DoctorModel, NurseModel, StaffModel;
 const initDatabases = async () => {
     db = await connectToDatabase();
     DoctorModel = initDoctorModel(db);
