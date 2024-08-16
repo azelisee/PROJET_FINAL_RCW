@@ -66,9 +66,8 @@ patientSchema.pre('save', async function(next) {
     }
 
     try {
-
         const salt = await bcrypt.genSalt(10);
-        patient.password = await bcrypt.hash(this.password, salt);
+        patient.password = await bcrypt.hash(patient.password, salt);
 
         const hashMedicalFolders = await bcrypt.hash(JSON.stringify(patient.medicalFolders), SALT_WORK_FACTOR);
         patient.medicalFolders = hashMedicalFolders;
@@ -85,7 +84,7 @@ patientSchema.pre('save', async function(next) {
     }
 });
 
-patientSchema.matchPassword = async function (enteredPassword) {
+patientSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
 
