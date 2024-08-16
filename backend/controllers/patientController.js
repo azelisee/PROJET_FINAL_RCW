@@ -25,7 +25,12 @@ exports.createPatient = async (req, res) => {
 
 exports.updatePatient = async (req, res) => {
     try {
-        const updatedPatient = await PatientModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const { password, ...updateData } = req.body;
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
+        }
+        const updatedPatient = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (updatedPatient) {
             res.status(200).json(updatedPatient);
         } else {

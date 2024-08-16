@@ -13,7 +13,7 @@ exports.createDepartment = async (req, res) => {
     try {
         const existingDepartment = await DepartmentModel.findOne(req.body.depNumber);
         if (existingDepartment) {
-            return res.status(400).send('A department with this number already exists');
+            return ('A department with this number already exists');
         }
         const department = new DepartmentModel(req.body);
         await department.save();

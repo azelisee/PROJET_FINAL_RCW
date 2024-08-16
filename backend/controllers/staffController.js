@@ -50,14 +50,16 @@ exports.getStaffById = async (req, res) => {
 
 exports.updateStaff = async (req, res) => {
     try {
-        const staff = await StaffModel.findById(req.params.id);
-        if (staff) {
-            if (req.body.password) {
-                staff.password = req.body.password;
-            }
-            const updatedStaff = await staff.save();
-            console.log('Record from mongoDB Atlas : ',updatedStaff);
-            res.json('Staff updated : ',updatedStaff);
+        const { password, ...updateData } = req.body;
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
+        }
+        const updatedStaff = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
+        if (updatedStaff) {
+            res.status(200).json(updatedStaff);
+        } else {
+            res.status(404).json('Patient not found');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

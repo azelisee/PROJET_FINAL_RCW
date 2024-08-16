@@ -50,19 +50,19 @@ router.post('/create-patient', checkRole(['Doctor','Nurse']), (req, res) => {
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
 // Read
-router.get('/get-departments', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-departments', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     departmentController.getDepartments(req, res);
 });
 
-router.get('/get-doctors', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-doctors', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     doctorController.getDoctors(req, res);
 });
 
-router.get('/get-hospitals', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-hospitals', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     hospitalController.getHospitals(req, res);
 });
 
-router.get('/get-nurses', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-nurses', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     nurseController.getNurses(req, res);
 });
 
@@ -74,7 +74,7 @@ router.get('/get-staffs', checkRole(['Administrator','Technician','Caregiver','O
     staffController.getStaff(req, res);
 });
 
-router.get('/get-patients', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-patients', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     patientController.getPatients(req, res);
 });
 
@@ -87,11 +87,11 @@ router.get('/get-transfers', checkRole(['Administrator','Technician','Caregiver'
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 // Read accurate data
-router.get('/get-a-doctor/:id', checkRole(['Administrator','Doctor','Nurse']), (req, res) => {
+router.get('/get-a-doctor/:id', checkRole(['Administrator','Doctor','Nurse','Patient']), (req, res) => {
     doctorController.getDoctorById(req, res);
 });
 
-router.get('/get-a-nurse/:id', checkRole(['Administrator','Doctor','Nurse']), (req, res) => {
+router.get('/get-a-nurse/:id', checkRole(['Administrator','Doctor','Nurse','Patient']), (req, res) => {
     nurseController.getNurseById(req, res);
 });
 
@@ -103,15 +103,15 @@ router.get('/get-a-staff/:id', checkRole(['Administrator','Doctor','Nurse']), (r
     staffController.getStaffById(req, res);
 });
 
-router.get('/get-a-hospital/:id', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse',]), (req, res) => {
+router.get('/get-a-hospital/:id', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     hospitalController.getHospitalById(req, res);
 });
 
-router.get('/get-a-department/:id', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
+router.get('/get-a-department/:id', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
     departmentController.getDepartmentById(req, res);
 });
 
-router.get('/get-a-patient/:id', checkRole(['Doctor','Nurse']), (req, res) => {
+router.get('/get-a-patient/:id', checkRole(['Doctor','Nurse','Patient']), (req, res) => {
     patientController.getPatientById(req, res);
 });
 

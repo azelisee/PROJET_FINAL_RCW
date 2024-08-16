@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { loginDoctor, loginNurse, loginStaff } = require('../controllers/authController');
+const { loginPatient, loginDoctor, loginNurse, loginStaff} = require('../controllers/authController');
+
+router.post('/login/patient', loginPatient);
 
 router.post('/login/doctor', loginDoctor);
 

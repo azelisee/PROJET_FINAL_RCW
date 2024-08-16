@@ -51,7 +51,12 @@ exports.getNurseById = async (req, res) => {
 
 exports.updateNurse = async (req, res) => {
     try {
-        const nurse = await NurseModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const { password, ...updateData } = req.body;
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
+        }
+        const nurse = await NurseModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!nurse) {
             return res.status(404).send('Nurse not found');
         }

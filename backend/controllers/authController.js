@@ -2,17 +2,35 @@ const jwt = require('jsonwebtoken');
 const initDoctorModel = require('../models/doctorModel');
 const initNurseModel = require('../models/nurseModel');
 const initStaffModel = require('../models/staffModel');
+const initPatientModel = require('../models/patientModel');
 const connectToDatabase  = require('../config/databases');
 
-let db, DoctorModel, NurseModel, StaffModel;
+let db, DoctorModel, NurseModel, StaffModel, PatientModel;
 const initDatabases = async () => {
     db = await connectToDatabase();
     DoctorModel = initDoctorModel(db);
     NurseModel = initNurseModel(db);
     StaffModel = initStaffModel(db);
+    PatientModel = initPatientModel(db);
 
 };
 initDatabases();
+
+// Login for Patients
+exports.loginPatient = async (req, res) => {
+    const { title , email, password } = req.body;
+    const patient = await PatientModel.findOne({ title , email });
+
+    if (patient && (await patient.matchPassword(password))) {
+        const token = jwt.sign({ id: patient._id, title: 'Patient' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token });
+        console.log('\nToken for the patient : ', token);
+    } else {
+        res.status(404).send({ message:'Error : No patient with this email or password'});
+        console.log('\nError : No Patient with this email or password');
+    }
+};
+
 
 // Login for Doctors
 exports.loginDoctor = async (req, res) => {

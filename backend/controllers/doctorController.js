@@ -48,7 +48,12 @@ exports.getDoctorById = async (req, res) => {
 
 exports.updateDoctor = async (req, res) => {
     try {
-        const doctor = await DoctorModel1.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const { password, ...updateData } = req.body;
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
+        }
+        const doctor = await DoctorModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!doctor) {
             return res.status(404).send('Doctor not found');
         }

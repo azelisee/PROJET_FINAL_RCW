@@ -43,8 +43,10 @@ const treatmentSchema = new mongoose.Schema({
 
 const patientSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    title: { type: String, enum: ['Patient'], required: true},
     age: { type: Number, required: true },
     email: { type: String, required: true },
+    password: { type: String, required: true },
     tel: { type: String, required: true },
     address: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
@@ -59,11 +61,15 @@ const patientSchema = new mongoose.Schema({
 patientSchema.pre('save', async function(next) {
     const patient = this;
 
-    if (!patient.isModified('medicalFolders') && !patient.isModified('consultationHistory') && !patient.isModified('treatments')) {
+    if (!patient.isModified('password') &&  !patient.isModified('medicalFolders') && !patient.isModified('consultationHistory') && !patient.isModified('treatments')) {
         return next();
     }
 
     try {
+
+        const salt = await bcrypt.genSalt(10);
+        patient.password = await bcrypt.hash(this.password, salt);
+
         const hashMedicalFolders = await bcrypt.hash(JSON.stringify(patient.medicalFolders), SALT_WORK_FACTOR);
         patient.medicalFolders = hashMedicalFolders;
 
@@ -78,6 +84,10 @@ patientSchema.pre('save', async function(next) {
         next(err);
     }
 });
+
+patientSchema.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
 
 patientSchema.methods.compareMedicalFolders = async function(candidateMedicalFolders) {
     return bcrypt.compare(JSON.stringify(candidateMedicalFolders), this.medicalFolders);
