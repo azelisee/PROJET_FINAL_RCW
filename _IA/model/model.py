@@ -2,6 +2,8 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import pickle
+import json
 
 # Créer un modèle CNN simple
 def create_model(input_shape, num_classes):
@@ -49,7 +51,7 @@ validation_generator = train_datagen.flow_from_directory(
     subset='validation'
 )
 
-# Entraîner le modèle
+# model training
 history = model.fit(
     train_generator,
     steps_per_epoch=train_generator.samples // train_generator.batch_size,
@@ -58,6 +60,28 @@ history = model.fit(
     epochs=10
 )
 
-# Sauvegarder le modèle entraîné
+# save the model architecture, weights, and optimizer state all in one file.
+model.save('model_weights.h5', include_optimizer=False) # in use actually
+
+#  save the model
 model.save('medical_diagnosis_model.keras')
+
+# Save only the model architecture to JSON
+model_json = model.to_json()
+with open("model_architecture.json", "w") as json_file:
+    json_file.write(model_json)
+
+# Save only the training history to a pickle file
+with open('training_history.pkl', 'wb') as f:
+    pickle.dump(history.history, f)
+
+# Save training logs to a text file
+with open('training_logs.txt', 'w') as f:
+    for epoch in range(len(history.history['accuracy'])):
+        f.write(f"Epoch {epoch+1}\n")
+        f.write(f"Accuracy: {history.history['accuracy'][epoch]}\n")
+        f.write(f"Validation Accuracy: {history.history['val_accuracy'][epoch]}\n")
+        f.write(f"Loss: {history.history['loss'][epoch]}\n")
+        f.write(f"Validation Loss: {history.history['val_loss'][epoch]}\n\n")
+
 

@@ -1,5 +1,18 @@
+#Pour le model
 tensorflow>=2.6.0
-fastapi>=0.68.0
-uvicorn>=0.15.0
 numpy>=1.19.5
 Pillow>=8.3.1
+
+#Pour api
+fastapi>=0.68.0
+uvicorn>=0.15.0
+
+# Pour chatbot
+langchain==0.0.272
+openai==0.27.9
+PyPDF2==3.0.1
+python-dotenv==1.0.0
+streamlit==1.25.0
+pandas==2.0.3
+faiss-cpu==1.7.4
+tiktoken==0.4.0

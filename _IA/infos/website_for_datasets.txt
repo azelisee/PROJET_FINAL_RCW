@@ -1,0 +1,131 @@
+datasets d'images médicales accessibles publiquement:
+
+1. Kaggle
+- Chest X-ray Images (Pneumonia)https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
+- Skin Cancer MNIST: HAM10000
+https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+
+-RSNA Pneumonia Detection Challenge
+https://www.kaggle.com/c/rsna-pneumonia-detection-challenge
+
+
+
+
+
+2. NIH Chest X-rays Dataset
+https://nihcc.app.box.com/v/ChestXray-NIHCC
+
+
+
+
+
+
+3. ISIC Archive (International Skin Imaging Collaboration)
+https://www.isic-archive.com/
+
+
+
+
+
+4. Cancer Imaging Archive (TCIA)
+https://www.cancerimagingarchive.net/
+
+
+
+
+
+5. Medical Decathlon
+http://medicaldecathlon.com/
+
+
+
+
+6. Open Access Biomedical Image Search Engine (OASIS)
+https://www.oasis-open.org/
+
+
+
+
+7. Google Dataset Search
+https://datasetsearch.research.google.com/
+
+
+
+
+Les classes manquantes dans le dataset par rapport aux spécialités des docteurs sont :
+
+Rheumatology (Laura Harris)
+
+ - [Rheumatoid Arthritis Data](https://www.kaggle.com/datasets/achrafkhazri/rheumatoid-arthritis-data) - Kaggle dataset related to rheumatoid arthritis.
+
+
+
+
+
+Gastroenterology (Jessica White)
+
+- [Gastrointestinal Lesions in Endoscopic Images](https://www.kaggle.com/datasets/sbinte/endoscopy-images-gastrointestinal-lesions) - Kaggle dataset for detecting gastrointestinal lesions.
+   - [GIANA: Gastrointestinal Image Analysis](https://giana.grand-challenge.org/) - A challenge platform for gastrointestinal image analysis.
+
+
+
+
+
+
+Urology (Olivia Clark)
+
+ - [Kidney Stone Dataset](https://www.kaggle.com/datasets/mradamdani/kidney-stone-dataset) - Kaggle dataset related to kidney stones.
+   - [Prostate Cancer Detection](https://www.kaggle.com/c/prostate-cancer-grade-assessment) - Kaggle competition for prostate cancer detection.
+
+
+
+
+
+
+Geriatrics (Daniel Lee)
+
+  - [Senior Health and Well-being Dataset](https://www.kaggle.com/datasets/spscientist/stroke-prediction-dataset) - A dataset for stroke prediction, often relevant in geriatric care.
+   - [Aging-Related Gene Expression](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE142978) - Aging-related gene expression data from NCBI GEO.
+
+
+
+
+
+Nephrology (Grace Hall)
+
+ - [Kidney Disease Dataset](https://www.kaggle.com/mansoordaku/ckdisease) - Kaggle dataset for chronic kidney disease prediction.
+   - [Kidney Tumor Segmentation Dataset (KiTS)](https://kits19.grand-challenge.org/) - Dataset for kidney tumor segmentation.
+
+
+
+
+
+
+Allergy and Immunology (Ethan King)
+
+ - [Asthma and Allergy Research Data](https://www.kaggle.com/datasets/natnew/asthma-allergy-research-dataset) - Dataset related to asthma and allergies.
+   - [Immunotherapy Dataset](https://archive.ics.uci.edu/ml/datasets/Immunotherapy+Dataset) - UCI Machine Learning Repository dataset for immunotherapy response.
+
+
+
+
+
+
+Internal Medicine (Chloe Scott)
+ - [MIMIC-III](https://mimic.physionet.org/) - A large, freely available database comprising de-identified health-related data from patients.
+   - [NHANES (National Health and Nutrition Examination Survey)](https://www.cdc.gov/nchs/nhanes/index.htm) - Comprehensive dataset used for health-related research.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
