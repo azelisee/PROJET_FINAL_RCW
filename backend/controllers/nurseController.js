@@ -13,39 +13,41 @@ exports.createNurse = async (req, res) => {
     try {
         const existingNurse = await NurseModel.findOne({email: req.body.email});
         if (existingNurse) {
-            return res.status(400).send('A nurse with this email already exists');
+            return('A nurse with this email already exists');
         }
         const nurse = new NurseModel(req.body);
         await nurse.save();
-        res.status(201).json('New Nurse registered',nurse);
+
         console.log('Recorded in MongoDB Atlas : ', nurse);
+        return('New Nurse registered',nurse);
     } catch (error) {
-        res.status(400).send({ error: error.message });
         console.log(error);
+        return({ error: error.message });
     }
 };
 exports.getNurses = async (req, res) => {
     try {
         const nurses = await NurseModel.find();
-        res.status(200).send(nurses);
+        console.log("Records from MongoDB Atlas :",nurses);
+        return(nurses);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
-
 exports.getNurseById = async (req, res) => {
     try {
         const nurse = await NurseModel.findById(req.params.id);
         if (nurse) {
-            res.status(200).json(nurse);
             console.log(`Record from MongoDB Atlas:`, nurse);
+            return(nurse);
         } else {
-            res.status(404).json({ error: 'No nurse found' });
             console.log('No nurse found');
+            return('No nurse found');
         }
     } catch (error) {
-        res.status(500).json({error: error.message});
         console.log(error);
+        return ({error: error.message});
     }
 };
 
@@ -58,12 +60,13 @@ exports.updateNurse = async (req, res) => {
         }
         const nurse = await NurseModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!nurse) {
-            return res.status(404).send('Nurse not found');
+            return ('Nurse not found');
         }
-        res.status(200).send('Nurse data updated',nurse);
         console.log('Updated in MongoDB Atlas:', nurse);
+        return ('Nurse data updated',nurse);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return ({ message: error.message });
     }
 };
 
@@ -71,11 +74,12 @@ exports.deleteNurse = async (req, res) => {
     try {
         const id = await NurseModel.findByIdAndDelete(req.params.id);
         if (!id) {
-            return res.status(404).send('Nurse not found');
+            return ('Nurse not found');
         }
-        res.status(200).send('Nurse deleted : ',id);
         console.log('Deleted from MongoDB Atlas:', id);
+        return ('Nurse deleted : ',id);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return ({ message: error.message });
     }
 };

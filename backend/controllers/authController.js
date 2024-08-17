@@ -4,6 +4,8 @@ const initNurseModel = require('../models/nurseModel');
 const initStaffModel = require('../models/staffModel');
 const initPatientModel = require('../models/patientModel');
 const connectToDatabase  = require('../config/databases');
+const dotenv = require('dotenv');
+dotenv.config({path: '../config/.env'});
 
 let db, DoctorModel, NurseModel, StaffModel, PatientModel;
 const initDatabases = async () => {
@@ -23,14 +25,13 @@ exports.loginPatient = async (req, res) => {
 
     if (patient && (await patient.matchPassword(password))) {
         const token = jwt.sign({ id: patient._id, title: 'Patient' }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
         console.log('\nToken for the patient : ', token);
+        return token;
     } else {
-        res.status(404).send({ message:'Error : No patient with this email or password'});
         console.log('\nError : No Patient with this email or password');
+        return('Error : No patient with this email or password');
     }
 };
-
 
 // Login for Doctors
 exports.loginDoctor = async (req, res) => {
@@ -39,11 +40,11 @@ exports.loginDoctor = async (req, res) => {
 
     if (doctor && (await doctor.matchPassword(password))) {
         const token = jwt.sign({ id: doctor._id, title: 'Doctor' }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
         console.log('\nToken for the doctor : ', token);
+        return token;
     } else {
-        res.status(404).send({ message:'Error : No Doctor with this email or password'});
         console.log('\nError : No Doctor with this email or password');
+        return('Error : No Doctor with this email or password');
     }
 };
 
@@ -54,11 +55,11 @@ exports.loginNurse = async (req, res) => {
 
     if (nurse && (await nurse.matchPassword(password))) {
         const token = jwt.sign({ id: nurse._id, title: 'Nurse' }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
         console.log('\nToken for the nurse : ', token);
+        return token;
     } else {
-        res.status(404).send({ message:'Error : No Nurse with this email or password'});
         console.log('\nError : No Doctor with this email or password');
+        return ('Error : No Nurse with this email or password');
     }
 };
 
@@ -69,10 +70,10 @@ exports.loginStaff = async (req, res) => {
 
     if (staff && (await staff.matchPassword(password))) {
         const token = jwt.sign({ id: staff._id, role: staff.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
         console.log('\nToken for the staff : ', token);
+        return token;
     } else {
-        res.status(404).send({ message: 'Error : No Staff with this email or password' });
         console.log('\nError : No Staff with this email or password');
+        return('Error : No Staff with this email or password');
     }
 };

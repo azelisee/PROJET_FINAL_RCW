@@ -144,7 +144,7 @@ router.put('/update-a-nurse/:id', checkRole(['Nurse']), (req, res) => {
     nurseController.updateNurse(req, res);
 });
 
-router.put('/update-a-patient/:id', checkRole(['Doctor']), (req, res) => {
+router.put('/update-a-patient/:id', checkRole(['Patient','Doctor']), (req, res) => {
     patientController.updatePatient(req, res);
 });
 

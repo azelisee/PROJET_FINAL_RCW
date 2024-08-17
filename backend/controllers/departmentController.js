@@ -11,38 +11,39 @@ initDatabases();
 
 exports.createDepartment = async (req, res) => {
     try {
-        const existingDepartment = await DepartmentModel.findOne(req.body.depNumber);
+        const existingDepartment = await DepartmentModel.findOne({depNumber : req.body.depNumber});
         if (existingDepartment) {
             return ('A department with this number already exists');
         }
         const department = new DepartmentModel(req.body);
         await department.save();
-        res.status(201).send({ message: 'New Department registered' });
+
         console.log('Recorded in MongoDB Atlas : ', department);
+        return('New Department registered', department);
     } catch (error) {
-        res.status(400).json({ error: error.message });
         console.log(error);
+        return({error: error.message});
     }
 };
-
 exports.getDepartments = async (req, res) => {
     try {
         const departments = await DepartmentModel.find();
-        res.json(departments);
         console.log(`Records from MongoDB Atlas:`, departments);
+        return(departments);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
 
 exports.getDepartmentById = async (req, res) => {
     try {
-        const department = await DepartmentModel.findById(req.params.id);
-        res.json(department);
+        const department = await DepartmentModel.findById(req.params.id).mongoose.model('Doctor',doctorSchema);
         console.log(`Record from MongoDB Atlas:`, department);
+        return("The department is found : ", department);
     } catch (error) {
-        res.status(500).json({error: error.message});
         console.log(error);
+        return({error: error.message});
     }
 };
 
@@ -52,10 +53,11 @@ exports.updateDepartment = async (req, res) => {
         if (!department) {
             return res.status(404).send('Department not found');
         }
-        res.json('Department updated',department);
+        await department.save();
         console.log('Updated in MongoDB Atlas:', department);
+        return('Department updated',department);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        return({ message: error.message });
     }
 };
 
@@ -63,11 +65,12 @@ exports.deleteDepartment = async (req, res) => {
     try {
         const id = await DepartmentModel.findByIdAndDelete(req.params.id);
         if (!id) {
-            return res.status(404).send('Department not found');
+            return ('Department not found');
         }
-        res.json('Department deleted : ',id);
         console.log('Deleted from MongoDB Atlas:',id);
+        return('Department deleted : ',id);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };

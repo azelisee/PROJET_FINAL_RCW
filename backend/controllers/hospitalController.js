@@ -12,41 +12,41 @@ exports.createHospital = async (req, res) => {
     try {
         const existingHospital = await HospitalModel.findOne(req.body.address, req.body.phone);
         if (existingHospital) {
-            return res.status(400).send('hospital with this address and phone number already exists');
+            return ('hospital with this address and phone number already exists');
         }
-        const hospital = new HospitalModel1(req.body);
+        const hospital = new HospitalModel(req.body);
         await hospital.save();
-        res.status(201).send('New Hospital recorded', hospital);
+
         console.log('Recorded in MongoDB Atlas : ', hospital);
+        return('New Hospital recorded', hospital);
     } catch (error) {
-        res.status(400).json({ error: error.message });
         console.log(error);
+        return({ error: error.message });
     }
 };
-
 exports.getHospitals = async (req, res) => {
     try {
         const hospitals = await HospitalModel.find();
-        res.status(200).send(hospitals);
         console.log('Records from mongoDB : ',hospitals);
+        return(hospitals);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
-
 exports.getHospitalById = async (req, res) => {
     try {
         const hospital = await HospitalModel.findById(req.params.id);
         if (hospital) {
-            res.status(200).json(hospital);
             console.log(`Record from MongoDB Atlas:`, hospital);
+            return(hospital);
         } else {
-            res.status(404).json({ error: 'No hospital found' });
             console.log('No hospital found');
+            return('No hospital found');
         }
     } catch (error) {
-        res.status(500).json({error: error.message});
         console.log(error);
+        return({error: error.message});
     }
 };
 
@@ -54,12 +54,13 @@ exports.updateHospital = async (req, res) => {
     try {
         const hospital = await HospitalModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!hospital) {
-            return res.status(404).send({ message: 'Hospital not found' });
+            return('Hospital not found');
         }
-        res.status(200).send('Hospital data updated',hospital);
         console.log('Updated in MongoDB Atlas:', hospital);
+        return('Hospital data updated',hospital);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
 
@@ -69,9 +70,10 @@ exports.deleteHospital = async (req, res) => {
         if (!id) {
             return res.status(404).send('Hospital not found');
         }
-        res.status(200).send('Hospital deleted : ',id);
         console.log('Deleted from MongoDB Atlas:', id);
+        return ('Hospital deleted : ',id);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log('Deleted from MongoDB Atlas:', id);
+        return({ message: error.message });
     }
 };

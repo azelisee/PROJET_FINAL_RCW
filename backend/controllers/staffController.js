@@ -16,22 +16,22 @@ exports.createStaff = async (req, res) => {
             return ('Staff member already exists');
         }
         const staff = await StaffModel.create(req.body);
-        res.status(201).json(staff);
         console.log('Record from mongoDB Atlas : ',staff);
+        return(staff);
     } catch (error) {
-        res.status(400).json({ error: error.message });
         console.log(error);
+        return({ error: error.message });
     }
 };
 
-exports.getStaff = async (req, res) => {
+exports.getStaffs = async (req, res) => {
     try {
         const staff = await StaffModel.find();
-        res.status(200).json(staff);
         console.log('Records from mongoDB Atlas : ',staff);
+        return (staff);
     } catch (error) {
-        res.status(500).send({ message: error.message });
         console.log(error);
+        return ({ message: error.message });
     }
 };
 
@@ -39,12 +39,12 @@ exports.getStaffById = async (req, res) => {
     try {
         const staff = await StaffModel.findById(req.params.id);
         if (staff) {
-            res.json(staff);
             console.log('Record from mongoDB Atlas : ',staff);
+            return (staff);
         }
     } catch (error) {
-        res.status(500).send({ message: error.message });
         console.log(error);
+        return ({ message: error.message });
     }
 };
 
@@ -57,13 +57,15 @@ exports.updateStaff = async (req, res) => {
         }
         const updatedStaff = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (updatedStaff) {
-            res.status(200).json(updatedStaff);
+            console.log('Staff updated successfully');
+            return (updatedStaff);
         } else {
-            res.status(404).json('Patient not found');
+            console.log('Staff not found');
+            return ('Staff not found');
         }
     } catch (error) {
-        res.status(400).json({ error: error.message });
         console.log(error);
+        return({ error: error.message });
     }
 };
 
@@ -74,10 +76,10 @@ exports.deleteStaff = async (req, res) => {
         if (staff) {
             await StaffModel.findByIdAndDelete(staff);
             console.log('Staff member removed : ',id);
-            res.json({ message: 'Staff member removed' });
+            return ('Staff member removed');
         }
     } catch (error) {
-        res.status(404).send({ message: 'Staff member not found' });
         console.log(error);
+        return({ message: 'Staff member not found' });
     }
 };

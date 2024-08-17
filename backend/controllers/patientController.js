@@ -1,5 +1,9 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const initPatientModel = require('../models/patientModel');
 const connectToDatabase  = require('../config/databases');
+const dotenv = require('dotenv');
+dotenv.config({path: '../config/.env'});
 
 let db, PatientModel;
 const initDatabases = async () => {
@@ -12,31 +16,62 @@ exports.createPatient = async (req, res) => {
     try {
         const existingPatient = await PatientModel.findOne({ email: req.body.email });
         if (existingPatient) {
-            return res.status(400).send('A patient with this email already exists');
+            return ('A patient with this email already exists');
         }
         const patient = new PatientModel(req.body);
         await patient.save();
+
         console.log('Recorded in MongoDB Atlas: ', patient);
-        res.status(201).send({ message: 'Success: A new patient has been admitted!', patient });
+        return('Success: A new patient has been admitted!', patient);
     } catch (error) {
+        console.log(error);
         res.status(500).send({ message: error.message });
     }
 };
 
 exports.updatePatient = async (req, res) => {
     try {
-        const { password, ...updateData } = req.body;
-        if (password) {
+        const token = req.headers.authorization.split(" ")[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userRole = decoded.role;
+
+        const allowedFieldsForPatient = ['name', 'title', 'age', 'email', 'password', 'tel', 'address', 'dateOfBirth', 'gender'];
+        const allowedFieldsForDoctor = ['bloodType', 'medicalFolders', 'consultationHistory', 'treatments', 'currentRoom'];
+
+        let updateData = req.body;
+        if (userRole === 'Patient') {
+            // Filter the updateData to include only allowed fields for patients
+            updateData = Object.keys(updateData)
+                .filter(key => allowedFieldsForPatient.includes(key))
+                .reduce((obj, key) => {
+                    obj[key] = updateData[key];
+                    return obj;
+                }, {});
+        } else if (userRole === 'Doctor') {
+            // Filter the updateData to include only allowed fields for doctors
+            updateData = Object.keys(updateData)
+                .filter(key => allowedFieldsForDoctor.includes(key))
+                .reduce((obj, key) => {
+                    obj[key] = updateData[key];
+                    return obj;
+                }, {});
+        } else {
+            return ('Unauthorized to update patient data');
+        }
+        if (updateData.password) {
             const salt = await bcrypt.genSalt(10);
-            updateData.password = await bcrypt.hash(password, salt);
+            updateData.password = await bcrypt.hash(updateData.password, salt);
         }
         const updatedPatient = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (updatedPatient) {
-            res.status(200).json(updatedPatient);
+            console.log('Patient has been updated : ', updatedPatient);
+            return ('Patient has been updated : ',updatedPatient);
         } else {
-            res.status(404).json('Patient not found');
+            console.log('Patient not found');
+            return('Patient not found');
         }
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message });
     }
 };
@@ -44,34 +79,36 @@ exports.updatePatient = async (req, res) => {
 exports.getPatients = async (req, res) => {
     try {
         const patients = await PatientModel.find();
-        res.status(200).json(patients);
         console.log(`Records from MongoDB Atlas:`, patients);
+        return(patients);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
 exports.getPatientById = async (req, res) => {
     try {
         const patient = await PatientModel.findById(req.params.id);
-        res.json(patient);
         console.log(`Record from MongoDB Atlas:`, patient);
+        return(patient);
     } catch (error) {
-        res.status(500).json({error: error.message});
         console.log(error);
+        return({error: error.message});
     }
 };
 exports.deletePatient = async (req, res) => {
     try {
         const id = await PatientModel.findByIdAndDelete(req.params.id);
         if (id) {
-            res.status(200).json('Patient deleted successfully : ',id);
             console.log('Patient deleted successfully : ',id);
+            return('Patient deleted successfully : ',id);
         } else {
-            res.status(404).json('Patient not found');
+            console.error('Patient not found', error);
+            return('Patient not found');
         }
     } catch (error) {
-        res.status(500).json('An error occurred while deleting the patient');
         console.error('Error during patient deletion:', error);
+        return('An error occurred while deleting the patient');
     }
 };
 

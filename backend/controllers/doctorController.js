@@ -17,32 +17,33 @@ exports.createDoctor = async (req, res) => {
         }
         const doctor = new DoctorModel(req.body);
         await doctor.save();
-        res.status(201).json('New Doctor recorded', doctor);
         console.log('Recorded in MongoDB Atlas : ', doctor);
+        return('New Doctor recorded', doctor);
     } catch (error) {
-        res.status(400).json({ error: error.message });
         console.log(error);
+        return ({ error: error.message });
     }
 };
 
 exports.getDoctors = async (req, res) => {
     try {
         const doctors = await DoctorModel.find();
-        res.json(doctors);
         console.log(`Records from MongoDB Atlas:`, doctors);
+        return(doctors);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
 
 exports.getDoctorById = async (req, res) => {
     try {
         const doctor = await DoctorModel.findById(req.params.id);
-        res.json(doctor);
         console.log(`Record from MongoDB Atlas:`, doctor);
+        return(doctor);
     } catch (error) {
-        res.status(500).json({error: error.message});
         console.log(error);
+        return({error: error.message});
     }
 };
 
@@ -55,12 +56,13 @@ exports.updateDoctor = async (req, res) => {
         }
         const doctor = await DoctorModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!doctor) {
-            return res.status(404).send('Doctor not found');
+            return('Doctor not found');
         }
-        res.json('Doctor updated',doctor);
         console.log('Updated in MongoDB Atlas:', doctor);
+        return('Doctor updated',doctor);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
 
@@ -68,11 +70,12 @@ exports.deleteDoctor = async (req, res) => {
     try {
         const id = await DoctorModel.findByIdAndDelete(req.params.id);
         if (!id) {
-            return res.status(404).send('Doctor not found');
+            return ('Doctor not found');
         }
-        res.status(200).send('Doctor deleted',id);
         console.log('Deleted from MongoDB Atlas:', id);
+        return('Doctor deleted',id);
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        console.log(error);
+        return({ message: error.message });
     }
 };
