@@ -13,14 +13,14 @@ exports.createStaff = async (req, res) => {
         const staffExists = await StaffModel.findOne({email : req.body.email});
         if (staffExists) {
             console.log('Staff member already exists');
-            return ('Staff member already exists');
+            res.send('Staff member already exists');
         }
         const staff = await StaffModel.create(req.body);
         console.log('Record from mongoDB Atlas : ',staff);
-        return(staff);
+        res.send(staff);
     } catch (error) {
         console.log(error);
-        return({ error: error.message });
+        res.send({ error: error.message });
     }
 };
 
@@ -28,10 +28,10 @@ exports.getStaffs = async (req, res) => {
     try {
         const staff = await StaffModel.find();
         console.log('Records from mongoDB Atlas : ',staff);
-        return (staff);
+        res.send(staff);
     } catch (error) {
         console.log(error);
-        return ({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 
@@ -40,11 +40,11 @@ exports.getStaffById = async (req, res) => {
         const staff = await StaffModel.findById(req.params.id);
         if (staff) {
             console.log('Record from mongoDB Atlas : ',staff);
-            return (staff);
+            res.send(staff);
         }
     } catch (error) {
         console.log(error);
-        return ({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 
@@ -58,14 +58,14 @@ exports.updateStaff = async (req, res) => {
         const updatedStaff = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (updatedStaff) {
             console.log('Staff updated successfully');
-            return (updatedStaff);
+            res.send(updatedStaff);
         } else {
             console.log('Staff not found');
-            return ('Staff not found');
+            res.send('Staff not found');
         }
     } catch (error) {
         console.log(error);
-        return({ error: error.message });
+        res.send({ error: error.message });
     }
 };
 
@@ -76,10 +76,10 @@ exports.deleteStaff = async (req, res) => {
         if (staff) {
             await StaffModel.findByIdAndDelete(staff);
             console.log('Staff member removed : ',id);
-            return ('Staff member removed');
+            res.send('Staff member removed');
         }
     } catch (error) {
         console.log(error);
-        return({ message: 'Staff member not found' });
+        res.send({ message: 'Staff member not found' });
     }
 };

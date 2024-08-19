@@ -13,15 +13,15 @@ exports.createDoctor = async (req, res) => {
     try {
         const existingDoctor = await DoctorModel.findOne({email : req.body.email});
         if (existingDoctor) {
-            return res.status(400).send('A doctor with this email already exists');
+            res.send('A doctor with this email already exists');
         }
         const doctor = new DoctorModel(req.body);
         await doctor.save();
         console.log('Recorded in MongoDB Atlas : ', doctor);
-        return('New Doctor recorded', doctor);
+        res.send('New Doctor recorded', doctor);
     } catch (error) {
         console.log(error);
-        return ({ error: error.message });
+        res.send({ error: error.message });
     }
 };
 
@@ -29,10 +29,10 @@ exports.getDoctors = async (req, res) => {
     try {
         const doctors = await DoctorModel.find();
         console.log(`Records from MongoDB Atlas:`, doctors);
-        return(doctors);
+        res.send(doctors);
     } catch (error) {
         console.log(error);
-        return({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 
@@ -40,10 +40,10 @@ exports.getDoctorById = async (req, res) => {
     try {
         const doctor = await DoctorModel.findById(req.params.id);
         console.log(`Record from MongoDB Atlas:`, doctor);
-        return(doctor);
+        res.send(doctor);
     } catch (error) {
         console.log(error);
-        return({error: error.message});
+        res.send({error: error.message});
     }
 };
 
@@ -56,13 +56,13 @@ exports.updateDoctor = async (req, res) => {
         }
         const doctor = await DoctorModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!doctor) {
-            return('Doctor not found');
+            res.send('Doctor not found');
         }
         console.log('Updated in MongoDB Atlas:', doctor);
-        return('Doctor updated',doctor);
+        res.send('Doctor updated',doctor);
     } catch (error) {
         console.log(error);
-        return({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 
@@ -70,12 +70,12 @@ exports.deleteDoctor = async (req, res) => {
     try {
         const id = await DoctorModel.findByIdAndDelete(req.params.id);
         if (!id) {
-            return ('Doctor not found');
+            res.send('Doctor not found');
         }
         console.log('Deleted from MongoDB Atlas:', id);
-        return('Doctor deleted',id);
+        res.send('Doctor deleted',id);
     } catch (error) {
         console.log(error);
-        return({ message: error.message });
+        res.send({ message: error.message });
     }
 };

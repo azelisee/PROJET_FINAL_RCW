@@ -71,7 +71,7 @@ router.get('/get-rooms', checkRole(['Administrator','Technician','Caregiver','Ot
 });
 
 router.get('/get-staffs', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
-    staffController.getStaff(req, res);
+    staffController.getStaffs(req, res);
 });
 
 router.get('/get-patients', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {

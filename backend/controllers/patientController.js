@@ -16,16 +16,16 @@ exports.createPatient = async (req, res) => {
     try {
         const existingPatient = await PatientModel.findOne({ email: req.body.email });
         if (existingPatient) {
-            return ('A patient with this email already exists');
+            res.send ('A patient with this email already exists');
         }
         const patient = new PatientModel(req.body);
         await patient.save();
 
         console.log('Recorded in MongoDB Atlas: ', patient);
-        return('Success: A new patient has been admitted!', patient);
+        res.send('Success: A new patient has been admitted!', patient);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 
@@ -56,7 +56,7 @@ exports.updatePatient = async (req, res) => {
                     return obj;
                 }, {});
         } else {
-            return ('Unauthorized to update patient data');
+            res.send('Unauthorized to update patient data');
         }
         if (updateData.password) {
             const salt = await bcrypt.genSalt(10);
@@ -65,10 +65,10 @@ exports.updatePatient = async (req, res) => {
         const updatedPatient = await PatientModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (updatedPatient) {
             console.log('Patient has been updated : ', updatedPatient);
-            return ('Patient has been updated : ',updatedPatient);
+            res.send ('Patient has been updated : ',updatedPatient);
         } else {
             console.log('Patient not found');
-            return('Patient not found');
+            res.send ('Patient not found');
         }
     } catch (error) {
         console.log(error)
@@ -80,20 +80,20 @@ exports.getPatients = async (req, res) => {
     try {
         const patients = await PatientModel.find();
         console.log(`Records from MongoDB Atlas:`, patients);
-        return(patients);
+        res.send(patients);
     } catch (error) {
         console.log(error);
-        return({ message: error.message });
+        res.send({ message: error.message });
     }
 };
 exports.getPatientById = async (req, res) => {
     try {
         const patient = await PatientModel.findById(req.params.id);
         console.log(`Record from MongoDB Atlas:`, patient);
-        return(patient);
+        res.send (patient);
     } catch (error) {
         console.log(error);
-        return({error: error.message});
+        res.send ({error: error.message});
     }
 };
 exports.deletePatient = async (req, res) => {
@@ -101,14 +101,14 @@ exports.deletePatient = async (req, res) => {
         const id = await PatientModel.findByIdAndDelete(req.params.id);
         if (id) {
             console.log('Patient deleted successfully : ',id);
-            return('Patient deleted successfully : ',id);
+            res.send ('Patient deleted successfully : ',id);
         } else {
             console.error('Patient not found', error);
-            return('Patient not found');
+            res.send ('Patient not found');
         }
     } catch (error) {
         console.error('Error during patient deletion:', error);
-        return('An error occurred while deleting the patient');
+        res.send ('An error occurred while deleting the patient');
     }
 };
 

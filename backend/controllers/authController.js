@@ -29,7 +29,7 @@ exports.loginPatient = async (req, res) => {
         return token;
     } else {
         console.log('\nError : No Patient with this email or password');
-        return('Error : No patient with this email or password');
+        res.send('Error : No patient with this email or password');
     }
 };
 
@@ -44,7 +44,7 @@ exports.loginDoctor = async (req, res) => {
         return token;
     } else {
         console.log('\nError : No Doctor with this email or password');
-        return('Error : No Doctor with this email or password');
+        res.send('Error : No Doctor with this email or password');
     }
 };
 
@@ -74,6 +74,6 @@ exports.loginStaff = async (req, res) => {
         return token;
     } else {
         console.log('\nError : No Staff with this email or password');
-        return('Error : No Staff with this email or password');
+        res.send('Error : No Staff with this email or password');
     }
 };
