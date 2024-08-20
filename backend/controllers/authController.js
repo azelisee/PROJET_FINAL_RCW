@@ -59,7 +59,7 @@ exports.loginNurse = async (req, res) => {
         return token;
     } else {
         console.log('\nError : No Doctor with this email or password');
-        return ('Error : No Nurse with this email or password');
+        res.send('Error : No Nurse with this email or password');
     }
 };
 
