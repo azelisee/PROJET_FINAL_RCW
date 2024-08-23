@@ -1,0 +1,78 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.home-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.home-header {
+    margin-bottom: 40px;
+}
+
+.home-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.home-header p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+.home-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.home-card:hover {
+    transform: scale(1.05);
+}
+
+.home-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.home-card h2 {
+    font-size: 1.5em;
+    color: #2980b9;
+    margin: 0 0 10px;
+}
+
+.home-card p {
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+

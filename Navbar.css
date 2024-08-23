@@ -1,0 +1,41 @@
+/* Navbar.css */
+nav {
+    font-family:'Times New Roman', Times, serif;
+    background-color: royalblue;
+    padding: 1em;
+    /*border-radius: 10px;*/
+}
+
+nav table {
+    margin: 0 auto;
+}
+
+nav th {
+    padding: 10px 15px;
+}
+
+button {
+    font-family:'Times New Roman', Times, serif;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: royalblue;
+    transform: scale(1.05);
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button a:hover {
+    text-decoration: underline;
+}
