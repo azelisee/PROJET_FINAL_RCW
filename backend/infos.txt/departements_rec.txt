@@ -1,0 +1,369 @@
+{
+    "depNumber": 1,
+    "name": "Cardiology",
+    "description": "Cardiology department specializing in heart diseases",
+    "doctors": ["60d21b4667d0d8992e610c85"], 
+    "nurses": ["60d21b4667d0d8992e610c86"] ,
+    "hospital": "60d21b4667d0d8992e610c86"
+}
+
+
+
+    {
+        "depNumber": 2,
+        "name": "Neurology",
+        "description": "Neurology department specializing in brain and nervous system disorders",
+        "doctors": ["60d21b4667d0d8992e610c87"],
+        "nurses": ["60d21b4667d0d8992e610c88"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+
+    {
+        "depNumber": 3,
+        "name": "Orthopedics",
+        "description": "Orthopedics department specializing in bone and joint disorders",
+        "doctors": ["60d21b4667d0d8992e610c89"],
+        "nurses": ["60d21b4667d0d8992e610c8a"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+
+    {
+        "depNumber": 4,
+        "name": "Gastroenterology",
+        "description": "Gastroenterology department specializing in digestive system disorders",
+        "doctors": ["60d21b4667d0d8992e610c8b"],
+        "nurses": ["60d21b4667d0d8992e610c8c"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+
+    {
+        "depNumber": 5,
+        "name": "Endocrinology",
+        "description": "Endocrinology department specializing in hormone and metabolic disorders",
+        "doctors": ["60d21b4667d0d8992e610c8d"],
+        "nurses": ["60d21b4667d0d8992e610c8e"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+    {
+        "depNumber": 6,
+        "name": "Dermatology",
+        "description": "Dermatology department specializing in skin disorders",
+        "doctors": ["60d21b4667d0d8992e610c8f"],
+        "nurses": ["60d21b4667d0d8992e610c90"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+
+    {
+        "depNumber": 7,
+        "name": "Ophthalmology",
+        "description": "Ophthalmology department specializing in eye disorders",
+        "doctors": ["60d21b4667d0d8992e610c91"],
+        "nurses": ["60d21b4667d0d8992e610c92"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+    {
+        "depNumber": 8,
+        "name": "Pediatrics",
+        "description": "Pediatrics department specializing in children's health",
+        "doctors": ["60d21b4667d0d8992e610c93"],
+        "nurses": ["60d21b4667d0d8992e610c94"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+    {
+        "depNumber": 9,
+        "name": "Oncology",
+        "description": "Oncology department specializing in cancer treatment",
+        "doctors": ["60d21b4667d0d8992e610c95"],
+        "nurses": ["60d21b4667d0d8992e610c96"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+    {
+        "depNumber": 10,
+        "name": "Psychiatry",
+        "description": "Psychiatry department specializing in mental health disorders",
+        "doctors": ["60d21b4667d0d8992e610c97"],
+        "nurses": ["60d21b4667d0d8992e610c98"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+    {
+        "depNumber": 11,
+        "name": "Pulmonology",
+        "description": "Pulmonology department specializing in lung disorders",
+        "doctors": ["60d21b4667d0d8992e610c99"],
+        "nurses": ["60d21b4667d0d8992e610c9a"],
+ "hospital": "60d21b4667d0d8992e610c86"
+
+    }
+
+
+
+
+ {
+        "depNumber": 12,
+        "name": "Cardiology",
+        "description": "Cardiology department focused on heart and cardiovascular diseases",
+        "doctors": ["60d21b4667d0d8992e610c97"],
+        "nurses": ["60d21b4667d0d8992e610c9b"],
+        "hospital": "60d21b4667d0d8992e610c87"
+    }
+
+
+
+
+{
+        "depNumber": 13,
+        "name": "Neurology",
+        "description": "Neurology department specializing in brain and nervous system disorders",
+        "doctors": ["60d21b4667d0d8992e610c95"],
+        "nurses": ["60d21b4667d0d8992e610c9c"],
+        "hospital": "60d21b4667d0d8992e610c88"
+    }
+
+
+
+
+
+{
+        "depNumber": 14,
+        "name": "Gastroenterology",
+        "description": "Gastroenterology department focusing on digestive system diseases",
+        "doctors": ["60d21b4667d0d8992e610c96"],
+        "nurses": ["60d21b4667d0d8992e610c9d"],
+        "hospital": "60d21b4667d0d8992e610c89"
+    }
+
+
+
+
+
+{
+        "depNumber": 15,
+        "name": "Dermatology",
+        "description": "Dermatology department specializing in skin, hair, and nail disorders",
+        "doctors": ["60d21b4667d0d8992e610ca1"],
+        "nurses": ["60d21b4667d0d8992e610c9e"],
+        "hospital": "60d21b4667d0d8992e610c8a"
+    }
+
+
+
+{
+        "depNumber": 16,
+        "name": "Oncology",
+        "description": "Oncology department providing cancer treatment and care",
+        "doctors": ["60d21b4667d0d8992e610ca2"],
+        "nurses": ["60d21b4667d0d8992e610c9f"],
+        "hospital": "60d21b4667d0d8992e610c8b"
+    }
+
+
+
+
+{
+        "depNumber": 17,
+        "name": "Pediatrics",
+        "description": "Pediatrics department focusing on medical care for children",
+        "doctors": ["60d21b4667d0d8992e610ca3"],
+        "nurses": ["60d21b4667d0d8992e610ca0"],
+        "hospital": "60d21b4667d0d8992e610c8c"
+    }
+
+
+
+
+{
+        "depNumber": 18,
+        "name": "Orthopedics",
+        "description": "Orthopedics department specializing in bone and joint disorders",
+        "doctors": ["60d21b4667d0d8992e610ca4"],
+        "nurses": ["60d21b4667d0d8992e610ca1"],
+        "hospital": "60d21b4667d0d8992e610c8d"
+    }
+
+
+
+
+
+{
+        "depNumber": 19,
+        "name": "Gynecology",
+        "description": "Gynecology department focusing on women's reproductive health",
+        "doctors": ["60d21b4667d0d8992e610ca5"],
+        "nurses": ["60d21b4667d0d8992e610ca2"],
+        "hospital": "60d21b4667d0d8992e610c8e"
+    }
+
+
+
+
+{
+        "depNumber": 20,
+        "name": "Endocrinology",
+        "description": "Endocrinology department focusing on hormonal and metabolic disorders",
+        "doctors": ["60d21b4667d0d8992e610ca6"],
+        "nurses": ["60d21b4667d0d8992e610ca3"],
+        "hospital": "60d21b4667d0d8992e610c8f"
+    }
+
+
+
+
+
+{
+        "depNumber": 21,
+        "name": "Nephrology",
+        "description": "Nephrology department specializing in kidney-related disorders",
+        "doctors": ["60d21b4667d0d8992e610ca7"],
+        "nurses": ["60d21b4667d0d8992e610ca4"],
+        "hospital": "60d21b4667d0d8992e610c90"
+    }
+
+
+
+
+{
+        "depNumber": 22,
+        "name": "Hematology",
+        "description": "Hematology department focusing on blood-related disorders",
+        "doctors": ["60d21b4667d0d8992e610ca8"],
+        "nurses": ["60d21b4667d0d8992e610ca5"],
+        "hospital": "60d21b4667d0d8992e610c91"
+    }
+
+
+
+
+
+
+{
+        "depNumber": 23,
+        "name": "Radiology",
+        "description": "Radiology department providing diagnostic imaging services",
+        "doctors": ["60d21b4667d0d8992e610ca9"],
+        "nurses": ["60d21b4667d0d8992e610ca6"],
+        "hospital": "60d21b4667d0d8992e610c92"
+    }
+
+
+
+
+
+{
+        "depNumber": 24,
+        "name": "Urology",
+        "description": "Urology department specializing in urinary tract disorders",
+        "doctors": ["60d21b4667d0d8992e610caa"],
+        "nurses": ["60d21b4667d0d8992e610ca7"],
+        "hospital": "60d21b4667d0d8992e610c93"
+    }
+
+
+
+
+
+{
+        "depNumber": 25,
+        "name": "Ophthalmology",
+        "description": "Ophthalmology department specializing in eye and vision care",
+        "doctors": ["60d21b4667d0d8992e610cab"],
+        "nurses": ["60d21b4667d0d8992e610ca8"],
+        "hospital": "60d21b4667d0d8992e610c94"
+    }
+
+
+
+
+{
+        "depNumber": 26,
+        "name": "Rheumatology",
+        "description": "Rheumatology department focusing on joint and autoimmune disorders",
+        "doctors": ["60d21b4667d0d8992e610cac"],
+        "nurses": ["60d21b4667d0d8992e610ca9"],
+        "hospital": "60d21b4667d0d8992e610c95"
+    }
+
+
+
+
+{
+        "depNumber": 27,
+        "name": "Geriatrics",
+        "description": "Geriatrics department providing care for elderly patients",
+        "doctors": ["60d21b4667d0d8992e610cad"],
+        "nurses": ["60d21b4667d0d8992e610caa"],
+        "hospital": "60d21b4667d0d8992e610c96"
+    }
+
+
+
+
+
+{
+        "depNumber": 28,
+        "name": "Psychiatry",
+        "description": "Psychiatry department specializing in mental health disorders",
+        "doctors": ["60d21b4667d0d8992e610cae"],
+        "nurses": ["60d21b4667d0d8992e610cab"],
+        "hospital": "60d21b4667d0d8992e610c97"
+    }
+
+
+
+
+{
+        "depNumber": 29,
+        "name": "Infectious Diseases",
+        "description": "Department specializing in the treatment of infectious diseases",
+        "doctors": ["60d21b4667d0d8992e610caf"],
+        "nurses": ["60d21b4667d0d8992e610cac"],
+        "hospital": "60d21b4667d0d8992e610c98"
+    }
+
+
+
+
+

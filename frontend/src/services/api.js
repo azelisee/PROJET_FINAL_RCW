@@ -2,11 +2,21 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:7000';
 
+
+const getAuthHeaders = () => {
+    const token = localStorage.getItem('token');
+    return {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    };
+};
+
 // Patients
 export const getPatients = () => axios.get(`${API_URL}/patients`);
 export const getPatientById = (id) => axios.get(`${API_URL}/patients/${id}`);
 export const createPatient = (patient) => axios.post(`${API_URL}/patients`,patient);
-export const updatePatient = (id,patient) => axios.put(`${API_URL}/patients/${id}`,patient);
+export const updatePatient = (id, patient) => axios.put(`${API_URL}/patients/${id}`, patient, getAuthHeaders());
 export const deletePatient = (id) => axios.delete(`${API_URL}/patients/${id}`);
 
 // Doctors
@@ -57,3 +67,51 @@ export const getStaffById = (id) => axios.get(`${API_URL}/staff/${id}`);
 export const createStaff = (staff) => axios.post(`${API_URL}/staff`, staff);
 export const updateStaff = (id, staff) => axios.put(`${API_URL}/staff/${id}`, staff);
 export const deleteStaff = (id) => axios.delete(`${API_URL}/staff/${id}`);
+
+// Patients Login
+export const loginPatient = (email, password) =>
+    axios.post(`${API_URL}/auth/login/patient`, {
+        title: 'Patient',
+        email,
+        password
+    });
+
+// Doctors Login
+export const loginDoctor = (email, password) =>
+    axios.post(`${API_URL}/auth/login/doctor`, {
+        title: 'Doctor',
+        email,
+        password
+    });
+
+// Nurses Login
+export const loginNurse = (email, password) =>
+    axios.post(`${API_URL}/auth/login/nurse`, {
+        title: 'Nurse',
+        email,
+        password
+    });
+
+// Staff Login
+export const loginStaff = (role, email, password) =>
+    axios.post(`${API_URL}/auth/login/staff`, {
+        role,
+        email,
+        password
+    });
+
+// Request an appointment
+export const requestAppointment = (email, name) =>
+    axios.post(`${API_URL}/appointments/request-appointment`, {
+        email,
+        name
+    });
+
+// Confirm an appointment (to be used by doctors/admins)
+export const confirmAppointment = (email, doctorName, appointmentDate, hour) =>
+    axios.post(`${API_URL}/appointments/confirm-appointment`, {
+        email,
+        doctorName,
+        appointmentDate,
+        hour
+    });

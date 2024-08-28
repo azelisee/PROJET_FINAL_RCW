@@ -1,18 +1,24 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
 
 const ProtectedRoute = ({ children, roles }) => {
     const token = localStorage.getItem('token');
-    const userRole = localStorage.getItem('role');
-    const userTitle = localStorage.getItem('title');
     if (!token) {
         return <Navigate to="/login" />;
     }
-    if (roles && !(roles.includes(userRole) || roles.includes(userTitle))) {
-        return <Navigate to="/unauthorized" />;
+    try {
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role || decodedToken.title;
+        if (roles && roles.includes(userRole)) {
+            return children;
+        } else {
+            return <Navigate to="/unauthorized" />;
+        }
+    } catch (error) {
+        console.error("Token decoding failed:", error);
+        return <Navigate to="/login" />;
     }
-    return children;
 };
+
 export default ProtectedRoute;
-
-

@@ -1,0 +1,514 @@
+{
+    "roomNumber": 101,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+{
+    "roomNumber": 245,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+{
+    "roomNumber": 415,
+    "bedNumber": 4,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+{
+    "roomNumber": 7,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1",
+}
+
+
+{
+    "roomNumber": 700,
+    "bedNumber": 4,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+{
+    "roomNumber": 703,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+{
+    "roomNumber": 74,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+{
+    "roomNumber": 254,
+    "bedNumber": 2,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+{
+    "roomNumber": 2,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+{
+    "roomNumber": 3,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+{
+    "roomNumber": 4,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 5,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 6,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 8,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 9,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 10,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 11,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 12,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 13,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 14,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 15,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 16,
+    "bedNumber": 1,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 17,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 18,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 19,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 20,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 21,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 22,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 23,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 24,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 25,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 26,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 27,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 28,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+{
+    "roomNumber": 29,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 30,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 31,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 32,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+
+{
+    "roomNumber": 33,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 34,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 35,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+{
+    "roomNumber": 36,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 37,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 38,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 39,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 40,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 41,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 42,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 43,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+
+
+
+
+{
+    "roomNumber": 44,
+    "bedNumber": 3,
+    "department": "60d21b4667d0d8992e610c86" ,
+"hospital": "66af1e6dd409cb0d230704e1"
+}
+
+

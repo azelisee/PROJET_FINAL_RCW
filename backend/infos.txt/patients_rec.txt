@@ -1,0 +1,1871 @@
+{
+    "title": "Patient",
+    "name": "David Park",
+    "age": 30,
+    "email": "dp@gmail.com",
+    "password": "dav",
+    "tel": "1234567890",
+    "address": "123 Main St",
+    "dateOfBirth": "1992-01-01",
+    "gender": "Male",
+    "bloodType": "O+",
+    "medicalFolders": [
+        {
+            "folderName": "General Checkup",
+            "documents": [
+                {
+                    "type": "Report",
+                    "url": "http://genCheck.com/report.pdf",
+                    "dateAdded": "2023-07-01"
+                }
+            ]
+        }
+    ],
+    "consultationHistory": [
+        {
+            "date": "2023-07-01",
+            "doctorId": "60d21b4667d0d8992e610c85",
+            "doctorName": "Dr. Smith",
+            "notes": "Regular checkup",
+            "diagnosis": "Healthy",
+            "prescriptions": [
+                {
+                    "medicine": "Vitamin D",
+                    "dosage": "1 pill",
+                    "duration": "30 days"
+                }
+            ],
+            "department": "60d21b4667d0d8992e610c86",
+            "room": "60d21b4667d0d8992e610c87"
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentName": "Physical Therapy",
+            "startDate": "2023-07-01",
+            "endDate": "2023-07-30",
+            "description": "Weekly physical therapy sessions",
+            "status": "ongoing",
+            "department": "60d21b4667d0d8992e610c86",
+            "room": "60d21b4667d0d8992e610c87"
+        }
+    ],
+    "currentRoom": "60d21b4667d0d8992e610c87",
+    "hospital": "66af19f1c4cd9dca8d99c747"
+}
+
+
+
+
+{
+    "title": "Patient",
+    "name": "Carl Hymes",
+    "age": 24,
+    "email": "carl@gmail.com",
+    "password": "carl1234",
+    "tel": "(438)-458-7845",
+    "address": "9123 St Meunier",
+    "dateOfBirth": "1992-01-01",
+    "gender": "Male",
+    "bloodType": "B+",
+    "medicalFolders": [
+        {
+            "folderName": "General Checkup",
+            "documents": [
+                {
+                    "type": "Report",
+                    "url": "http://genCheck.com/report.pdf",
+                    "dateAdded": "2023-07-01"
+                }
+            ]
+        }
+    ],
+    "consultationHistory": [
+        {
+            "date": "2023-07-01",
+            "doctorId": "60d21b4667d0d8992e610c85",
+            "doctorName": "Dr. Smith",
+            "notes": "Regular checkup",
+            "diagnosis": "Healthy",
+            "prescriptions": [
+                {
+                    "medicine": "Vitamin C",
+                    "dosage": "2 pills",
+                    "duration": "90 days"
+                }
+            ],
+            "department": "60d21b4667d0d8992e610c86",
+            "room": "60d21b4667d0d8992e610c87"
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentName": "Physical Therapy",
+            "startDate": "2023-07-01",
+            "endDate": "2023-07-30",
+            "description": "Weekly physical therapy sessions",
+            "status": "planned",
+            "department": "60d21b4667d0d8992e610c86",
+            "room": "60d21b4667d0d8992e610c87"
+        }
+    ],
+    "currentRoom": "60d21b4667d0d8992e610c87",
+    "hospital": "66af19f1c4cd9dca8d99c747"
+}
+
+
+
+
+{
+    "title": "Patient",
+    "name": "Alice Johnson",
+    "age": 30,
+    "email": "alice.johnson@gmail.com",
+    "password": "alice2023",
+    "tel": "(415)-789-4567",
+    "address": "123 Main St",
+    "dateOfBirth": "1993-04-15",
+    "gender": "Female",
+    "bloodType": "A+",
+    "medicalFolders": [
+        {
+            "folderName": "Cardiology",
+            "documents": [
+                {
+                    "type": "ECG Report",
+                    "url": "http://cardioReports.com/ecg.pdf",
+                    "dateAdded": "2023-03-20"
+                }
+            ]
+        }
+    ],
+    "consultationHistory": [
+        {
+            "date": "2023-03-20",
+            "doctorId": "60d21b4667d0d8992e610c88",
+            "doctorName": "Dr. Adams",
+            "notes": "Heart palpitations",
+            "diagnosis": "Mild Arrhythmia",
+            "prescriptions": [
+                {
+                    "medicine": "Beta Blockers",
+                    "dosage": "1 pill",
+                    "duration": "60 days"
+                }
+            ],
+            "department": "60d21b4667d0d8992e610c89",
+            "room": "60d21b4667d0d8992e610c90"
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentName": "Cardio Exercise",
+            "startDate": "2023-04-01",
+            "endDate": "2023-06-01",
+            "description": "Daily exercise sessions",
+            "status": "ongoing",
+            "department": "60d21b4667d0d8992e610c89",
+            "room": "60d21b4667d0d8992e610c90"
+        }
+    ],
+    "currentRoom": "60d21b4667d0d8992e610c90",
+    "hospital": "66af19f1c4cd9dca8d99c747"
+}
+
+
+
+
+
+{
+    "title": "Patient",
+    "name": "Bob Williams",
+    "age": 45,
+    "email": "bob.williams@gmail.com",
+    "password": "bobw2024",
+    "tel": "(312)-654-7890",
+    "address": "456 Oak Dr",
+    "dateOfBirth": "1978-09-05",
+    "gender": "Male",
+    "bloodType": "O-",
+    "medicalFolders": [
+        {
+            "folderName": "Diabetes Management",
+            "documents": [
+                {
+                    "type": "Blood Sugar Report",
+                    "url": "http://diabetesReports.com/bloodsugar.pdf",
+                    "dateAdded": "2023-06-15"
+                }
+            ]
+        }
+    ],
+    "consultationHistory": [
+        {
+            "date": "2023-06-15",
+            "doctorId": "60d21b4667d0d8992e610c91",
+            "doctorName": "Dr. Brown",
+            "notes": "High blood sugar levels",
+            "diagnosis": "Type 2 Diabetes",
+            "prescriptions": [
+                {
+                    "medicine": "Metformin",
+                    "dosage": "1 pill",
+                    "duration": "30 days"
+                }
+            ],
+            "department": "60d21b4667d0d8992e610c92",
+            "room": "60d21b4667d0d8992e610c93"
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentName": "Insulin Therapy",
+            "startDate": "2023-07-01",
+            "endDate": "2023-07-31",
+            "description": "Daily insulin injections",
+            "status": "ongoing",
+            "department": "60d21b4667d0d8992e610c92",
+            "room": "60d21b4667d0d8992e610c93"
+        }
+    ],
+    "currentRoom": "60d21b4667d0d8992e610c93",
+    "hospital": "66af19f1c4cd9dca8d99c747"
+}
+
+
+
+
+
+
+
+{
+    "title": "Patient",
+    "name": "Charlie Smith",
+    "age": 29,
+    "email": "charlie.smith@gmail.com",
+    "password": "charlies2023",
+    "tel": "(213)-456-7890",
+    "address": "789 Pine St",
+    "dateOfBirth": "1994-02-20",
+    "gender": "Male",
+    "bloodType": "B-",
+    "medicalFolders": [
+        {
+            "folderName": "Neurology",
+            "documents": [
+                {
+                    "type": "MRI Report",
+                    "url": "http://neuroReports.com/mri.pdf",
+                    "dateAdded": "2023-02-15"
+                }
+            ]
+        }
+    ],
+    "consultationHistory": [
+        {
+            "date": "2023-02-15",
+            "doctorId": "60d21b4667d0d8992e610c94",
+            "doctorName": "Dr. Green",
+            "notes": "Severe headaches",
+            "diagnosis": "Migraine",
+            "prescriptions": [
+                {
+                    "medicine": "Sumatriptan",
+                    "dosage": "1 pill",
+                    "duration": "30 days"
+                }
+            ],
+            "department": "60d21b4667d0d8992e610c95",
+            "room": "60d21b4667d0d8992e610c96"
+        }
+    ],
+    "treatments": [
+        {
+            "treatmentName": "Cognitive Behavioral Therapy",
+            "startDate": "2023-03-01",
+            "endDate": "2023-04-01",
+            "description": "Weekly sessions",
+            "status": "completed",
+            "department": "60d21b4667d0d8992e610c95",
+            "room": "60d21b4667d0d8992e610c96"
+        }
+    ],
+    "currentRoom": "60d21b4667d0d8992e610c96",
+    "hospital": "66af19f1c4cd9dca8d99c747"
+}
+
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Emily Davis",
+        "age": 34,
+        "email": "emily.davis@gmail.com",
+        "password": "emilyd2023",
+        "tel": "(213)-555-1234",
+        "address": "123 Maple St",
+        "dateOfBirth": "1990-08-12",
+        "gender": "Female",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Cardiology",
+                "documents": [
+                    {
+                        "type": "ECG Report",
+                        "url": "http://cardioReports.com/ecg.pdf",
+                        "dateAdded": "2023-03-10"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-03-10",
+                "doctorId": "60d21b4667d0d8992e610c97",
+                "doctorName": "Dr. Brown",
+                "notes": "Chest pain",
+                "diagnosis": "Angina",
+                "prescriptions": [
+                    {
+                        "medicine": "Aspirin",
+                        "dosage": "1 pill",
+                        "duration": "30 days"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610c98",
+                "room": "60d21b4667d0d8992e610c99"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Cardiac Rehabilitation",
+                "startDate": "2023-04-01",
+                "endDate": "2023-05-01",
+                "description": "Bi-weekly sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610c98",
+                "room": "60d21b4667d0d8992e610c99"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610c99",
+        "hospital": "66af19f1c4cd9dca8d99c748"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Michael Johnson",
+        "age": 45,
+        "email": "michael.johnson@gmail.com",
+        "password": "michaelj2023",
+        "tel": "(213)-555-5678",
+        "address": "456 Oak St",
+        "dateOfBirth": "1979-11-25",
+        "gender": "Male",
+        "bloodType": "O-",
+        "medicalFolders": [
+            {
+                "folderName": "Oncology",
+                "documents": [
+                    {
+                        "type": "Biopsy Report",
+                        "url": "http://oncoReports.com/biopsy.pdf",
+                        "dateAdded": "2023-04-20"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-04-20",
+                "doctorId": "60d21b4667d0d8992e610ca0",
+                "doctorName": "Dr. White",
+                "notes": "Lump in neck",
+                "diagnosis": "Thyroid cancer",
+                "prescriptions": [
+                    {
+                        "medicine": "Levothyroxine",
+                        "dosage": "1 pill",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ca1",
+                "room": "60d21b4667d0d8992e610ca2"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Radiation Therapy",
+                "startDate": "2023-05-01",
+                "endDate": "2023-06-01",
+                "description": "Daily sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610ca1",
+                "room": "60d21b4667d0d8992e610ca2"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ca2",
+        "hospital": "66af19f1c4cd9dca8d99c749"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Sophia Martinez",
+        "age": 52,
+        "email": "sophia.martinez@gmail.com",
+        "password": "sophiam2023",
+        "tel": "(213)-555-8910",
+        "address": "789 Birch St",
+        "dateOfBirth": "1972-05-15",
+        "gender": "Female",
+        "bloodType": "AB+",
+        "medicalFolders": [
+            {
+                "folderName": "Dermatology",
+                "documents": [
+                    {
+                        "type": "Skin Biopsy Report",
+                        "url": "http://dermaReports.com/biopsy.pdf",
+                        "dateAdded": "2023-06-10"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-06-10",
+                "doctorId": "60d21b4667d0d8992e610ca3",
+                "doctorName": "Dr. Lee",
+                "notes": "Mole on back",
+                "diagnosis": "Melanoma",
+                "prescriptions": [
+                    {
+                        "medicine": "Topical cream",
+                        "dosage": "Apply twice daily",
+                        "duration": "14 days"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ca4",
+                "room": "60d21b4667d0d8992e610ca5"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Surgical Removal",
+                "startDate": "2023-07-01",
+                "endDate": "2023-07-01",
+                "description": "Outpatient surgery",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610ca4",
+                "room": "60d21b4667d0d8992e610ca5"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ca5",
+        "hospital": "66af19f1c4cd9dca8d99c750"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Daniel Williams",
+        "age": 60,
+        "email": "daniel.williams@gmail.com",
+        "password": "danielw2023",
+        "tel": "(213)-555-1122",
+        "address": "123 Elm St",
+        "dateOfBirth": "1964-01-30",
+        "gender": "Male",
+        "bloodType": "O+",
+        "medicalFolders": [
+            {
+                "folderName": "Orthopedics",
+                "documents": [
+                    {
+                        "type": "X-Ray Report",
+                        "url": "http://orthoReports.com/xray.pdf",
+                        "dateAdded": "2023-08-01"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-08-01",
+                "doctorId": "60d21b4667d0d8992e610ca6",
+                "doctorName": "Dr. Patel",
+                "notes": "Knee pain",
+                "diagnosis": "Osteoarthritis",
+                "prescriptions": [
+                    {
+                        "medicine": "Ibuprofen",
+                        "dosage": "1 pill",
+                        "duration": "as needed"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ca7",
+                "room": "60d21b4667d0d8992e610ca8"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Physical Therapy",
+                "startDate": "2023-09-01",
+                "endDate": "2023-10-01",
+                "description": "Twice weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610ca7",
+                "room": "60d21b4667d0d8992e610ca8"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ca8",
+        "hospital": "66af19f1c4cd9dca8d99c75"
+}
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Olivia Brown",
+        "age": 38,
+        "email": "olivia.brown@gmail.com",
+        "password": "oliviab2023",
+        "tel": "(213)-555-3344",
+        "address": "456 Cedar St",
+        "dateOfBirth": "1985-04-20",
+        "gender": "Female",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Pulmonology",
+                "documents": [
+                    {
+                        "type": "Lung Function Test",
+                        "url": "http://pulmoReports.com/lft.pdf",
+                        "dateAdded": "2023-10-05"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-10-05",
+                "doctorId": "60d21b4667d0d8992e610ca9",
+                "doctorName": "Dr. Garcia",
+                "notes": "Shortness of breath",
+                "diagnosis": "Asthma",
+                "prescriptions": [
+                    {
+                        "medicine": "Albuterol inhaler",
+                        "dosage": "As needed",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610caa",
+                "room": "60d21b4667d0d8992e610cab"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Breathing Exercises",
+                "startDate": "2023-11-01",
+                "endDate": "2023-12-01",
+                "description": "Daily sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610caa",
+                "room": "60d21b4667d0d8992e610cab"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cab",
+        "hospital": "66af19f1c4cd9dca8d99c752"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Amina Touré",
+        "age": 30,
+        "email": "amina.toure@gmail.com",
+        "password": "aminat2023",
+        "tel": "(213)-555-9900",
+        "address": "456 Mango St",
+        "dateOfBirth": "1993-03-22",
+        "gender": "Female",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Gynecology",
+                "documents": [
+                    {
+                        "type": "Ultrasound Report",
+                        "url": "http://gynoReports.com/ultrasound.pdf",
+                        "dateAdded": "2023-05-12"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-05-12",
+                "doctorId": "60d21b4667d0d8992e610cb2",
+                "doctorName": "Dr. Diallo",
+                "notes": "Irregular periods",
+                "diagnosis": "Polycystic Ovary Syndrome",
+                "prescriptions": [
+                    {
+                        "medicine": "Oral contraceptive",
+                        "dosage": "1 pill daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cb3",
+                "room": "60d21b4667d0d8992e610cb4"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Hormonal Therapy",
+                "startDate": "2023-06-01",
+                "endDate": "2023-08-01",
+                "description": "Monthly injections",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cb3",
+                "room": "60d21b4667d0d8992e610cb4"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cb4",
+        "hospital": "66af19f1c4cd9dca8d99c755"
+    }
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Carlos Mendoza",
+        "age": 36,
+        "email": "carlos.mendoza@gmail.com",
+        "password": "carlosm2023",
+        "tel": "(213)-555-2222",
+        "address": "789 Palm St",
+        "dateOfBirth": "1988-12-05",
+        "gender": "Male",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Hematology",
+                "documents": [
+                    {
+                        "type": "Blood Test Report",
+                        "url": "http://hemaReports.com/bloodtest.pdf",
+                        "dateAdded": "2023-11-20"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-11-20",
+                "doctorId": "60d21b4667d0d8992e610cb5",
+                "doctorName": "Dr. Ramirez",
+                "notes": "Fatigue and pallor",
+                "diagnosis": "Iron Deficiency Anemia",
+                "prescriptions": [
+                    {
+                        "medicine": "Iron supplements",
+                        "dosage": "1 pill daily",
+                        "duration": "3 months"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cb6",
+                "room": "60d21b4667d0d8992e610cb7"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Iron Infusions",
+                "startDate": "2023-12-01",
+                "endDate": "2023-12-31",
+                "description": "Weekly sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cb6",
+                "room": "60d21b4667d0d8992e610cb7"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cb7",
+        "hospital": "66af19f1c4cd9dca8d99c756"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Ying Li",
+        "age": 29,
+        "email": "ying.li@gmail.com",
+        "password": "yingl2023",
+        "tel": "(213)-555-3344",
+        "address": "123 Bamboo Ln",
+        "dateOfBirth": "1994-07-18",
+        "gender": "Female",
+        "bloodType": "AB-",
+        "medicalFolders": [
+            {
+                "folderName": "Rheumatology",
+                "documents": [
+                    {
+                        "type": "Autoimmune Panel",
+                        "url": "http://rheumaReports.com/autoimmune.pdf",
+                        "dateAdded": "2023-02-28"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-02-28",
+                "doctorId": "60d21b4667d0d8992e610cb8",
+                "doctorName": "Dr. Wu",
+                "notes": "Joint pain and stiffness",
+                "diagnosis": "Rheumatoid Arthritis",
+                "prescriptions": [
+                    {
+                        "medicine": "Methotrexate",
+                        "dosage": "10 mg weekly",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cb9",
+                "room": "60d21b4667d0d8992e610cba"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Physical Therapy",
+                "startDate": "2023-03-15",
+                "endDate": "2023-04-15",
+                "description": "Twice weekly sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cb9",
+                "room": "60d21b4667d0d8992e610cba"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cba",
+        "hospital": "66af19f1c4cd9dca8d99c757"
+    }
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Fatoumata Keita",
+        "age": 33,
+        "email": "fatoumata.keita@gmail.com",
+        "password": "fatoumatak2023",
+        "tel": "(213)-555-5566",
+        "address": "789 Baobab Rd",
+        "dateOfBirth": "1991-06-20",
+        "gender": "Female",
+        "bloodType": "B-",
+        "medicalFolders": [
+            {
+                "folderName": "Gastroenterology",
+                "documents": [
+                    {
+                        "type": "Endoscopy Report",
+                        "url": "http://gastroReports.com/endoscopy.pdf",
+                        "dateAdded": "2023-11-10"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-11-10",
+                "doctorId": "60d21b4667d0d8992e610cbe",
+                "doctorName": "Dr. Sanogo",
+                "notes": "Abdominal pain",
+                "diagnosis": "Gastritis",
+                "prescriptions": [
+                    {
+                        "medicine": "Omeprazole",
+                        "dosage": "20 mg daily",
+                        "duration": "1 month"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cbf",
+                "room": "60d21b4667d0d8992e610cc0"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Dietary Changes",
+                "startDate": "2023-12-01",
+                "endDate": "2023-12-31",
+                "description": "Low acid diet",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cbf",
+                "room": "60d21b4667d0d8992e610cc0"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cc0",
+        "hospital": "66af19f1c4cd9dca8d99c759"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Lucia Moretti",
+        "age": 55,
+        "email": "lucia.moretti@gmail.com",
+        "password": "luciam2023",
+        "tel": "(213)-555-6677",
+        "address": "123 Via Roma",
+        "dateOfBirth": "1969-11-30",
+        "gender": "Female",
+        "bloodType": "O-",
+        "medicalFolders": [
+            {
+                "folderName": "Cardiology",
+                "documents": [
+                    {
+                        "type": "Stress Test Report",
+                        "url": "http://cardioReports.com/stresstest.pdf",
+                        "dateAdded": "2023-05-20"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-05-20",
+                "doctorId": "60d21b4667d0d8992e610cc1",
+                "doctorName": "Dr. Rossi",
+                "notes": "Shortness of breath on exertion",
+                "diagnosis": "Coronary artery disease",
+                "prescriptions": [
+                    {
+                        "medicine": "Atorvastatin",
+                        "dosage": "20 mg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cc2",
+                "room": "60d21b4667d0d8992e610cc3"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Angioplasty",
+                "startDate": "2023-06-01",
+                "endDate": "2023-06-01",
+                "description": "Balloon angioplasty",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cc2",
+                "room": "60d21b4667d0d8992e610cc3"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cc3",
+        "hospital": "66af19f1c4cd9dca8d99c760"
+    }
+
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Youssef Benali",
+        "age": 41,
+        "email": "youssef.benali@gmail.com",
+        "password": "youssefb2023",
+        "tel": "(213)-555-7788",
+        "address": "456 Rue Casbah",
+        "dateOfBirth": "1982-07-22",
+        "gender": "Male",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Pulmonology",
+                "documents": [
+                    {
+                        "type": "Chest X-Ray",
+                        "url": "http://pulmoReports.com/chestxray.pdf",
+                        "dateAdded": "2023-10-18"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-10-18",
+                "doctorId": "60d21b4667d0d8992e610cc4",
+                "doctorName": "Dr. Amrani",
+                "notes": "Persistent cough",
+                "diagnosis": "Chronic bronchitis",
+                "prescriptions": [
+                    {
+                        "medicine": "Budesonide inhaler",
+                        "dosage": "2 puffs twice daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cc5",
+                "room": "60d21b4667d0d8992e610cc6"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Pulmonary Rehabilitation",
+                "startDate": "2023-11-01",
+                "endDate": "2023-12-01",
+                "description": "Bi-weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cc5",
+                "room": "60d21b4667d0d8992e610cc6"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cc6",
+        "hospital": "66af19f1c4cd9dca8d99c761"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Amelia Chen",
+        "age": 29,
+        "email": "amelia.chen@gmail.com",
+        "password": "ameliachen2023",
+        "tel": "(213)-555-8899",
+        "address": "789 Lotus St",
+        "dateOfBirth": "1994-10-15",
+        "gender": "Female",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Ophthalmology",
+                "documents": [
+                    {
+                        "type": "Retinal Scan",
+                        "url": "http://ophthaReports.com/retina.pdf",
+                        "dateAdded": "2023-07-25"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-07-25",
+                "doctorId": "60d21b4667d0d8992e610cc7",
+                "doctorName": "Dr. Zhang",
+                "notes": "Blurred vision",
+                "diagnosis": "Diabetic retinopathy",
+                "prescriptions": [
+                    {
+                        "medicine": "Eye drops",
+                        "dosage": "Apply twice daily",
+                        "duration": "1 month"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cc8",
+                "room": "60d21b4667d0d8992e610cc9"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Laser Therapy",
+                "startDate": "2023-08-01",
+                "endDate": "2023-08-15",
+                "description": "Laser sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cc8",
+                "room": "60d21b4667d0d8992e610cc9"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cc9",
+        "hospital": "66af19f1c4cd9dca8d99c762"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Javier Ruiz",
+        "age": 43,
+        "email": "javier.ruiz@gmail.com",
+        "password": "javierr2023",
+        "tel": "(213)-555-9900",
+        "address": "123 Calle Luna",
+        "dateOfBirth": "1980-03-03",
+        "gender": "Male",
+        "bloodType": "O-",
+        "medicalFolders": [
+            {
+                "folderName": "Oncology",
+                "documents": [
+                    {
+                        "type": "CT Scan",
+                        "url": "http://oncoReports.com/ctscan.pdf",
+                        "dateAdded": "2023-06-15"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-06-15",
+                "doctorId": "60d21b4667d0d8992e610cca",
+                "doctorName": "Dr. Hernandez",
+                "notes": "Unexplained weight loss",
+                "diagnosis": "Lung cancer",
+                "prescriptions": [
+                    {
+                        "medicine": "Chemotherapy drugs",
+                        "dosage": "As prescribed",
+                        "duration": "ongoing"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ccb",
+                "room": "60d21b4667d0d8992e610ccc"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Chemotherapy",
+                "startDate": "2023-07-01",
+                "endDate": "2023-09-01",
+                "description": "Bi-weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610ccb",
+                "room": "60d21b4667d0d8992e610ccc"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ccc",
+        "hospital": "66af19f1c4cd9dca8d99c763"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Elena Vasileva",
+        "age": 37,
+        "email": "elena.vasileva@gmail.com",
+        "password": "elenav2023",
+        "tel": "(213)-555-3344",
+        "address": "456 Red Square",
+        "dateOfBirth": "1986-08-10",
+        "gender": "Female",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Endocrinology",
+                "documents": [
+                    {
+                        "type": "Thyroid Panel",
+                        "url": "http://endocrineReports.com/thyroidpanel.pdf",
+                        "dateAdded": "2023-11-15"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-11-15",
+                "doctorId": "60d21b4667d0d8992e610ccd",
+                "doctorName": "Dr. Kuznetsov",
+                "notes": "Fatigue and weight gain",
+                "diagnosis": "Hypothyroidism",
+                "prescriptions": [
+                    {
+                        "medicine": "Levothyroxine",
+                        "dosage": "75 mcg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cce",
+                "room": "60d21b4667d0d8992e610ccf"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Hormone Replacement Therapy",
+                "startDate": "2023-12-01",
+                "endDate": "2024-01-01",
+                "description": "Daily medication",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cce",
+                "room": "60d21b4667d0d8992e610ccf"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ccf",
+        "hospital": "66af19f1c4cd9dca8d99c764"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Ahmed El-Sayed",
+        "age": 55,
+        "email": "ahmed.elsayed@gmail.com",
+        "password": "ahmede2023",
+        "tel": "(213)-555-4455",
+        "address": "789 Nile Rd",
+        "dateOfBirth": "1968-04-12",
+        "gender": "Male",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Nephrology",
+                "documents": [
+                    {
+                        "type": "Kidney Function Test",
+                        "url": "http://nephroReports.com/kidneyfunction.pdf",
+                        "dateAdded": "2023-09-12"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-09-12",
+                "doctorId": "60d21b4667d0d8992e610cd0",
+                "doctorName": "Dr. Farouk",
+                "notes": "Swelling in legs",
+                "diagnosis": "Chronic Kidney Disease",
+                "prescriptions": [
+                    {
+                        "medicine": "Lisinopril",
+                        "dosage": "10 mg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cd1",
+                "room": "60d21b4667d0d8992e610cd2"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Dialysis",
+                "startDate": "2023-10-01",
+                "endDate": "ongoing",
+                "description": "Thrice weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cd1",
+                "room": "60d21b4667d0d8992e610cd2"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cd2",
+        "hospital": "66af19f1c4cd9dca8d99c765"
+    }
+
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Ahmed El-Sayed",
+        "age": 55,
+        "email": "ahmed.elsayed@gmail.com",
+        "password": "ahmede2023",
+        "tel": "(213)-555-4455",
+        "address": "789 Nile Rd",
+        "dateOfBirth": "1968-04-12",
+        "gender": "Male",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Nephrology",
+                "documents": [
+                    {
+                        "type": "Kidney Function Test",
+                        "url": "http://nephroReports.com/kidneyfunction.pdf",
+                        "dateAdded": "2023-09-12"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-09-12",
+                "doctorId": "60d21b4667d0d8992e610cd0",
+                "doctorName": "Dr. Farouk",
+                "notes": "Swelling in legs",
+                "diagnosis": "Chronic Kidney Disease",
+                "prescriptions": [
+                    {
+                        "medicine": "Lisinopril",
+                        "dosage": "10 mg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cd1",
+                "room": "60d21b4667d0d8992e610cd2"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Dialysis",
+                "startDate": "2023-10-01",
+                "endDate": "2023-12-31",
+                "description": "Thrice weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cd1",
+                "room": "60d21b4667d0d8992e610cd2"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cd2",
+        "hospital": "66af19f1c4cd9dca8d99c765"
+    }
+
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Juanita Rodriguez",
+        "age": 63,
+        "email": "juanita.rodriguez@gmail.com",
+        "password": "juanitar2023",
+        "tel": "(213)-555-5566",
+        "address": "456 Palm Ave",
+        "dateOfBirth": "1961-05-05",
+        "gender": "Female",
+        "bloodType": "O-",
+        "medicalFolders": [
+            {
+                "folderName": "Gastroenterology",
+                "documents": [
+                    {
+                        "type": "Liver Function Test",
+                        "url": "http://gastroReports.com/liverfunction.pdf",
+                        "dateAdded": "2023-03-20"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-03-20",
+                "doctorId": "60d21b4667d0d8992e610cd3",
+                "doctorName": "Dr. Gomez",
+                "notes": "Jaundice and fatigue",
+                "diagnosis": "Hepatitis C",
+                "prescriptions": [
+                    {
+                        "medicine": "Sofosbuvir",
+                        "dosage": "400 mg daily",
+                        "duration": "3 months"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cd4",
+                "room": "60d21b4667d0d8992e610cd5"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Antiviral Therapy",
+                "startDate": "2023-04-01",
+                "endDate": "2023-06-30",
+                "description": "Daily medication",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cd4",
+                "room": "60d21b4667d0d8992e610cd5"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cd5",
+        "hospital": "66af19f1c4cd9dca8d99c766"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Nguyen Thi Mai",
+        "age": 48,
+        "email": "nguyen.thimai@gmail.com",
+        "password": "nguyentm2023",
+        "tel": "(213)-555-6677",
+        "address": "789 Le Loi St",
+        "dateOfBirth": "1975-11-10",
+        "gender": "Female",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Endocrinology",
+                "documents": [
+                    {
+                        "type": "Thyroid Ultrasound",
+                        "url": "http://endocrineReports.com/thyroidultrasound.pdf",
+                        "dateAdded": "2023-01-25"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-01-25",
+                "doctorId": "60d21b4667d0d8992e610cd6",
+                "doctorName": "Dr. Tran",
+                "notes": "Neck swelling",
+                "diagnosis": "Thyroid nodule",
+                "prescriptions": [
+                    {
+                        "medicine": "Levothyroxine",
+                        "dosage": "50 mcg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cd7",
+                "room": "60d21b4667d0d8992e610cd8"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Fine-Needle Aspiration Biopsy",
+                "startDate": "2023-02-15",
+                "endDate": "2023-02-15",
+                "description": "Outpatient procedure",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cd7",
+                "room": "60d21b4667d0d8992e610cd8"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cd8",
+        "hospital": "66af19f1c4cd9dca8d99c767"
+    }
+
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Muhammad Khan",
+        "age": 53,
+        "email": "muhammad.khan@gmail.com",
+        "password": "muhammadk2023",
+        "tel": "(213)-555-7788",
+        "address": "123 Islamabad Blvd",
+        "dateOfBirth": "1970-06-15",
+        "gender": "Male",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Cardiology",
+                "documents": [
+                    {
+                        "type": "Echocardiogram",
+                        "url": "http://cardioReports.com/echo.pdf",
+                        "dateAdded": "2023-12-20"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-12-20",
+                "doctorId": "60d21b4667d0d8992e610cd9",
+                "doctorName": "Dr. Haider",
+                "notes": "Shortness of breath and chest pain",
+                "diagnosis": "Heart failure",
+                "prescriptions": [
+                    {
+                        "medicine": "Furosemide",
+                        "dosage": "40 mg daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cda",
+                "room": "60d21b4667d0d8992e610cdb"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Cardiac Rehabilitation",
+                "startDate": "2024-01-01",
+                "endDate": "2024-03-01",
+                "description": "Weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cda",
+                "room": "60d21b4667d0d8992e610cdb"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cdb",
+        "hospital": "66af19f1c4cd9dca8d99c768"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Anna Svensson",
+        "age": 46,
+        "email": "anna.svensson@gmail.com",
+        "password": "annas2023",
+        "tel": "(213)-555-8899",
+        "address": "789 Norra Gatan",
+        "dateOfBirth": "1977-02-25",
+        "gender": "Female",
+        "bloodType": "O+",
+        "medicalFolders": [
+            {
+                "folderName": "Dermatology",
+                "documents": [
+                    {
+                        "type": "Skin Biopsy",
+                        "url": "http://dermaReports.com/skinbiopsy.pdf",
+                        "dateAdded": "2023-04-10"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-04-10",
+                "doctorId": "60d21b4667d0d8992e610cdc",
+                "doctorName": "Dr. Eriksson",
+                "notes": "Suspicious mole on back",
+                "diagnosis": "Melanoma",
+                "prescriptions": [
+                    {
+                        "medicine": "Topical cream",
+                        "dosage": "Apply twice daily",
+                        "duration": "1 month"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cdd",
+                "room": "60d21b4667d0d8992e610cde"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Surgical Removal",
+                "startDate": "2023-05-01",
+                "endDate": "2023-05-01",
+                "description": "Outpatient surgery",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cdd",
+                "room": "60d21b4667d0d8992e610cde"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cde",
+        "hospital": "66af19f1c4cd9dca8d99c769"
+    }
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Pierre Dupont",
+        "age": 34,
+        "email": "pierre.dupont@gmail.com",
+        "password": "pierred2023",
+        "tel": "(213)-555-9900",
+        "address": "123 Rue de la Paix",
+        "dateOfBirth": "1989-08-12",
+        "gender": "Male",
+        "bloodType": "B-",
+        "medicalFolders": [
+            {
+                "folderName": "Orthopedics",
+                "documents": [
+                    {
+                        "type": "Knee MRI",
+                        "url": "http://orthoReports.com/kneemri.pdf",
+                        "dateAdded": "2023-07-18"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-07-18",
+                "doctorId": "60d21b4667d0d8992e610cdf",
+                "doctorName": "Dr. Moreau",
+                "notes": "Knee pain after injury",
+                "diagnosis": "Meniscus tear",
+                "prescriptions": [
+                    {
+                        "medicine": "Pain relievers",
+                        "dosage": "As needed",
+                        "duration": "1 month"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ce0",
+                "room": "60d21b4667d0d8992e610ce1"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Arthroscopic Surgery",
+                "startDate": "2023-08-01",
+                "endDate": "2023-08-01",
+                "description": "Knee surgery",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610ce0",
+                "room": "60d21b4667d0d8992e610ce1"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ce1",
+        "hospital": "66af19f1c4cd9dca8d99c770"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Lina Rahman",
+        "age": 29,
+        "email": "lina.rahman@gmail.com",
+        "password": "linar2023",
+        "tel": "(213)-555-1122",
+        "address": "456 Dhanmondi Rd",
+        "dateOfBirth": "1994-01-18",
+        "gender": "Female",
+        "bloodType": "A+",
+        "medicalFolders": [
+            {
+                "folderName": "Ophthalmology",
+                "documents": [
+                    {
+                        "type": "Vision Test",
+                        "url": "http://ophthaReports.com/visiontest.pdf",
+                        "dateAdded": "2023-11-05"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-11-05",
+                "doctorId": "60d21b4667d0d8992e610ce2",
+                "doctorName": "Dr. Alam",
+                "notes": "Blurry vision",
+                "diagnosis": "Myopia",
+                "prescriptions": [
+                    {
+                        "medicine": "Prescription glasses",
+                        "dosage": "Wear daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ce3",
+                "room": "60d21b4667d0d8992e610ce4"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Laser Eye Surgery",
+                "startDate": "2024-01-01",
+                "endDate": "2024-01-01",
+                "description": "Outpatient procedure",
+                "status": "planned",
+                "department": "60d21b4667d0d8992e610ce3",
+                "room": "60d21b4667d0d8992e610ce4"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ce4",
+        "hospital": "66af19f1c4cd9dca8d99c771"
+    }
+
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Keiko Tanaka",
+        "age": 61,
+        "email": "keiko.tanaka@gmail.com",
+        "password": "keikot2023",
+        "tel": "(213)-555-2233",
+        "address": "789 Sakura Blvd",
+        "dateOfBirth": "1962-09-22",
+        "gender": "Female",
+        "bloodType": "O+",
+        "medicalFolders": [
+            {
+                "folderName": "Rheumatology",
+                "documents": [
+                    {
+                        "type": "Joint X-Ray",
+                        "url": "http://rheumaReports.com/jointxray.pdf",
+                        "dateAdded": "2023-06-30"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-06-30",
+                "doctorId": "60d21b4667d0d8992e610ce5",
+                "doctorName": "Dr. Yamamoto",
+                "notes": "Joint pain and stiffness",
+                "diagnosis": "Rheumatoid Arthritis",
+                "prescriptions": [
+                    {
+                        "medicine": "Methotrexate",
+                        "dosage": "10 mg weekly",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ce6",
+                "room": "60d21b4667d0d8992e610ce7"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Physical Therapy",
+                "startDate": "2023-07-10",
+                "endDate": "2023-08-10",
+                "description": "Twice weekly sessions",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610ce6",
+                "room": "60d21b4667d0d8992e610ce7"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ce7",
+        "hospital": "66af19f1c4cd9dca8d99c772"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Rajesh Kumar",
+        "age": "39",
+        "email": "rajesh.kumar@gmail.com",
+        "password": "rajeshk2023",
+        "tel": "(213)-555-3344",
+        "address": "456 MG Road",
+        "dateOfBirth": "1984-12-14",
+        "gender": "Male",
+        "bloodType": "B+",
+        "medicalFolders": [
+            {
+                "folderName": "Oncology",
+                "documents": [
+                    {
+                        "type": "Bone Marrow Biopsy",
+                        "url": "http://oncoReports.com/bonemarrowbiopsy.pdf",
+                        "dateAdded": "2023-03-22"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-03-22",
+                "doctorId": "60d21b4667d0d8992e610ce8",
+                "doctorName": "Dr. Singh",
+                "notes": "Unexplained weight loss and fatigue",
+                "diagnosis": "Leukemia",
+                "prescriptions": [
+                    {
+                        "medicine": "Chemotherapy drugs",
+                        "dosage": "As prescribed",
+                        "duration": "ongoing"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610ce9",
+                "room": "60d21b4667d0d8992e610cea"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Chemotherapy",
+                "startDate": "2023-04-01",
+                "endDate": "2023-09-01",
+                "description": "Bi-weekly sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610ce9",
+                "room": "60d21b4667d0d8992e610cea"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cea",
+        "hospital": "66af19f1c4cd9dca8d99c773"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Monica Rios",
+        "age": 31,
+        "email": "monica.rios@gmail.com",
+        "password": "monicar2023",
+        "tel": "(213)-555-5566",
+        "address": "123 Avenida del Sol",
+        "dateOfBirth": "1992-05-18",
+        "gender": "Female",
+        "bloodType": "A-",
+        "medicalFolders": [
+            {
+                "folderName": "Neurology",
+                "documents": [
+                    {
+                        "type": "EEG Report",
+                        "url": "http://neuroReports.com/eegreport.pdf",
+                        "dateAdded": "2023-07-10"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-07-10",
+                "doctorId": "60d21b4667d0d8992e610ceb",
+                "doctorName": "Dr. Morales",
+                "notes": "Seizures",
+                "diagnosis": "Epilepsy",
+                "prescriptions": [
+                    {
+                        "medicine": "Valproic Acid",
+                        "dosage": "500 mg twice daily",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cec",
+                "room": "60d21b4667d0d8992e610ced"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "EEG Monitoring",
+                "startDate": "2023-08-01",
+                "endDate": "2023-08-03",
+                "description": "Inpatient monitoring",
+                "status": "completed",
+                "department": "60d21b4667d0d8992e610cec",
+                "room": "60d21b4667d0d8992e610ced"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610ced",
+        "hospital": "66af19f1c4cd9dca8d99c774"
+    }
+
+
+
+
+
+{
+        "title": "Patient",
+        "name": "Kim Nam-Joon",
+        "age": 27,
+        "email": "kim.namjoon@gmail.com",
+        "password": "kimnj2023",
+        "tel": "(213)-555-6677",
+        "address": "456 Han River Rd",
+        "dateOfBirth": "1996-01-07",
+        "gender": "Male",
+        "bloodType": "O+",
+        "medicalFolders": [
+            {
+                "folderName": "Pulmonology",
+                "documents": [
+                    {
+                        "type": "Lung Function Test",
+                        "url": "http://pulmoReports.com/lungfunction.pdf",
+                        "dateAdded": "2023-09-12"
+                    }
+                ]
+            }
+        ],
+        "consultationHistory": [
+            {
+                "date": "2023-09-12",
+                "doctorId": "60d21b4667d0d8992e610cee",
+                "doctorName": "Dr. Park",
+                "notes": "Shortness of breath",
+                "diagnosis": "Asthma",
+                "prescriptions": [
+                    {
+                        "medicine": "Albuterol inhaler",
+                        "dosage": "As needed",
+                        "duration": "indefinite"
+                    }
+                ],
+                "department": "60d21b4667d0d8992e610cef",
+                "room": "60d21b4667d0d8992e610cf0"
+            }
+        ],
+        "treatments": [
+            {
+                "treatmentName": "Breathing Exercises",
+                "startDate": "2023-10-01",
+                "endDate": "2023-12-01",
+                "description": "Daily sessions",
+                "status": "ongoing",
+                "department": "60d21b4667d0d8992e610cef",
+                "room": "60d21b4667d0d8992e610cf0"
+            }
+        ],
+        "currentRoom": "60d21b4667d0d8992e610cf0",
+        "hospital": "66af19f1c4cd9dca8d99c775"
+    }

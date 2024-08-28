@@ -71,10 +71,10 @@ router.get('/get-rooms', checkRole(['Administrator','Technician','Caregiver','Ot
 });
 
 router.get('/get-staffs', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse']), (req, res) => {
-    staffController.getStaffs(req, res);
+    staffController.getStaff(req, res);
 });
 
-router.get('/get-patients', checkRole(['Administrator','Technician','Caregiver','Other','Doctor','Nurse','Patient']), (req, res) => {
+router.get('/get-patients', checkRole(['Administrator','Technician','Caregiver','Other', 'Doctor','Nurse','Patient']), (req, res) => {
     patientController.getPatients(req, res);
 });
 
@@ -91,11 +91,11 @@ router.get('/get-a-doctor/:id', checkRole(['Administrator','Doctor','Nurse','Pat
     doctorController.getDoctorById(req, res);
 });
 
-router.get('/get-a-nurse/:id', checkRole(['Administrator','Doctor','Nurse','Patient']), (req, res) => {
+router.get('/get-a-nurse/:id', checkRole(['Administrator','Caregiver','Doctor','Nurse','Patient']), (req, res) => {
     nurseController.getNurseById(req, res);
 });
 
-router.get('/get-a-room/:id', checkRole(['Administrator','Doctor','Nurse']), (req, res) => {
+router.get('/get-a-room/:id', checkRole(['Administrator','Doctor','Nurse','Technician','Caregiver','Other']), (req, res) => {
     roomController.getRoomById(req, res);
 });
 
@@ -115,7 +115,7 @@ router.get('/get-a-patient/:id', checkRole(['Doctor','Nurse','Patient']), (req, 
     patientController.getPatientById(req, res);
 });
 
-router.get('/get-a-transfer/:id', checkRole(['Administrator','Doctor']), (req, res) => {
+router.get('/get-a-transfer/:id', checkRole(['Administrator','Doctor','Nurse']), (req, res) => {
     transferController.getTransferById(req, res);
 });
 

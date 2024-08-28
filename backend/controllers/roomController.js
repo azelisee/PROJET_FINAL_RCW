@@ -10,29 +10,29 @@ initDatabases();
 
 exports.createRoom = async (req, res) => {
     try {
-        const existingRoom = await RoomModel.findOne({roomNumber : req.body.roomNumber});
+        const existingRoom = await RoomModel.findOne({ roomNumber: req.body.roomNumber });
         if (existingRoom) {
-            res.send('A room with this number already exists');
+            return res.status(400).json({ message: 'A room with this number already exists' });
         }
         const room = new RoomModel(req.body);
         await room.save();
 
-        console.log('Recorded in MongoDB Atlas : ', room);
-        res.send('New Room created',room);
+        console.log('Recorded in MongoDB Atlas:', room);
+        res.status(201).json({ message: 'New Room created', room });
     } catch (error) {
         console.log(error);
-        res.send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
 exports.getRooms = async (req, res) => {
     try {
         const rooms = await RoomModel.find();
-        console.log('Records from mongoDB Atlas : ',rooms);
-        res.send(rooms);
+        console.log('Records from MongoDB Atlas:', rooms);
+        res.status(200).json(rooms);
     } catch (error) {
         console.log(error);
-        res.send({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -41,14 +41,14 @@ exports.getRoomById = async (req, res) => {
         const room = await RoomModel.findById(req.params.id);
         if (room) {
             console.log(`Record from MongoDB Atlas:`, room);
-            res.send(room);
+            res.status(200).json(room);
         } else {
             console.log('No room found');
-            res.send('No room found');
+            res.status(404).json({ message: 'No room found' });
         }
     } catch (error) {
         console.log(error);
-        res.send({error: error.message});
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -56,26 +56,26 @@ exports.updateRoom = async (req, res) => {
     try {
         const room = await RoomModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!room) {
-            res.send('Room not found',room);
+            return res.status(404).json({ message: 'Room not found' });
         }
         console.log('Updated in MongoDB Atlas:', room);
-        res.send('Room updated : ', room);
+        res.status(200).json({ message: 'Room updated', room });
     } catch (error) {
         console.log(error);
-        res.send({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
 exports.deleteRoom = async (req, res) => {
     try {
-        const id = await RoomModel.findByIdAndDelete(id);
-        if (!id) {
-            res.send('Room not found');
+        const room = await RoomModel.findByIdAndDelete(req.params.id);
+        if (!room) {
+            return res.status(404).json({ message: 'Room not found' });
         }
-        console.log('Deleted from MongoDB Atlas:', id);
-        res.send('Room deleted : ',id);
+        console.log('Deleted from MongoDB Atlas:', room);
+        res.status(200).json({ message: 'Room deleted', room });
     } catch (error) {
         console.log(error);
-        res.send({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
